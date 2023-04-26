@@ -5,12 +5,17 @@
   system.stateVersion = 4;
 
   # Configure shells
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    # Only use basic config at system level to avoid conflicts with user configs.
+    enableCompletion = false;
+    enableBashCompletion = false;
+    promptInit = "PROMPT='%/> '"; # Default value conflicted with user's prompt.
+  };
   environment.shells = [ dash bash zsh ];
   environment.loginShell = zsh;
 
   # Configure nix
-  # Essentially contents of ~/.config/nix/nix.conf
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';

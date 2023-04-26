@@ -31,6 +31,13 @@
       enableCompletion = true;
       enableAutosuggestions = true;
       enableSyntaxHighlighting = true;
+      history.size = 50000;
+      # initExtraBeforeCompInit = '''';
+      # initExtraFirst = '''';
+      initExtra = ''
+        source ${zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+        source ~/.config/zsh/prompt.zsh
+      '';
       shellAliases = { 
         c = "clear";
         ls = "exa --group-directories-first";
@@ -40,9 +47,6 @@
         gs = "git status";
         nixswitch = "darwin-rebuild switch --flake ~/Projects/eksys/.#";
       };
-      initExtra = ''
-        source ${zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-      '';
     };
   };
 
@@ -54,5 +58,6 @@
 
   home.file = {
     ".inputrc".source = ./dotfiles/.inputrc;
+    ".config/zsh/prompt.zsh".source = ./dotfiles/zsh/prompt.zsh;
   };
 }
