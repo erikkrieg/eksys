@@ -45,6 +45,15 @@
         v = "nvim";
         vf = "nvim \"$(fzf)\"";
         gs = "git status";
+        gd = "git diff";
+        gl = "git pull";
+        gp = "git push";
+        ga = "git add";
+        gf = "git fetch";
+        gco = "git checkout";
+        gcb = "git checkout -b";
+        gcam = "git commit --all --message";
+        gcmsg = "git commit --message";
         nixswitch = "darwin-rebuild switch --flake ~/Projects/eksys/.#";
       };
     };
@@ -59,5 +68,6 @@
   home.file = {
     ".inputrc".source = ./dotfiles/.inputrc;
     ".config/zsh/prompt.zsh".source = ./dotfiles/zsh/prompt.zsh;
+    ".gitconfig".source = ./dotfiles/.gitconfig;
   };
 }
