@@ -16,8 +16,12 @@
   environment.loginShell = zsh;
 
   # Not sure if there is a better way to do this, but in order to ensure my
-  # shells are correctly integrated with the system, I'm linking them after
-  # builds and updates.
+  # shell packages installed via nix are being used instead of the MacOS defaults,
+  # making a few modifications post activation.
+  #
+  # The following shell modifications are applied idempotently:
+  # 1. sh is linked to dash
+  # 2. zsh is set as default shell for root user
   #
   # Set sh to execute dash because it is faster than bash
   # Important: dash is limited to the posix specification, so has fewer 
@@ -26,10 +30,19 @@
     text = ''
       echo "post activation..."
       NIX_SYS="/run/current-system/sw"
+
+      # Set sh to dash
       DASH="$NIX_SYS/bin/dash"
       if [ "$(readlink /var/select/sh)" != "$DASH" ]; then
-        echo "- linking sh to dash because it is a faster shell"
+        echo "  - linking sh to dash because it is a faster shell"
         ln -sf "$DASH" /var/select/sh
+      fi
+
+      # Set zsh as the default shell for root user
+      ZSH="$NIX_SYS/bin/zsh"
+      if [ "$SHELL" != "$ZSH" ]; then
+        echo "  - using zsh as default shell for root"
+        chsh -s "$ZSH" "$USER"
       fi
     '';
   };
