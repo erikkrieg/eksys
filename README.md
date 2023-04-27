@@ -10,14 +10,18 @@ Nix configuration of my system and user spaces for my MacOS dev machines.
 The bootstrap command builds a derviation and then activates it with nix-darwin. The bootstrap command likely won't succeed on the first run, but if it fails, there should be instructions for manual remediation. Once those are performed, you can re-run `./bootstrap.sh` (there might be a few cycles of this).
 
 ## Update
-Update path according to the location of the system flake:
+
+Rebuild and apply: `nixswitch`
+
+This is an alias for building and activating the system configuration flake,
+which is effectively the same as:
 ```sh
 darwin-rebuild switch --flake .#
 ```
 
-Alternatively, you can use the alias `nixswitch`. 
-
-To update packages and the `flake.lock` file, run:
+To get latest packages, go into the flake source directory and run:
 ```sh
-nix flake update && nixswitch
+nix flake update
 ```
+_In order to apply the update, use `nixswitch` after._
+
