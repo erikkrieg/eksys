@@ -6,7 +6,23 @@
 
   # Install user-specific packages
   home.packages = [
+    # Utility packages
+    bat
     btop
+    delta
+    fd
+    jq
+    ripgrep
+
+    # Cross-project packages
+    # alacritty 
+    just
+    neovim
+    zellij 
+
+    # Language-specific
+    nodePackages.bash-language-server
+    shellcheck 
     pipenv
   ];
 
@@ -21,9 +37,23 @@
     fzf = {
       enable = true;
       enableZshIntegration = true;
+      defaultCommand = "rg --files --hidden --glob '!.git'";
+      defaultOptions = [
+        "--height=60%"
+        "--layout=reverse"
+        "--border"
+        "--margin=1"
+        "--padding=1"
+      ];
     };
     exa.enable = true;
     git.enable = true;
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableZshIntegration = true;
+    };
 
     # Configure zsh shell
     zsh = {
@@ -37,6 +67,7 @@
       initExtra = ''
         source ${zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
         source ~/.config/zsh/prompt.zsh
+        eval "$(zellij setup --generate-auto-start zsh)"
       '';
       shellAliases = { 
         c = "clear";
@@ -54,6 +85,10 @@
         gcb = "git checkout -b";
         gcam = "git commit --all --message";
         gcmsg = "git commit --message";
+        tree="ls --tree -a -I='.git'";
+        tree2="tree --level=2";
+        tree3="tree --level=3";
+        tree4="tree --level=4";
         nixswitch = "darwin-rebuild switch --flake ~/Projects/eksys/.#";
       };
     };
