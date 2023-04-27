@@ -13,6 +13,7 @@
     fd
     jq
     ripgrep
+    gh
 
     # Cross-project packages
     # alacritty 
