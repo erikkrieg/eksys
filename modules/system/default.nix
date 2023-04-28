@@ -87,6 +87,7 @@
       "discord"
       "obsidian"
     ];
+    onActivation.cleanup = "zap";
   };
   environment.systemPath = [ "/opt/homebrew/bin" ];
 }
