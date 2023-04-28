@@ -12,7 +12,7 @@
     enableBashCompletion = false;
     promptInit = "PROMPT='%/> '"; # Default value conflicted with user's prompt.
   };
-  environment.shells = [ dash bash zsh ];
+  environment.shells = [ bash zsh ];
   environment.loginShell = zsh;
 
   # Not sure if there is a better way to do this, but in order to ensure my
@@ -32,7 +32,7 @@
       NIX_SYS="/run/current-system/sw"
 
       # Set sh to dash
-      DASH="$NIX_SYS/bin/dash"
+      DASH="/bin/dash"
       if [ "$(readlink /var/select/sh)" != "$DASH" ]; then
         echo "  - linking sh to dash because it is a faster shell"
         ln -sf "$DASH" /var/select/sh
@@ -55,7 +55,6 @@
 
   # Install system packages (available to all users)
   environment.systemPackages = [
-    dash
     coreutils
   ];
 
