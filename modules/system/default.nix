@@ -76,4 +76,18 @@
     finder.AppleShowAllExtensions = true;
     NSGlobalDomain.AppleShowAllExtensions = true;
   };
+
+  # Homebrew is included to install packages that are missing from nixpkgs
+  homebrew = {
+    enable = true; 
+    caskArgs.no_quarantine = true;
+    global.brewfile = true;
+    casks = [
+      "brave-browser"
+      "spotify"
+      "discord"
+      "obsidian"
+    ];
+  };
+  environment.systemPath = [ "/opt/homebrew/bin" ];
 }
