@@ -93,6 +93,10 @@
         nixswitch = "darwin-rebuild switch --flake ~/Projects/eksys/.#";
       };
     };
+
+    alacritty = {
+      enable = true;
+    };
   };
 
   # Configure terminal emulator.
