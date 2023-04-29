@@ -59,10 +59,6 @@
       nix-direnv.enable = true;
       enableZshIntegration = true;
     };
-
-    # alacritty = {
-    #   enable = true;
-    # };
   };
 
   # Configure terminal emulator.
