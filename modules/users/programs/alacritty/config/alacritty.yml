@@ -1,0 +1,54 @@
+import:
+  - ~/.config/alacritty/colors.yaml
+
+shell:
+  program: zsh
+
+font:
+  size: 18.0
+
+chars:
+  ctl_b: &ctl_b "\x02"
+  ctl_g: &ctl_g "\x07"
+  ctl_h: &ctl_h "\x08"
+  ctl_p: &ctl_p "\x10"
+  ctl_r: &ctl_r "\x12"
+  ctl_s: &ctl_s "\x13"
+  ctl_t: &ctl_t "\x14"
+  ctl_t1: &ctl_t1 "\x14\x31"
+  ctl_t2: &ctl_t2 "\x14\x32"
+  ctl_t3: &ctl_t3 "\x14\x33"
+  ctl_t4: &ctl_t4 "\x14\x34"
+  ctl_t5: &ctl_t5 "\x14\x35"
+  ctl_t6: &ctl_t6 "\x14\x36"
+  ctl_t7: &ctl_t7 "\x14\x37"
+  ctl_t8: &ctl_t8 "\x14\x38"
+  ctl_t9: &ctl_t9 "\x14\x39"
+  ctl_n: &ctl_n "\x0e"
+  ctl_o: &ctl_o "\x0f"
+
+key_bindings:
+- { key: N, mods: Command|Shift, action: SpawnNewInstance }
+- { key: F, mods: Command|Shift, action: ToggleFullscreen }
+# W + CMD used to be Quit but I'd hit it by mistake setting Zellij panes to
+# window mode so I am disabling it for now.
+- { key: W, mods: Command, action: ReceiveChar }
+
+# Zellij doesn't support Command mod key but Alacritty does.
+- { key: G, mods: Command, chars: *ctl_g } # lock mode
+- { key: P, mods: Command, chars: *ctl_p } # pane mode
+- { key: H, mods: Command, chars: *ctl_h } # move mode
+- { key: S, mods: Command, chars: *ctl_s } # search mode
+- { key: T, mods: Command, chars: *ctl_t } # tab mode
+- { key: N, mods: Command, chars: *ctl_n } # resize mode
+- { key: O, mods: Command, chars: *ctl_o } # session mode
+- { key: Key1, mods: Command, chars: *ctl_t1 }
+- { key: Key2, mods: Command, chars: *ctl_t2 }
+- { key: Key3, mods: Command, chars: *ctl_t3 }
+- { key: Key4, mods: Command, chars: *ctl_t4 }
+- { key: Key5, mods: Command, chars: *ctl_t5 }
+- { key: Key6, mods: Command, chars: *ctl_t6 }
+- { key: Key7, mods: Command, chars: *ctl_t7 }
+- { key: Key8, mods: Command, chars: *ctl_t8 }
+- { key: Key9, mods: Command, chars: *ctl_t9 }
+

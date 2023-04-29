@@ -1,0 +1,62 @@
+schemes:
+  omni: &omni
+    # https://github.com/getomni/alacritty/blob/main/omni.yml
+    primary:
+      background: '0x191622'
+      foreground: '0xe1e1e6'
+    cursor:
+      text: '0x191622'
+      cursor: '0xf8f8f2'
+    normal:
+      black: '0x000000'
+      red: '0xff5555'
+      green: '0x50fa7b'
+      yellow: '0xeffa78'
+      blue: '0xbd93f9'
+      magenta: '0xff79c6'
+      cyan: '0x8d79ba'
+      white: '0xbfbfbf'
+    bright:
+      black: '0x4d4d4d'
+      red: '0xff6e67'
+      green: '0x5af78e'
+      yellow: '0xeaf08d'
+      blue: '0xcaa9fa'
+      magenta: '0xff92d0'
+      cyan: '0xaa91e3'
+      white: '0xe6e6e6'
+    dim:
+      black: '0x000000'
+      red: '0xa90000'
+      green: '0x049f2b'
+      yellow: '0xa3b106'
+      blue: '0x530aba'
+      magenta: '0xbb006b'
+      cyan: '0x433364'
+      white: '0x5f5f5f'
+
+  # https://github.com/eendroroy/alacritty-theme/blob/master/themes/tomorrow_night_bright.yaml
+  tomorrow-night-bright: &tomorrow-night-bright
+    primary:
+      background: '0x000000'
+      foreground: '0xeaeaea'
+    normal:
+      black:   '0x000000'
+      red:     '0xd54e53'
+      green:   '0xb9ca4a'
+      yellow:  '0xe6c547'
+      blue:    '0x7aa6da'
+      magenta: '0xc397d8'
+      cyan:    '0x70c0ba'
+      white:   '0x424242'
+    bright:
+      black:   '0x666666'
+      red:     '0xff3334'
+      green:   '0x9ec400'
+      yellow:  '0xe7c547'
+      blue:    '0x7aa6da'
+      magenta: '0xb77ee0'
+      cyan:    '0x54ced6'
+      white:   '0x2a2a2a'
+
+colors: *omni

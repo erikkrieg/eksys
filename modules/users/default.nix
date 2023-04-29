@@ -4,6 +4,10 @@
   # Backwards compatibility. Don't change.
   home.stateVersion = "22.11";
 
+  imports = [
+    ./programs/alacritty
+  ];
+
   # Install user-specific packages
   home.packages = [
     # Utility packages
@@ -94,9 +98,9 @@
       };
     };
 
-    alacritty = {
-      enable = true;
-    };
+    # alacritty = {
+    #   enable = true;
+    # };
   };
 
   # Configure terminal emulator.
