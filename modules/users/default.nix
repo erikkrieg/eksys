@@ -6,6 +6,7 @@
 
   imports = [
     ./programs/alacritty
+    ./programs/zsh
   ];
 
   # Install user-specific packages

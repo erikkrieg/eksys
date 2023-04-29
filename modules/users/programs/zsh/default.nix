@@ -34,10 +34,10 @@
       tree4="tree --level=4";
       nixswitch = "darwin-rebuild switch --flake ~/Projects/eksys/.#";
     };
+  };
 
-    home.file.".config/zsh" = {
-      source = ./config;
-      recursive = true;
-    };
+  home.file.".config/zsh" = {
+    source = ./config;
+    recursive = true;
   };
 }
