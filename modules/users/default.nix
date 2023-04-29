@@ -62,12 +62,6 @@
     };
   };
 
-  # Configure terminal emulator.
-  # Not sure I want to configure it like this. I think I'd rather
-  # have alacritty as a home package with a config file symlinked
-  # to .config/alacritty/
-  # programs.alacritty = { enable = true; settings.font.size = 16; };
-
   home.file = {
     ".inputrc".source = ./dotfiles/.inputrc;
     ".gitconfig".source = ./dotfiles/.gitconfig;
