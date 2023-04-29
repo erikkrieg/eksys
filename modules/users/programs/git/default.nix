@@ -4,6 +4,7 @@
   };
 
   programs.zsh.shellAliases = {
+    g = "git";
     gs = "git status";
     gd = "git diff";
     gl = "git pull";
