@@ -12,22 +12,16 @@
       source ~/.config/zsh/prompt.zsh
       eval "$(zellij setup --generate-auto-start zsh)"
     '';
+
+    # Note: not all zsh aliases are defined here. 
+    # Some aliases are defined by other user imports from ./programs, 
+    # such as git aliases.
     shellAliases = { 
       c = "clear";
       ls = "exa --group-directories-first";
       l = "ls -la --git";
       v = "nvim";
       vf = "nvim \"$(fzf)\"";
-      gs = "git status";
-      gd = "git diff";
-      gl = "git pull";
-      gp = "git push";
-      ga = "git add";
-      gf = "git fetch";
-      gco = "git checkout";
-      gcb = "git checkout -b";
-      gcam = "git commit --all --message";
-      gcmsg = "git commit --message";
       tree="ls --tree -a -I='.git'";
       tree2="tree --level=2";
       tree3="tree --level=3";

@@ -6,6 +6,7 @@
 
   imports = [
     ./programs/alacritty
+    ./programs/git
     ./programs/zsh
   ];
 
@@ -64,6 +65,5 @@
 
   home.file = {
     ".inputrc".source = ./dotfiles/.inputrc;
-    ".gitconfig".source = ./dotfiles/.gitconfig;
   };
 }
