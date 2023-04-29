@@ -6,6 +6,8 @@ shell:
 
 font:
   size: 18.0
+  normal:
+    family: "MesloLGS Nerd Font Mono"
 
 chars:
   ctl_b: &ctl_b "\x02"
