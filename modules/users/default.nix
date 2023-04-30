@@ -19,6 +19,7 @@
     bat
     btop
     delta
+    du-dust
     fd
     jq
     ripgrep
