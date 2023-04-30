@@ -21,6 +21,7 @@
       less = "bat -p";
       batfzf = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";
       batfd = "_fd_bat_batch";
+      batrg = "batgrep";
     };
   };
 }
