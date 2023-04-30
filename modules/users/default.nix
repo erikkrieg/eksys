@@ -9,6 +9,7 @@
     ./programs/exa
     ./programs/git
     ./programs/zellij
+    ./programs/zoxide
     ./programs/zsh
   ];
 
