@@ -38,6 +38,7 @@
   # Not sure if I'd rather use this or just have a .zshrc file
   home.sessionVariables = {
     EDITOR = "nvim";
+    VISUAL = "nvim";
   };
 
   # Configure select packages that have direct home-manager options.
