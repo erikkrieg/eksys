@@ -8,6 +8,7 @@
     ./programs/alacritty
     ./programs/exa
     ./programs/git
+    ./programs/zellij
     ./programs/zsh
   ];
 
@@ -26,7 +27,6 @@
     # alacritty 
     just
     neovim
-    zellij 
 
     # Language-specific
     nodePackages.bash-language-server
@@ -54,7 +54,6 @@
         "--padding=1"
       ];
     };
-    git.enable = true;
 
     direnv = {
       enable = true;

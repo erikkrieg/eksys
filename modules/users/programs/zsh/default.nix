@@ -10,7 +10,6 @@
     initExtra = ''
       source ${zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       source ~/.config/zsh/prompt.zsh
-      eval "$(zellij setup --generate-auto-start zsh)"
     '';
 
     # Note: not all zsh aliases are defined here. 
