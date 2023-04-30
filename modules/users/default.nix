@@ -6,6 +6,7 @@
 
   imports = [
     ./programs/alacritty
+    ./programs/bat
     ./programs/exa
     ./programs/git
     ./programs/zellij
@@ -16,7 +17,6 @@
   # Install user-specific packages
   home.packages = [
     # Utility packages
-    bat
     btop
     delta
     du-dust
