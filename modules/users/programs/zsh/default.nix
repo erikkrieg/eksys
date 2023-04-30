@@ -18,14 +18,9 @@
     # such as git aliases.
     shellAliases = { 
       c = "clear";
-      ls = "exa --group-directories-first";
-      l = "ls -la --git";
+      l = "ls -la";
       v = "nvim";
       vf = "nvim \"$(fzf)\"";
-      tree="ls --tree -a -I='.git'";
-      tree2="tree --level=2";
-      tree3="tree --level=3";
-      tree4="tree --level=4";
       nixswitch = "darwin-rebuild switch --flake ~/Projects/eksys/.#";
     };
   };

@@ -6,6 +6,7 @@
 
   imports = [
     ./programs/alacritty
+    ./programs/exa
     ./programs/git
     ./programs/zsh
   ];
@@ -53,7 +54,6 @@
         "--padding=1"
       ];
     };
-    exa.enable = true;
     git.enable = true;
 
     direnv = {
