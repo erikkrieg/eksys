@@ -13,10 +13,14 @@
     # initExtraFirst = '''';
     initExtra = ''
       source ${zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-      # Try this out later. Seems promising but might be messing up some
-      # of my other configurations.
-      # For example, my vim prompt map of `cc` no longer enters insert mode after clearing the line
-      # when fzf-tab is enabled.
+      # zsh-vi-mode creates a number of bindkeys that get initialized with 
+      # precmd_functions, which is run before each prompt is displayed. This
+      # was interfering with a fzf bindkey that I wanted while in insert mode.
+      function unset_zsh_vi_mode_history_bindkey() {
+        zvm_bindkey viins '^R' fzf-history-widget
+      } 
+      precmd_functions+=(unset_zsh_vi_mode_history_bindkey)
+
       source ~/.config/zsh/prompt.zsh
     '';
 
