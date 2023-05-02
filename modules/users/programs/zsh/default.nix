@@ -1,14 +1,22 @@
 { pkgs, ... }: with pkgs; {
+  imports = [
+    ./completions.nix
+  ];
+
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
     enableAutosuggestions = true;
     enableSyntaxHighlighting = true;
     history.size = 50000;
+
     # initExtraBeforeCompInit = '''';
     # initExtraFirst = '''';
     initExtra = ''
       source ${zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+      # Try this out later. Seems promising but might be messing up some
+      # of my other configurations.
+      # For example, my vim prompt map of `cc` no longer enters insert mode after clearing the line
+      # when fzf-tab is enabled.
       source ~/.config/zsh/prompt.zsh
     '';
 
@@ -24,8 +32,11 @@
     };
   };
 
-  home.file.".config/zsh" = {
-    source = ./config;
-    recursive = true;
+  home.file = {
+    ".config/zsh" = {
+      source = ./config;
+      recursive = true;
+    };
   };
+
 }

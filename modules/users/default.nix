@@ -19,6 +19,7 @@
   home.packages = [
     # Utility packages
     btop
+    catimg
     delta
     du-dust
     fd
@@ -41,6 +42,10 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
+
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   programs = {
     direnv = {
