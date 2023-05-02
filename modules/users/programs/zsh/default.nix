@@ -10,17 +10,15 @@
     history.size = 50000;
 
     # initExtraBeforeCompInit = '''';
-    # initExtraFirst = '''';
-    initExtra = ''
+    initExtraFirst = ''
+      # Avoid bindkey conflicts with other plugins like fzf. For more info:
+      # - https://github.com/jeffreytse/zsh-vi-mode#execute-extra-commands
+      # - https://github.com/jeffreytse/zsh-vi-mode#initialization-mode
+      ZVM_INIT_MODE=sourcing
       source ${zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-      # zsh-vi-mode creates a number of bindkeys that get initialized with 
-      # precmd_functions, which is run before each prompt is displayed. This
-      # was interfering with a fzf bindkey that I wanted while in insert mode.
-      function unset_zsh_vi_mode_history_bindkey() {
-        zvm_bindkey viins '^R' fzf-history-widget
-      } 
-      precmd_functions+=(unset_zsh_vi_mode_history_bindkey)
+    '';
 
+    initExtra = ''
       source ~/.config/zsh/prompt.zsh
     '';
 
