@@ -1,8 +1,6 @@
 # Zsh
 
 ## zsh-vi-mode plugin
-gt
-
 Turns out that the zsh-vi-mode plugin doesn't play super well with some other integrations by default. I discovered this that hard way while tryign to figure out why my `fzf` zsh integration was having the history search keybind overwritten. Figuring out the source of this ended up relying on me disabling other integrations and plugins and turning them back on gradually until it was clear that `zsh-vi-mode` was somehow responsible.
 
 Investigating the `zsh-vi-mode` plugin script, I noticed that it appended a function map key bindings into `precmd_functions`, which appears to execute late in the shell invocation, overriding `bindkey -M viins '^r'`.
