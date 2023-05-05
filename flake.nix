@@ -16,7 +16,7 @@
   # Instead of `inputs:` I often see things like `{self, nixpkgs, darwin}`.
   # Need to learn a bit more about the difference then pick a convention.
   outputs = inputs@{ nixpkgs, darwin, home-manager, ... }: {
-    darwinConfigurations."Eriks-MacBook-Pro" = darwin.lib.darwinSystem {
+    darwinConfigurations."Eriks-MBP" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       pkgs = import nixpkgs { system = "aarch64-darwin"; };
       modules = [
