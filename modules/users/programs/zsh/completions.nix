@@ -48,42 +48,24 @@
       zstyle ':fzf-tab:*' command $FZF_TAB_COMMAND
       zstyle ':fzf-tab:*' switch-group ',' '.'
       zstyle ':fzf-tab:complete:_zlua:*' query-string input
-      # Not sure why, but if I don't provide all the fzf-preview args then the
-      # values actually change which impacts the manual previews.
       zstyle ':fzf-tab:complete:*:*' fzf-preview 'preview.sh $realpath $word $words $group'
-      zstyle ':fzf-tab:complete:*:options' fzf-preview ""
+      zstyle ':fzf-tab:complete:*:options' fzf-preview 
     '';
   };
 
+  # Keep most of the script outside the string to take advantage of LSPs
   home.file.".local/bin/preview.sh" = {
     executable = true;
     text = ''
       #!${zsh}/bin/zsh
-      case "$1" in
-        -*) exit 0;;
-      esac
-
-      if [ -e "$1" ]; then
-        case "$(${file}/bin/file -L --mime-type "$1")" in
-          *text*)
-            ${bat}/bin/bat --color always --plain "$1"
-            ;;
-          *image* | *pdf)
-            ${catimg}/bin/catimg -w 100 -r 2 "$1"
-            ;;
-          *directory*)
-            ${exa}/bin/exa --icons -1 --color=always "$1"
-            ;;
-          *)
-            echo "unknown file format"
-            ;;
-        esac
-      else
-        BATMAN="${bat-extras.batman}/bin/batman"
-        if ! BATMAN "$2-$1" 2>/dev/null; then 
-          BATMAN "$1"
-        fi
-      fi
+      FILE=${file}/bin/file
+      BAT=${bat}/bin/bat
+      CATIMG=${catimg}/bin/catimg
+      EXA=${exa}/bin/exa
+      BATMAN=${bat-extras.batman}/bin/batman
+      GIT=${git}/bin/git
+      DELTA=${delta}/bin/git
+      ${builtins.readFile ./config/preview.zsh}
     '';
   };
 }
