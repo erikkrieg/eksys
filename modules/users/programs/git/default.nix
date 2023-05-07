@@ -5,7 +5,7 @@
     userName = "Erik Krieg";
     extraConfig = {
       core = {
-        editor = "nvim";
+        editor = "${neovim-unwrapped}";
       };
       init = {
         defaultBranch = "main";

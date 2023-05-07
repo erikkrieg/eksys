@@ -30,7 +30,7 @@
 
     # Cross-project packages
     just
-    neovim
+    neovim-unwrapped
 
     # Language-specific
     nodePackages.bash-language-server
