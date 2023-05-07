@@ -32,6 +32,5 @@
     gcam = "git commit --all --message";
     gcmsg = "git commit --message";
   };
-
-  # home.file.".gitconfig".source = ./config/.gitconfig;
 }
+
