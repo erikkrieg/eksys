@@ -29,8 +29,8 @@
     gf = "git fetch";
     gco = "git checkout";
     gcb = "git checkout -b";
-    gcam = "git commit --all --message";
-    gcmsg = "git commit --message";
+    gcam = "git commit -am";
+    gcmsg = "git commit -m";
   };
 }
 
