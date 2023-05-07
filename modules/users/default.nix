@@ -10,6 +10,7 @@
     ./programs/exa
     ./programs/fzf
     ./programs/git
+    ./programs/delta
     ./programs/zellij
     ./programs/zoxide
     ./programs/zsh
