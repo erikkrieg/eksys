@@ -6,7 +6,6 @@
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
     history.size = 50000;
 
     # initExtraBeforeCompInit = '''';
@@ -19,7 +18,11 @@
     '';
 
     initExtra = ''
+      # Using zsh-fast-syntax-hightlighing instead of zsh-syntax-highlighting
+      # because it works bettwe with zsh-vi-mode plugin.
+      # See: https://github.com/erikkrieg/eksys/issues/8
       source ~/.config/zsh/prompt.zsh
+      source ${zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
     '';
 
     # Note: not all zsh aliases are defined here. 
