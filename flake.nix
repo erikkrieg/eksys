@@ -11,11 +11,13 @@
     # Configure system level software and settings.
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    envim.url = "github:erikkrieg/envim/main";
   };
 
   # Instead of `inputs:` I often see things like `{self, nixpkgs, darwin}`.
   # Need to learn a bit more about the difference then pick a convention.
-  outputs = inputs@{ nixpkgs, darwin, home-manager, ... }: {
+  outputs = inputs@{ nixpkgs, darwin, home-manager, envim, ... }: {
     darwinConfigurations."eksys" = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       pkgs = import nixpkgs { system = "aarch64-darwin"; };
@@ -28,6 +30,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            extraSpecialArgs = { inherit envim; };
             users.ek.imports = [
               ./modules/users 
             ];
