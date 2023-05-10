@@ -30,7 +30,9 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = { inherit envim; };
+            extraSpecialArgs = {
+              envim = envim.packages."aarch64-darwin".default;
+            };
             users.ek.imports = [
               ./modules/users 
             ];

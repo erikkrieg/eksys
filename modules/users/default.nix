@@ -1,6 +1,6 @@
 # Configure user space using home-manager.
 # https://nix-community.github.io/home-manager/options.html
-{pkgs, envim, ...}: with pkgs; {
+{ pkgs, envim, ... }: with pkgs; {
   # Backwards compatibility. Don't change.
   home.stateVersion = "22.11";
 
@@ -30,7 +30,7 @@
 
     # Cross-project packages
     just
-    envim.packages."aarch64-darwin".default
+    envim
 
     # Language-specific
     nodePackages.bash-language-server
