@@ -5,6 +5,7 @@
       "minikube"
       "slack"
       "tunnelblick"
+      "visual-studio-code"
     ];
   };
 }
