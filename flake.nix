@@ -12,6 +12,7 @@
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    # My nvim flake.
     envim.url = "github:erikkrieg/envim/main";
   };
 
