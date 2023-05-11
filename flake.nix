@@ -18,7 +18,7 @@
 
   outputs = { self, nixpkgs, darwin, home-manager, envim, ... }:
     let
-      mkDarwin = { system, ... }: (darwin.lib.darwinSystem) {
+      mkDarwin = { system, user, ... }: (darwin.lib.darwinSystem) {
         pkgs = import nixpkgs { inherit system; };
         modules = [
           # Configure Darwin system space.
@@ -33,7 +33,7 @@
               extraSpecialArgs = {
                 envim = envim.packages.${system}.default;
               };
-              users.ek.imports = [
+              users.${user}.imports = [
                 ./modules/users
               ];
             };
@@ -42,7 +42,7 @@
       };
     in
     {
-      darwinConfigurations."eksys" = mkDarwin { system = "aarch64-darwin"; };
-      darwinConfigurations."eksys_pro" = mkDarwin { system = "x86_64-darwin"; };
+      darwinConfigurations."eksys" = mkDarwin { system = "aarch64-darwin"; user = "ek"; };
+      darwinConfigurations."eksys_pro" = mkDarwin { system = "x86_64-darwin"; user = "erik.krieg"; };
     };
 }
