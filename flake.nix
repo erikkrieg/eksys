@@ -17,10 +17,7 @@
 
   outputs = { self, nixpkgs, darwin, home-manager, envim, ... }:
     let
-      system = "aarch64-darwin";
-    in
-    {
-      darwinConfigurations."eksys" = darwin.lib.darwinSystem {
+      mkDarwin = { system, ... }: (darwin.lib.darwinSystem) {
         pkgs = import nixpkgs { inherit system; };
         modules = [
           # Configure Darwin system space.
@@ -42,5 +39,9 @@
           }
         ];
       };
+    in
+    {
+      darwinConfigurations."eksys" = mkDarwin { system = "aarch64-darwin"; };
+      darwinConfigurations."eksys.pro" = mkDarwin { system = "x86_64-darwin"; };
     };
 }
