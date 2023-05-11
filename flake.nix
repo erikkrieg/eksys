@@ -50,7 +50,9 @@
       };
       darwinConfigurations."eksys_pro" = mkDarwin {
         system = "x86_64-darwin";
-        system-modules = [];
+        system-modules = [
+          ./modules/system/eksys-pro.nix
+        ];
         user-modules = [];
         user = "erik.krieg";
       };
