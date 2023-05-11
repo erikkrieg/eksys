@@ -5,8 +5,8 @@
       theme = "Dracula";
     };
     extraPackages = with pkgs.bat-extras; [
-      batman    # Read system manual pages (man) using bat as the manual page formatter.
-      batgrep   # Quickly search through and highlight files using ripgrep.
+      batman # Read system manual pages (man) using bat as the manual page formatter.
+      batgrep # Quickly search through and highlight files using ripgrep.
     ];
   };
 

@@ -15,31 +15,32 @@
     envim.url = "github:erikkrieg/envim/main";
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, envim, ... }: 
-  let 
-    system = "aarch64-darwin";
-  in
-  {
-    darwinConfigurations."eksys" = darwin.lib.darwinSystem {
-      pkgs = import nixpkgs { inherit system; };
-      modules = [
-        # Configure Darwin system space.
-        ./modules/system       
+  outputs = { self, nixpkgs, darwin, home-manager, envim, ... }:
+    let
+      system = "aarch64-darwin";
+    in
+    {
+      darwinConfigurations."eksys" = darwin.lib.darwinSystem {
+        pkgs = import nixpkgs { inherit system; };
+        modules = [
+          # Configure Darwin system space.
+          ./modules/system
 
-        # Configure user spaces.
-        home-manager.darwinModules.home-manager {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = {
-              envim = envim.packages.${system}.default;
+          # Configure user spaces.
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                envim = envim.packages.${system}.default;
+              };
+              users.ek.imports = [
+                ./modules/users
+              ];
             };
-            users.ek.imports = [
-              ./modules/users 
-            ];
-          };
-        }
-      ];
+          }
+        ];
+      };
     };
-  };
 }

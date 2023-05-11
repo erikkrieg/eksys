@@ -28,7 +28,7 @@
     # Note: not all zsh aliases are defined here. 
     # Some aliases are defined by other user imports from ./programs, 
     # such as git aliases.
-    shellAliases = { 
+    shellAliases = {
       c = "clear";
       l = "ls -la";
       v = "nvim";

@@ -34,7 +34,7 @@
 
     # Language-specific
     nodePackages.bash-language-server
-    shellcheck 
+    shellcheck
     pipenv
   ];
 

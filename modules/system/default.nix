@@ -67,7 +67,7 @@
   # Configure fonts
   fonts = {
     fontDir.enable = true; # Danger: `true` mean fonts can get removed.
-    fonts = [ (nerdfonts.override { fonts = ["Meslo"]; }) ];
+    fonts = [ (nerdfonts.override { fonts = [ "Meslo" ]; }) ];
   };
 
   # Configure Finder 
@@ -78,7 +78,7 @@
 
   # Homebrew is included to install packages that are missing from nixpkgs
   homebrew = {
-    enable = true; 
+    enable = true;
     caskArgs.no_quarantine = true;
     global.brewfile = true;
     casks = [
