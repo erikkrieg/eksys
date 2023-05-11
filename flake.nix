@@ -15,12 +15,13 @@
     envim.url = "github:erikkrieg/envim/main";
   };
 
-  # Instead of `inputs:` I often see things like `{self, nixpkgs, darwin}`.
-  # Need to learn a bit more about the difference then pick a convention.
-  outputs = inputs@{ nixpkgs, darwin, home-manager, envim, ... }: {
+  outputs = { self, nixpkgs, darwin, home-manager, envim, ... }: 
+  let 
+    system = "aarch64-darwin";
+  in
+  {
     darwinConfigurations."eksys" = darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      pkgs = import nixpkgs { system = "aarch64-darwin"; };
+      pkgs = import nixpkgs { inherit system; };
       modules = [
         # Configure Darwin system space.
         ./modules/system       
@@ -31,7 +32,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = {
-              envim = envim.packages."aarch64-darwin".default;
+              envim = envim.packages.${system}.default;
             };
             users.ek.imports = [
               ./modules/users 
