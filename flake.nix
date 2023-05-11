@@ -43,6 +43,6 @@
     in
     {
       darwinConfigurations."eksys" = mkDarwin { system = "aarch64-darwin"; };
-      darwinConfigurations."eksys.pro" = mkDarwin { system = "x86_64-darwin"; };
+      darwinConfigurations."eksys_pro" = mkDarwin { system = "x86_64-darwin"; };
     };
 }
