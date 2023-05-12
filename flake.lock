@@ -24,14 +24,16 @@
     "envim": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1683861580,
-        "narHash": "sha256-9Ij+O09Us9DITTADcsN8Zqekm+0oYPrdEqUHt6hE94k=",
+        "lastModified": 1683864200,
+        "narHash": "sha256-4VR7oFUJC9Sh+PZ52mBh7I/Tk3OnjR3oO+0RylRkCts=",
         "owner": "erikkrieg",
         "repo": "envim",
-        "rev": "e4b79e9bf10723c3c5a07ee0eb37c8bd6ec829ac",
+        "rev": "5c39a6e6fa7556f57b4da037fbb46cfb5ea6c503",
         "type": "github"
       },
       "original": {
@@ -82,22 +84,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1683442750,
-        "narHash": "sha256-IiJ0WWW6OcCrVFl1ijE+gTaP0ChFfV6dNkJR05yStmw=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "eb751d65225ec53de9cf3d88acbf08d275882389",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1683777345,
         "narHash": "sha256-V2p/A4RpEGqEZussOnHYMU6XglxBJGCODdzoyvcwig8=",
         "owner": "nixos",
@@ -117,7 +103,7 @@
         "darwin": "darwin",
         "envim": "envim",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {
