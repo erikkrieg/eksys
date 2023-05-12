@@ -14,6 +14,7 @@
 
     # My nvim flake.
     envim.url = "github:erikkrieg/envim/main";
+    envim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, darwin, home-manager, envim, ... }:
