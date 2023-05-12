@@ -28,6 +28,11 @@
     ripgrep
     gh
 
+    # Kubernetes packages
+    kubectl
+    kubernetes-helm
+    k9s
+
     # Cross-project packages
     just
     tree-sitter
