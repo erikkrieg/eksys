@@ -23,6 +23,11 @@
       # See: https://github.com/erikkrieg/eksys/issues/8
       source ~/.config/zsh/prompt.zsh
       source ${zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
+
+      # Provide a simple option for extending the shell outside of source code.
+      if [ -f ~/.zshextra ]; then
+      . ~/.zshextra
+      fi
     '';
 
     # Note: not all zsh aliases are defined here. 
