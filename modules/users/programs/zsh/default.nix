@@ -34,7 +34,7 @@
       v = "nvim";
       vf = "nvim \"$(fzf)\"";
       nixswitch = "darwin-rebuild switch --flake ~/Projects/nix/eksys/.#";
-      nixup = "pushd ~/Projects/eksys; nix flake update; nixswitch; popd";
+      nixup = "pushd ~/Projects/nix/eksys; nix flake update; nixswitch; popd";
     };
   };
 
