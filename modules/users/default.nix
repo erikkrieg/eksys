@@ -30,6 +30,8 @@
 
     # Cross-project packages
     just
+    tree-sitter
+    nodejs-slim_20
     envim
 
     # Language-specific
