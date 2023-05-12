@@ -1,11 +1,8 @@
 { ... }: {
   programs.zellij = {
     enable = true;
+    enableZshIntegration = true;
   };
-
-  programs.zsh.initExtra = ''
-    eval "$(zellij setup --generate-auto-start zsh)"
-  '';
 
   home.file.".config/zellij" = {
     source = ./config;
