@@ -7,10 +7,11 @@
   imports = [
     ./programs/alacritty
     ./programs/bat
+    ./programs/delta
     ./programs/exa
     ./programs/fzf
     ./programs/git
-    ./programs/delta
+    ./programs/kubernetes
     ./programs/zellij
     ./programs/zoxide
     ./programs/zsh
@@ -27,11 +28,6 @@
     jq
     ripgrep
     gh
-
-    # Kubernetes packages
-    kubectl
-    kubernetes-helm
-    k9s
 
     # Cross-project packages
     just
