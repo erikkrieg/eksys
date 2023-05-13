@@ -1,6 +1,6 @@
 # Configure user space using home-manager.
 # https://nix-community.github.io/home-manager/options.html
-{ pkgs, envim, ... }: with pkgs; {
+{ pkgs, ... }: with pkgs; {
   # Backwards compatibility. Don't change.
   home.stateVersion = "22.11";
 
@@ -12,6 +12,7 @@
     ./programs/fzf
     ./programs/git
     ./programs/kubernetes
+    ./programs/nvim
     ./programs/zellij
     ./programs/zoxide
     ./programs/zsh
@@ -31,21 +32,12 @@
 
     # Cross-project packages
     just
-    tree-sitter
-    nodejs-slim_20
-    envim
 
     # Language-specific
     nodePackages.bash-language-server
     shellcheck
     pipenv
   ];
-
-  # Allows for exporting shell vars.
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
 
   home.sessionPath = [
     "$HOME/.local/bin"

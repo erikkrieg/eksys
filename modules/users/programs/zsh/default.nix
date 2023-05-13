@@ -36,8 +36,6 @@
     shellAliases = {
       c = "clear";
       l = "ls -la";
-      v = "nvim";
-      vf = "nvim \"$(fzf)\"";
       nixswitch = "darwin-rebuild switch --flake ~/Projects/nix/eksys/.#";
       nixup = "pushd ~/Projects/nix/eksys; nix flake update; nixswitch; popd";
     };

@@ -4,9 +4,6 @@
     userEmail = "10244162+erikkrieg@users.noreply.github.com";
     userName = "Erik Krieg";
     extraConfig = {
-      core = {
-        editor = "${neovim-unwrapped}";
-      };
       init = {
         defaultBranch = "main";
       };
