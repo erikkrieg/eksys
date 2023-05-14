@@ -85,6 +85,7 @@
       "brave-browser"
       "spotify"
       "discord"
+      "balenaetcher"
       "obsidian"
     ];
     onActivation.cleanup = "zap";
