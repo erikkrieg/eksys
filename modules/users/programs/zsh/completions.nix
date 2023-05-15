@@ -2,11 +2,6 @@
   programs.zsh = {
     enableCompletion = true;
     completionInit = ''
-      # Provide a simple option for extending the shell outside of source code.
-      if [ -d ~/.config/zsh-extra/functions ]; then
-        fpath=($fpath ~/.config/zsh-extra/functions)
-      fi
-
       autoload -U compinit 
       zstyle ':completion:*' menu select
       zstyle ':completion:*' menu yes select

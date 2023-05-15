@@ -15,6 +15,11 @@
       # - https://github.com/jeffreytse/zsh-vi-mode#initialization-mode
       ZVM_INIT_MODE=sourcing
       source ${zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+      # Provide a simple option for extending the shell outside of source code.
+      if [ -d ~/.config/zsh-extra/functions ]; then
+        fpath=($fpath ~/.config/zsh-extra/functions)
+      fi
     '';
 
     initExtra = ''
