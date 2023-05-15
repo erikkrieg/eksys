@@ -25,8 +25,8 @@
       source ${zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
 
       # Provide a simple option for extending the shell outside of source code.
-      if [ -f ~/.zshextra ]; then
-      . ~/.zshextra
+      if [ -f ~/.config/zsh-extra/init.zsh ]; then
+      . ~/.config/zsh-extra/init.zsh
       fi
     '';
 
