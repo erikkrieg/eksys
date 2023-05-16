@@ -25,3 +25,7 @@ nix flake update
 ```
 _In order to apply the update, use `nixswitch` after._
 
+To update inputs and apply the change run `nixup`.
+
+To update a specific input (using `envim` as an example): `nix flake lock --update-input envim`
+
