@@ -1,11 +1,6 @@
 { pkgs, envim, ... }: with pkgs; {
   home.packages = [
     envim
-
-    # Dependencies for plugins (consider moving into envim flake directly)
-    tree-sitter
-    nodejs-slim_20
-    fzf
   ];
 
   home.sessionVariables = {
