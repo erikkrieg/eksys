@@ -17,7 +17,7 @@
     envim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, envim, ... }:
+  outputs = { nixpkgs, darwin, home-manager, envim, ... }:
     let
       mkDarwin = { system, system-modules, user-modules, user, ... }: (darwin.lib.darwinSystem) {
         pkgs = import nixpkgs { inherit system; };
@@ -45,8 +45,8 @@
     {
       darwinConfigurations."eksys" = mkDarwin {
         system = "aarch64-darwin";
-        system-modules = [];
-        user-modules = [];
+        system-modules = [ ];
+        user-modules = [ ];
         user = "ek";
       };
       darwinConfigurations."eksys_pro" = mkDarwin {
@@ -54,7 +54,7 @@
         system-modules = [
           ./modules/system/eksys-pro.nix
         ];
-        user-modules = [];
+        user-modules = [ ];
         user = "erik.krieg";
       };
     };
