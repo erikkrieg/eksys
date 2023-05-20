@@ -34,7 +34,6 @@
     just
 
     # Language-specific
-    nodePackages.bash-language-server
     shellcheck
     pipenv
   ];
