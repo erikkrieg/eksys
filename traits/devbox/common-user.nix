@@ -7,6 +7,7 @@
   imports = [
     ./programs/alacritty
     ./programs/bat
+    ./programs/btop
     ./programs/delta
     ./programs/exa
     ./programs/fzf
@@ -21,7 +22,6 @@
   # Install user-specific packages
   home.packages = [
     # Utility packages
-    btop
     catimg
     delta
     du-dust
