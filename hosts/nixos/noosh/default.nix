@@ -69,6 +69,7 @@
     packages = with pkgs; [
       firefox
     ];
+    shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
