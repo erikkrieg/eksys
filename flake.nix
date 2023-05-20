@@ -17,45 +17,19 @@
     envim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, darwin, home-manager, envim, ... }:
-    let
-      mkDarwin = { system, system-modules, user-modules, user, ... }: (darwin.lib.darwinSystem) {
-        pkgs = import nixpkgs { inherit system; };
-        modules = [
-          # Configure Darwin system space.
-          ./modules/system
+  outputs = inputs@{ nixpkgs, darwin, home-manager, envim, ... }: {
+    # Imports configurations for all MacOS hosts.
+    darwinConfigurations = (
+      import ./hosts/darwin {
+        inherit inputs nixpkgs darwin home-manager envim;
+      }
+    );
 
-          # Configure user spaces.
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = {
-                envim = envim.packages.${system}.default;
-              };
-              users.${user}.imports = [
-                ./modules/users
-              ] ++ user-modules;
-            };
-          }
-        ] ++ system-modules;
-      };
-    in
-    {
-      darwinConfigurations."eksys" = mkDarwin {
-        system = "aarch64-darwin";
-        system-modules = [ ];
-        user-modules = [ ];
-        user = "ek";
-      };
-      darwinConfigurations."eksys_pro" = mkDarwin {
-        system = "x86_64-darwin";
-        system-modules = [
-          ./modules/system/eksys-pro.nix
-        ];
-        user-modules = [ ];
-        user = "erik.krieg";
-      };
-    };
+    # Imports configurations for all NixOS hosts.
+    nixosConfigurations = (
+      import ./hosts/nixos {
+        inherit inputs nixpkgs home-manager envim;
+      }
+    );
+  };
 }
