@@ -1,4 +1,4 @@
-# Configure user space using home-manager.
+# NixOS or Darwin devbox user configuration via home-manager.
 # https://nix-community.github.io/home-manager/options.html
 { pkgs, ... }: with pkgs; {
   # Backwards compatibility. Don't change.
