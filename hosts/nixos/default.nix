@@ -22,5 +22,6 @@ in
     system = "x86_64-linux";
     user = "ek";
     traits = [ "devbox" "server" ];
+    modules = [ ./noosh ];
   };
 }
