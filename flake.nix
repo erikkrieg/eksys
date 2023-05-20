@@ -24,5 +24,12 @@
         inherit inputs nixpkgs darwin home-manager envim;
       }
     );
+
+    # Imports configurations for all NixOS hosts.
+    nixosConfigurations = (
+      import ./hosts/nixos {
+        inherit inputs nixpkgs home-manager envim;
+      }
+    );
   };
 }
