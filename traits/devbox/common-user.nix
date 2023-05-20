@@ -34,7 +34,6 @@
     just
 
     # Language-specific
-    shellcheck
     pipenv
   ];
 
