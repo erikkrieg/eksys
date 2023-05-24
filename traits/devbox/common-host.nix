@@ -3,6 +3,8 @@
 # - https://search.nixos.org/options
 # - https://daiderd.com/nix-darwin/manual/index.html#sec-options
 { ... }: {
+  nix.extraOptions = ''experimental-features = nix-command flakes'';
+
   # Configure shells
   programs.zsh = {
     enable = true;

@@ -41,10 +41,6 @@
     '';
   };
 
-  # Configure nix
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
   services.nix-daemon.enable = true; # Allow nix-darwin to manages/updates the daemon
 
   # Install system packages (available to all users)
