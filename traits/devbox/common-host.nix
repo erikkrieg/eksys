@@ -16,6 +16,7 @@
   environment.shells = [ bash zsh ];
 
   environment.systemPackages = [
+    coreutils
     neofetch
   ];
 }
