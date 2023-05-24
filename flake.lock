@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1684903555,
-        "narHash": "sha256-Ebj2jiXYgnUhbdBKZtwI3CIaBGdL40dNMXYj5Cu35hk=",
+        "lastModified": 1684904059,
+        "narHash": "sha256-KlhYd7FOeJ2UKoBw7v9kkUD0mKP+FOwXvEc1fGKytrw=",
         "owner": "erikkrieg",
         "repo": "envim",
-        "rev": "82fd2013b47dbed4d5670343d50eb3a027be1408",
+        "rev": "36ddb5701f7ce3754eab8d0ec27a07edeb7fa2a2",
         "type": "github"
       },
       "original": {
