@@ -72,8 +72,6 @@
     shell = pkgs.zsh;
   };
 
-  security.sudo.execWheelOnly = true;
-
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [

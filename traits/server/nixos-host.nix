@@ -14,4 +14,7 @@
   environment.systemPackages = [
     k3s
   ];
+
+
+  security.sudo.execWheelOnly = true;
 }
