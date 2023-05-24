@@ -1,0 +1,9 @@
+write-kubeconfig-mode: "0644"
+cluster-init: true
+
+# Coupling server with noosh host for now, but this will be generlized later.
+tls-san:
+  - "noosh.local"
+node-label:
+  - "host=noosh"
+
