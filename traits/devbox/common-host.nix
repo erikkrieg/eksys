@@ -13,6 +13,7 @@
     enableBashCompletion = false;
     promptInit = "PROMPT='%/> '"; # Default value conflicted with user's prompt.
   };
+  environment.shells = [ bash zsh ];
 
   environment.systemPackages = [
     neofetch

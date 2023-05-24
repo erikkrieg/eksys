@@ -6,7 +6,7 @@
   # Backwards compatibility. Don't change.
   system.stateVersion = 4;
 
-  environment.shells = [ bash zsh ];
+  # Configure default login shell (nix-darwin exclusive option).
   environment.loginShell = zsh;
 
   # Not sure if there is a better way to do this, but in order to ensure my
