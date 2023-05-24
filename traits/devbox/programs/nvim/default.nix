@@ -2,10 +2,10 @@
   home.packages = [
     envim
 
-    # Used by bash-language-server (which is installed in envim).
-    # I'd rather shellcheck be packaged directly in envim, but I'm not sure how
-    # to include it in the path so that the bash ls can access it.
-    shellcheck
+    # Packages that are needed in the path for nvim plugins used by envim.
+    # Unfortunately I don't konw how to install these on the PATH within the envim flake.
+    shellcheck # used by bash-language-server
+    unzip # needed to install cmp-tabnine
   ];
 
   home.sessionVariables = {
