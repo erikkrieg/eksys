@@ -1,5 +1,5 @@
 write-kubeconfig-mode: "0644"
 cluster-init: true
 node-label:
-  - "host=noosh"
+  - "os=nixos"
 
