@@ -26,5 +26,4 @@
     fontDir.enable = true; # Danger: `true` mean fonts can get removed.
     fonts = [ (nerdfonts.override { fonts = [ "Meslo" ]; }) ];
   };
-
 }
