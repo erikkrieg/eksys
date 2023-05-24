@@ -13,10 +13,11 @@ typeset -A FALL_COLOR=([vi]=214 [dir]=194 [git]=133 [caret]=166)
 typeset -A C
 set -A C ${(kv)SPRING_COLOR}
 
+P_HOST='%F{133}$(hostname -s) %f'
 P_VIM_MODE='%F{$C[vi]}${ZVM_MODE}%f '
 P_DIR='%F{$C[dir]}%1~%f '
 P_GIT='%F{$C[git]}$(prompt_git)%f'
 P_CARET='%F{$C[caret]}❯%f '
 
-PROMPT="${P_VIM_MODE}${P_DIR}${P_GIT}${P_CARET}"
+PROMPT="${P_VIM_MODE}${P_HOST} ${P_DIR}${P_GIT}${P_CARET}"
 
