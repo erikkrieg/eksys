@@ -1,17 +1,11 @@
 # Configure Darwin system space.
 # https://daiderd.com/nix-darwin/manual/index.html#sec-options
 { pkgs, ... }: with pkgs; {
+  imports = [ ./common-host.nix ];
+
   # Backwards compatibility. Don't change.
   system.stateVersion = 4;
 
-  # Configure shells
-  programs.zsh = {
-    enable = true;
-    # Only use basic config at system level to avoid conflicts with user configs.
-    enableCompletion = false;
-    enableBashCompletion = false;
-    promptInit = "PROMPT='%/> '"; # Default value conflicted with user's prompt.
-  };
   environment.shells = [ bash zsh ];
   environment.loginShell = zsh;
 
