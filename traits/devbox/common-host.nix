@@ -17,6 +17,7 @@
 
   environment.systemPackages = [
     coreutils
+    git
     neofetch
   ];
 }
