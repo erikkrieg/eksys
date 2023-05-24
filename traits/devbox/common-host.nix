@@ -11,7 +11,7 @@
     # Only use basic config at system level to avoid conflicts with user configs.
     enableCompletion = false;
     enableBashCompletion = false;
-    promptInit = "PROMPT='%/> '"; # Default value conflicted with user's prompt.
+    promptInit = "PROMPT='%/ ❯ '"; # Default value conflicted with user's prompt.
   };
   environment.shells = [ bash zsh ];
 
