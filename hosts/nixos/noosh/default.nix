@@ -65,6 +65,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOjh1wU4Pqef3+Buo/nFgsdQlbLaRAiz7L6tX+n3fJ74 ek@eksys"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBsRWOV6NTXPK6DSDM2gAxt2clCfDNxU9683nnxpodqc erik.krieg@eksys_pro"
     ];
     packages = with pkgs; [
       firefox
