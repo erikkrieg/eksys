@@ -18,7 +18,7 @@
 
   nix.extraOptions = ''experimental-features = nix-command flakes'';
 
-  fileSystem = {
+  fileSystems = {
     "/nix".options = [ "defaults" "noatime" ];
   };
 
