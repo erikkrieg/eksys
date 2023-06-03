@@ -18,6 +18,13 @@ let
   };
 in
 {
+  june = mkHost {
+    system = "x86_64-linux";
+    user = "ek";
+    traits = [ "devbox" "server" ];
+    modules = [ ./june ];
+  };
+
   noosh = mkHost {
     system = "x86_64-linux";
     user = "ek";
