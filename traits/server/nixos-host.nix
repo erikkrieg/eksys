@@ -1,6 +1,6 @@
 # NixOS-specific server host configuration.
 # https://search.nixos.org/options
-{ ... }: {
+{ pkgs, ... }: with pkgs; {
   imports = [
     ./services/k3s
   ];
@@ -21,4 +21,9 @@
       AuthenticationMethods publickey
     '';
   };
+
+  environment.systemPackages = [
+    wireguard-tools
+  ];
+
 }

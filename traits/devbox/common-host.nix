@@ -19,6 +19,7 @@
     coreutils
     git
     neofetch
+    wireguard-tools
   ];
 
   # Configure fonts
