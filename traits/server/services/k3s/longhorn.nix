@@ -25,8 +25,9 @@
   # Link nix installed binaries to a path expected by longhorn.
   # https://github.com/longhorn/longhorn/issues/2166
   system.activationScripts.text = ''
+    mkdir -p /usr/local
     if [[ ! -h "/usr/local/bin" ]]; then
-      ln -s "/usr/local/bin" "/run/current-system/sw/bin"
+      ln -s /run/current-system/sw/bin /usr/local
     fi
   '';
 }
