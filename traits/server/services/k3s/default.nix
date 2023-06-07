@@ -1,4 +1,5 @@
 { config, ... }: {
+  imports = [ ./longhorn.nix ];
   services.k3s = {
     enable = true;
     role = "server";
