@@ -1,8 +1,9 @@
 { pkgs, ... }: with pkgs; {
   home.packages = [
+    k9s
     kubectl
     kubernetes-helm
-    k9s
+    kustomize
   ];
 
   programs.zsh.shellAliases = {
