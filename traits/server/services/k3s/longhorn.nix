@@ -3,13 +3,11 @@
 { pkgs, ... }: with pkgs; {
   environment.systemPackages = [
     openiscsi
-    awk
     bash
-    blkid
     curl
-    findmnt
-    grep
-    lsblk
+    gawk # awk
+    gnugrep # grep
+    util-linux # blkid findmnt lsblk
   ];
 
   # Not sure but might need to enable NFS client. Check if it is on the kernel by running:
