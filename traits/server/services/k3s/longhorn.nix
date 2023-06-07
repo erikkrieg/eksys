@@ -3,6 +3,7 @@
 { pkgs, ... }: with pkgs; {
   environment.systemPackages = [
     openiscsi
+    nfs-utils
     bash
     curl
     gawk # awk
