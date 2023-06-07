@@ -21,4 +21,12 @@
   # supported, but I could check into how this option works: 
   # https://search.nixos.org/options?channel=unstable&show=boot.supportedFilesystems
   boot.supportedFilesystems = [ "ext4" "xfs" ];
+
+  # Link nix installed binaries to a path expected by longhorn.
+  # https://github.com/longhorn/longhorn/issues/2166
+  system.activationScripts.text = ''
+    if [[ ! -h "/usr/local/bin" ]]; then
+      ln -s "/usr/local/bin" "/run/current-system/sw/bin"
+    fi
+  '';
 }
