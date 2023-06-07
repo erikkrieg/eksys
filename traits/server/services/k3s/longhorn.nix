@@ -22,5 +22,5 @@
   # Requires supported filesystems: EXT4 and XFS. I believe that these are already
   # supported, but I could check into how this option works: 
   # https://search.nixos.org/options?channel=unstable&show=boot.supportedFilesystems
-  boot.supportedFilesystems = [ ext4 xfs ];
+  boot.supportedFilesystems = [ "ext4" "xfs" ];
 }
