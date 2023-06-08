@@ -2,7 +2,7 @@
   description = "Configure system and user spaces.";
   inputs = {
     # Use package repository with the latest versions. Can include breaking changes.
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/23.05";
 
     # Configure software in home directory.
     home-manager.url = "github:nix-community/home-manager/master";
