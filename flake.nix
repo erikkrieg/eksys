@@ -1,7 +1,7 @@
 {
   description = "Configure system and user spaces.";
   inputs = {
-    # Use package repository with the latest versions. Can include breaking changes.
+    # Try going back to unstable or taking both pinned and unstable.
     nixpkgs.url = "github:nixos/nixpkgs/23.05";
 
     # Configure software in home directory.
