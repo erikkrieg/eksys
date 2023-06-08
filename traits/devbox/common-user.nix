@@ -29,6 +29,7 @@
     jq
     ripgrep
     gh
+    nix-tree
 
     # Cross-project packages
     just
