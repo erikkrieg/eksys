@@ -21,7 +21,7 @@ in
   eksys = mkHost {
     system = "aarch64-darwin";
     user = "ek";
-    traits = [ "devbox" ];
+    traits = [ "devbox" "vpn-peer" ];
   };
 
   eksys_pro = mkHost {
