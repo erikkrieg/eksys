@@ -70,4 +70,11 @@
     onActivation.cleanup = "zap";
   };
   environment.systemPath = [ "/opt/homebrew/bin" ];
+
+  services = {
+    yabai = {
+      # Interested in trying this out, but going to need to spike on it a bit first.
+      enable = false;
+    };
+  };
 }
