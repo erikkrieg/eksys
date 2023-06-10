@@ -9,6 +9,10 @@ font:
   normal:
     family: "MesloLGS Nerd Font Mono"
 
+window:
+  # https://github.com/zellij-org/zellij/issues/2051#issuecomment-1461519892
+  option_as_alt: Both
+
 chars:
   ctl_b: &ctl_b "\x02"
   ctl_g: &ctl_g "\x07"
