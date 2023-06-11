@@ -20,26 +20,24 @@
   # Set sh to execute dash because it is faster than bash
   # Important: dash is limited to the posix specification, so has fewer 
   # features than bash, which is a superset of posix.
-  system.activationScripts.postActivation = {
-    text = ''
-      echo "post activation..."
-      NIX_SYS="/run/current-system/sw"
+  system.activationScripts.postActivation.text = ''
+    echo "post activation..."
+    NIX_SYS="/run/current-system/sw"
 
-      # Set sh to dash
-      DASH="/bin/dash"
-      if [ "$(readlink /var/select/sh)" != "$DASH" ]; then
-        echo "  - linking sh to dash because it is a faster shell"
-        ln -sf "$DASH" /var/select/sh
-      fi
+    # Set sh to dash
+    DASH="/bin/dash"
+    if [ "$(readlink /var/select/sh)" != "$DASH" ]; then
+      echo "  - linking sh to dash because it is a faster shell"
+      ln -sf "$DASH" /var/select/sh
+    fi
 
-      # Set zsh as the default shell for root user
-      ZSH="$NIX_SYS/bin/zsh"
-      if [ "$SHELL" != "$ZSH" ]; then
-        echo "  - using zsh as default shell for root"
-        chsh -s "$ZSH" "$USER"
-      fi
-    '';
-  };
+    # Set zsh as the default shell for root user
+    ZSH="$NIX_SYS/bin/zsh"
+    if [ "$SHELL" != "$ZSH" ]; then
+      echo "  - using zsh as default shell for root"
+      chsh -s "$ZSH" "$USER"
+    fi
+  '';
 
   services.nix-daemon.enable = true; # Allow nix-darwin to manages/updates the daemon
 
