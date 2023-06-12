@@ -1,6 +1,6 @@
 # Configure a host so that it can run Longhorn for block storage:
 # - https://longhorn.io/docs/1.4.2/deploy/install/#installation-requirements
-{ pkgs, ... }: with pkgs; {
+{ config, pkgs, ... }: with pkgs; {
   environment.systemPackages = [
     openiscsi
     nfs-utils
@@ -11,12 +11,12 @@
     util-linux # blkid findmnt lsblk
   ];
 
-  # Not sure but might need to enable NFS client. Check if it is on the kernel by running:
-  # `cat /boot/config-`uname -r`| grep CONFIG_NFS_V4_1`
-  # For more info:
-  # https://longhorn.io/docs/1.4.2/deploy/install/#installing-nfsv4-client
-  #
-  # services.nfs.server.enable = true;
+  # The iscsid daemon is required on all the nodes because Longhorn relies on 
+  # iscsiadm on the host to provide persistent volumes.
+  services.openiscsi = {
+    enable = true;
+    name = "iqn.2016-04.com.open-iscsi:${config.networking.hostName}";
+  };
 
   # Requires supported filesystems: EXT4 and XFS. I believe that these are already
   # supported, but I could check into how this option works: 
