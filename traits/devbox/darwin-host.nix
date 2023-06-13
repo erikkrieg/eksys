@@ -13,7 +13,7 @@
   # activationScripts to optionally:
   # 1. Make zsh default shell for root user
   # 2. Use dash binary as sh instead of bash
-  system.activationScripts.postActivation.text = with config.system.activationScripts;  ''
+  system.activationScripts.postActivation.text = with config.system.activationScripts; ''
     ${ if setZshAsDefaultRootShell.enable then setZshAsDefaultRootShell.text else "" }
     ${ if setDashAsSh.enable then setDashAsSh.text else "" }
   '';
