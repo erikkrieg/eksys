@@ -72,7 +72,12 @@
     ];
     onActivation.cleanup = "zap";
   };
+
   environment.systemPath = [ "/opt/homebrew/bin" ];
+
+  environment.systemPackages = [
+    wireguard-go
+  ];
 
   services = {
     yabai = {
