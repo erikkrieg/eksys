@@ -1,6 +1,6 @@
 # Configure Darwin system space.
 # https://daiderd.com/nix-darwin/manual/index.html#sec-options
-{ pkgs, ... }: with pkgs; {
+{ config, pkgs, ... }: with pkgs; {
   imports = [ ./common-host.nix ];
 
   # Backwards compatibility. Don't change.
@@ -9,7 +9,19 @@
   # Configure default login shell (nix-darwin exclusive option).
   environment.loginShell = zsh;
 
-  # There may be a more nixy way to do this with nix-darwin.
+  # There may be a more nixy way to do this with nix-darwin, but using 
+  # activationScripts to optionally:
+  # 1. Make zsh default shell for root user
+  # 2. Use dash binary as sh instead of bash
+  system.activationScripts.postActivation.text = with config.system.activationScripts;  ''
+    ${ if setZshAsDefaultRootShell.enable then setZshAsDefaultRootShell.text else "" }
+    ${ if setDashAsSh.enable then setDashAsSh.text else "" }
+  '';
+
+  # Use zsh managed by nix as the default root shell instead of bash binary
+  # managed by the OS.
+  # There might be a nix-darwin setting I can use in place of this. Need to 
+  # look into that.
   system.activationScripts.setZshAsDefaultRootShell.text = ''
     echo "set zsh as default shell for root..."
     NIX_SYS="/run/current-system/sw"
