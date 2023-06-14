@@ -7,7 +7,7 @@ Nix configurations for my MacOS and NixOS hosts.
 2. Clone or download the flake source from GitHub.
 3. Run `./bootstrap.sh` to build and apply the system configuration.
 
-The bootstrap command builds a derviation and then activates it with nix-darwin. The bootstrap command likely won't succeed on the first run, but if it fails, there should be instructions for manual remediation. Once those are performed, you can re-run `./bootstrap.sh` (there might be a few cycles of this).
+The bootstrap command builds a derivation and then activates it with nix-darwin. The bootstrap command likely won't succeed on the first run, but if it fails, there should be instructions for manual remediation. Once those are performed, you can re-run `./bootstrap.sh` (there might be a few cycles of this).
 
 ## Update MacOS
 
