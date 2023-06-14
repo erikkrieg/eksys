@@ -1,7 +1,7 @@
 # eksys - System and User Configuration
-Nix configuration of my system and user spaces for my MacOS dev machines.
+Nix configurations for my MacOS and NixOS hosts.
 
-## Install
+## Install MacOS
 
 1. Install Nix package manager: https://nixos.org/download.html#nix-install-macos
 2. Clone or download the flake source from GitHub.
@@ -9,7 +9,7 @@ Nix configuration of my system and user spaces for my MacOS dev machines.
 
 The bootstrap command builds a derviation and then activates it with nix-darwin. The bootstrap command likely won't succeed on the first run, but if it fails, there should be instructions for manual remediation. Once those are performed, you can re-run `./bootstrap.sh` (there might be a few cycles of this).
 
-## Update
+## Update MacOS
 
 Rebuild and apply: `nixswitch`
 
