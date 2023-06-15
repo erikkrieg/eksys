@@ -20,6 +20,10 @@
     git
     neofetch
     wireguard-tools
+
+    # Alternatives to du
+    dust
+    ncdu
   ];
 
   # Configure fonts
