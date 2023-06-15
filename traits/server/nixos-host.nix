@@ -23,6 +23,10 @@
 
   environment.systemPackages = [
     wireguard-tools
+
+    # Alternatives to du
+    dust
+    ncdu
   ];
 
 }
