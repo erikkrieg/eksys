@@ -25,7 +25,7 @@
     wireguard-tools
 
     # Alternatives to du
-    dust
+    du-dust
     ncdu
   ];
 
