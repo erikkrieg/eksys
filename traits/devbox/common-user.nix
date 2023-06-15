@@ -24,7 +24,6 @@
     # Utility packages
     catimg
     delta
-    du-dust
     fd
     jq
     ripgrep
