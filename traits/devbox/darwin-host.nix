@@ -70,7 +70,11 @@
       "balenaetcher"
       "obsidian"
     ];
-    onActivation.cleanup = "zap";
+    onActivation = {
+      cleanup = "zap";
+      upgrade = true;
+      autoUpdate = true;
+    };
   };
 
   environment.systemPath = [ "/opt/homebrew/bin" ];
