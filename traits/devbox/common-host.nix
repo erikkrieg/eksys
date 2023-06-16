@@ -24,6 +24,9 @@
     # Alternatives to du
     du-dust
     ncdu
+
+    # System security tooling
+    lynis
   ];
 
   # Configure fonts
