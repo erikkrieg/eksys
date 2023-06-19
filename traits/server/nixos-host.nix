@@ -32,4 +32,6 @@
     lynis
   ];
 
+  nix.gc.automatic = true;
+  nix.optimise.automatic = true;
 }
