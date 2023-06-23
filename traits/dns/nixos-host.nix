@@ -9,7 +9,7 @@ in
     allowedUDPPorts = [ dns_port ];
   };
   services.adguardhome = {
-    enabled = true;
+    enable = true;
     mutableSettings = false;
     settings = {
       bind_port = dns_ui_port;
