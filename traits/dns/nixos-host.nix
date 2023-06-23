@@ -29,12 +29,14 @@ in
       };
       filters = [
         {
-          enable = true;
+          enabled = true;
+          name = "AdGuard DNS filter";
           url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt";
           id = 1;
         }
         {
-          enable = true;
+          enabled = true;
+          name = "AdAway Default Blocklist";
           url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt";
           id = 2;
         }
