@@ -27,6 +27,18 @@ in
         enable_dnssec = true;
         ratelimit = 100;
       };
+      filters = [
+        {
+          enable = true;
+          url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt";
+          id = 1;
+        }
+        {
+          enable = true;
+          url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt";
+          id = 2;
+        }
+      ];
     };
   };
 }
