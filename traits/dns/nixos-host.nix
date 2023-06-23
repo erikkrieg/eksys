@@ -15,7 +15,7 @@ in
       bind_port = dns_ui_port;
       bind_host = "0.0.0.0";
       dns = {
-        bind_port = dns_port;
+        port = dns_port;
         bind_host = [ "0.0.0.0" ];
         bootstrap_dns = [ "1.1.1.1" "8.8.8.8" ];
       };
