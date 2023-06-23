@@ -18,6 +18,11 @@ in
         port = dns_port;
         bind_host = [ "0.0.0.0" ];
         bootstrap_dns = [ "1.1.1.1" "8.8.8.8" ];
+        upstream_dns = [
+          "https://dns.quad9.net/dns-query"
+          "https://dns.cloudflare.com/dns-query"
+          "https://dns.google/dns-query"
+        ];
       };
     };
   };
