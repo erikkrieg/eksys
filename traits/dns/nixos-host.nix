@@ -14,6 +14,7 @@ in
     settings = {
       bind_port = dns_ui_port;
       bind_host = "0.0.0.0";
+      theme = "dark";
       dns = {
         port = dns_port;
         bind_hosts = [ "0.0.0.0" ];
