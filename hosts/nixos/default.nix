@@ -21,7 +21,7 @@ in
   june = mkHost {
     system = "x86_64-linux";
     user = "ek";
-    traits = [ "devbox" "server" ];
+    traits = [ "devbox" "server" "dns" ];
     modules = [ ./june ];
   };
 
