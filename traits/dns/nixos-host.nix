@@ -23,6 +23,7 @@ in
           "https://dns.cloudflare.com/dns-query"
           "https://dns.google/dns-query"
         ];
+        ratelimit = 100;
       };
     };
   };
