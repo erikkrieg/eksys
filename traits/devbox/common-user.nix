@@ -24,6 +24,7 @@
     # Utility packages
     catimg
     delta
+    dig
     fd
     jq
     ripgrep
