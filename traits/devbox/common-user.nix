@@ -24,12 +24,15 @@
     # Utility packages
     catimg
     delta
-    dig
     fd
     jq
     ripgrep
     gh
     nix-tree
+
+    # Network utilities
+    dig
+    gping
 
     # Cross-project packages
     just
