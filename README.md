@@ -1,4 +1,5 @@
 # eksys - System and User Configuration
+
 Nix configurations for my MacOS and NixOS hosts.
 
 ## Install MacOS
@@ -15,17 +16,19 @@ Rebuild and apply: `nixswitch`
 
 This is an alias for building and activating the system configuration flake,
 which is effectively the same as:
+
 ```sh
 darwin-rebuild switch --flake .#
 ```
 
 To get latest packages, go into the flake source directory and run:
+
 ```sh
 nix flake update
 ```
+
 _In order to apply the update, use `nixswitch` after._
 
 To update inputs and apply the change run `nixup`.
 
 To update a specific input (using `envim` as an example): `nix flake lock --update-input envim`
-
