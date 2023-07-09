@@ -4,8 +4,8 @@
 
 Replace some steps described in the [NixOS install manual](https://nixos.org/manual/nixos/stable/index.html#sec-installation-manual) with the following alternatives:
 
-- [[#Partitioning and formatting with Disko]]
-- [[##Generate NixOS config]]
+- [Partitioning and formatting with Disko](#partitioning-and-formatting-with-disko)
+- [Generate NixOS config](#generate-nixos-config)
 
 These steps simplify configuring disk(s) and allow for a declarative approach instead of imperative terminal commands for creating partitions, logical volumes and file systems.
 
