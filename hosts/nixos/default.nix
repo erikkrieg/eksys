@@ -1,10 +1,10 @@
-{ nixpkgs, disko, home-manager, envim, lib, ... }:
+{ nixpkgs, disko, home-manager, envim, ... }:
 let
   mkHost = { system, user, traits, modules ? [ ], hm_enable ? true }: (nixpkgs.lib.nixosSystem) {
     pkgs = import nixpkgs { inherit system; };
     disko = import disko { inherit system; };
     modules = modules
-      ++ lib.optional hm_enable ([
+      ++ nixpkgs.lib.optional hm_enable ([
       home-manager.nixosModules.home-manager
       {
         home-manager = {
