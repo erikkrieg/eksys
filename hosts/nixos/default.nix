@@ -51,10 +51,10 @@ in
           (modulesPath + "/installer/scan/not-detected.nix")
           (modulesPath + "/profiles/qemu-guest.nix")
           disko.nixosModules.disko
+          (import ./disks.nix {
+            disks = [ "/dev/sda" ];
+          })
         ];
-        disko.devices = import ./disk-config.nix {
-          lib = nixpkgs.lib;
-        };
         boot.loader.systemd-boot.enable = true;
         boot.loader.efi.canTouchEfiVariables = true;
         services.openssh.enable = true;
