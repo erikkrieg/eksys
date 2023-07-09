@@ -3,7 +3,7 @@ let
   mkHost = { system, user, traits, modules ? [ ], hm_enable ? true }: (nixpkgs.lib.nixosSystem) {
     pkgs = import nixpkgs { inherit system; };
     modules = modules
-      ++ nixpkgs.lib.optional hm_enable ([
+      ++ nixpkgs.lib.optional hm_enable [
       home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -15,7 +15,7 @@ let
           users.${user}.imports = map (trait: ../../traits/${trait}/nixos-user.nix) traits;
         };
       }
-    ]) ++ map (trait: ../../traits/${trait}/nixos-host.nix) traits;
+    ] ++ map (trait: ../../traits/${trait}/nixos-host.nix) traits;
   };
 in
 {
