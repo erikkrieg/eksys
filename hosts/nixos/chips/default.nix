@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   imports = [
     # ./hardware-configuration.nix
-    (import ../disk.nix { disks = [ "/dev/sda" ]; })
+    (import ../disks.nix { disks = [ "/dev/sda" ]; })
   ];
 
   boot.loader.systemd-boot.enable = true;
