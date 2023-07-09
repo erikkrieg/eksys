@@ -2,9 +2,14 @@
 
 ## Installing NixOS to a new host
 
-https://nixos.org/manual/nixos/stable/index.html#sec-installation-manual
+Replace some steps described in the [NixOS install manual](https://nixos.org/manual/nixos/stable/index.html#sec-installation-manual) with the following alternatives:
 
-### Partitioning and formatting
+- [[#Partitioning and formatting with Disko]]
+- [[##Generate NixOS config]]
+
+These steps simplify configuring disk(s) and allow for a declarative approach instead of imperative terminal commands for creating partitions, logical volumes and file systems.
+
+### Partitioning and formatting with Disko
 
 Instead of using `parted`, like described [in the manual](https://nixos.org/manual/nixos/stable/index.html#sec-installation-manual-partitioning), use [disko](https://github.com/nix-community/disko) for creating partitions.
 
@@ -56,3 +61,7 @@ imports =
 nixos-install
 reboot
 ```
+
+## Remote NixOS installs
+
+I'd like to investigate using [nixos-anywhere](https://github.com/numtide/nixos-anywhere) for simplifying installations. Here is a [blog post](https://galowicz.de/2023/04/05/single-command-server-bootstrap/) that provides an example how this tool can be used.
