@@ -36,7 +36,7 @@ in
   chips = mkHost {
     system = "x86_64-linux";
     user = "ek";
-    traits = [ ];
+    traits = [ "devbox" ];
     modules = [ disko.nixosModules.disko ./chips ];
   };
 
