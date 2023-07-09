@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, envim, ... }:
+{ nixpkgs, disko, home-manager, envim, ... }:
 let
   mkHost = { system, user, traits, modules ? [ ] }: (nixpkgs.lib.nixosSystem) {
     pkgs = import nixpkgs { inherit system; };
@@ -30,5 +30,12 @@ in
     user = "ek";
     traits = [ "devbox" "server" ];
     modules = [ ./noosh ];
+  };
+
+  chips = mkHost {
+    system = "x86_64-linux";
+    user = "ek";
+    traits = [ ];
+    modules = [ ./chips ];
   };
 }
