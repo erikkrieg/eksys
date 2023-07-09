@@ -1,4 +1,4 @@
-{ nixpkgs, disko, home-manager, envim, ... }:
+{ nixpkgs, disko, home-manager, envim, ... }@args:
 let
   mkHost = { system, user, traits, modules ? [ ], hm_enable ? true }: (nixpkgs.lib.nixosSystem) {
     pkgs = import nixpkgs { inherit system; };
@@ -34,11 +34,35 @@ in
     modules = [ ./noosh ];
   };
 
-  chips = mkHost {
+  # chips = mkHost {
+  #   system = "x86_64-linux";
+  #   user = "ek";
+  #   hm_enable = false;
+  #   traits = [ ];
+  #   modules = [ ./chips ];
+  # };
+
+  chips = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    user = "ek";
-    hm_enable = false;
-    traits = [ ];
-    modules = [ ./chips ];
+    specialArgs = args;
+    modules = [
+      ({ modulesPath, ... }: {
+        imports = [
+          (modulesPath + "/installer/scan/not-detected.nix")
+          (modulesPath + "/profiles/qemu-guest.nix")
+          disko.nixosModules.disko
+        ];
+        disko.devices = import ./disk-config.nix {
+          lib = nixpkgs.lib;
+        };
+        boot.loader.systemd-boot.enable = true;
+        boot.loader.efi.canTouchEfiVariables = true;
+        services.openssh.enable = true;
+
+        users.users.root.openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxcsEfj6Tnq8qJt3WFLYM4EwBYWwL4mr458vNVqDn1W ek@june"
+        ];
+      })
+    ];
   };
 }
