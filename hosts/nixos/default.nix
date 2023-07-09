@@ -1,8 +1,10 @@
-{ nixpkgs, disko, home-manager, envim, ... }:
+{ nixpkgs, disko, home-manager, envim, lib, ... }:
 let
-  mkHost = { system, user, traits, modules ? [ ] }: (nixpkgs.lib.nixosSystem) {
+  mkHost = { system, user, traits, modules ? [ ], hm_enable ? true }: (nixpkgs.lib.nixosSystem) {
     pkgs = import nixpkgs { inherit system; };
-    modules = modules ++ [
+    disko = import disko { inherit system; };
+    modules = modules
+      ++ lib.optional hm_enable ([
       home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -14,7 +16,7 @@ let
           users.${user}.imports = map (trait: ../../traits/${trait}/nixos-user.nix) traits;
         };
       }
-    ] ++ map (trait: ../../traits/${trait}/nixos-host.nix) traits;
+    ]) ++ map (trait: ../../traits/${trait}/nixos-host.nix) traits;
   };
 in
 {
@@ -35,6 +37,7 @@ in
   chips = mkHost {
     system = "x86_64-linux";
     user = "ek";
+    hm_enable = false;
     traits = [ ];
     modules = [ ./chips ];
   };
