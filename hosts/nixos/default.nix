@@ -2,7 +2,6 @@
 let
   mkHost = { system, user, traits, modules ? [ ], hm_enable ? true }: (nixpkgs.lib.nixosSystem) {
     pkgs = import nixpkgs { inherit system; };
-    disko = import disko { inherit system; };
     modules = modules
       ++ nixpkgs.lib.optional hm_enable ([
       home-manager.nixosModules.home-manager
@@ -38,7 +37,7 @@ in
     system = "x86_64-linux";
     user = "ek";
     traits = [ ];
-    modules = [ ./chips ];
+    modules = [ disko.nixosModules.disko ./chips ];
   };
 
   # chips = nixpkgs.lib.nixosSystem {

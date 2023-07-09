@@ -1,7 +1,6 @@
-{ pkgs, disko, ... }: {
+{ pkgs, ... }: {
   imports = [
     # ./hardware-configuration.nix
-    disko.nixosModules.disko
     (import ../disk.nix { disks = [ "/dev/sda" ]; })
   ];
 
