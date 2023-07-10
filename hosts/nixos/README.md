@@ -65,3 +65,22 @@ reboot
 ## Remote NixOS installs
 
 I'd like to investigate using [nixos-anywhere](https://github.com/numtide/nixos-anywhere) for simplifying installations. Here is a [blog post](https://galowicz.de/2023/04/05/single-command-server-bootstrap/) that provides an example how this tool can be used.
+
+1. Boot from Live Installer drive
+2. Change to root: `sudo -i`
+3. Set `passwd` for root user (required for SSH)
+
+Then install nixos:
+
+```sh
+nix run github:numtide/nixos-anywhere -- \
+  root@x.x.x.x \
+  --flake .#new_host \
+  --debug
+```
+
+Update `new_host` output to use `mkHost` and use desired traits. Once configs are changed, changes can be applied from build machine like so:
+
+```sh
+nixos-rebuild switch --flake .#new_host --target-host root@x.x.x.x
+```
