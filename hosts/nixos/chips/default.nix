@@ -1,6 +1,6 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, modulesPath, ... }: {
   imports = [
-    # ./hardware-configuration.nix
+    (modulesPath + "/installer/scan/not-detected.nix")
     (import ../disks.nix { disks = [ "/dev/sda" ]; })
   ];
 
