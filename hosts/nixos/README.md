@@ -64,13 +64,14 @@ reboot
 
 ## Remote NixOS installs
 
-I'd like to investigate using [nixos-anywhere](https://github.com/numtide/nixos-anywhere) for simplifying installations. Here is a [blog post](https://galowicz.de/2023/04/05/single-command-server-bootstrap/) that provides an example how this tool can be used.
+Simplify the manual install by doing it remotely with [nixos-anywhere](https://github.com/numtide/nixos-anywhere).
 
-1. Boot from Live Installer drive
+1. Boot from LiveCD
 2. Change to root: `sudo -i`
 3. Set `passwd` for root user (required for SSH)
+4. Perform the following steps from an existing Intel NixOS host
 
-Then install nixos:
+Then install nixos over SSH with nixos-anywhere:
 
 ```sh
 nix run github:numtide/nixos-anywhere -- \
