@@ -51,7 +51,7 @@
   };
 
   services.k3s = {
-    clusterInit = false;
+    clusterInit = lib.mkForce false;
     serverAddr = "june.eksys.dev:6443";
     tokenFile = /var/lib/rancher/k3s/server/token;
   };
