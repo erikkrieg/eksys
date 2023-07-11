@@ -4,6 +4,7 @@
     enable = true;
     role = "server";
     configPath = ./server.yaml;
+    clusterInit = true;
     extraFlags = ''--node-label "host=${config.networking.hostName}"'';
   };
 
