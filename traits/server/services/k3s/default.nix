@@ -18,6 +18,9 @@
     6443 # K3s supervisor and Kubernetes API Server
     10250 # Kubelet metrics
   ];
+  networking.firewall.allowedUDPPorts = [
+    8472 # Required only for Flannel VXLAN
+  ];
 
   environment.sessionVariables = {
     KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
