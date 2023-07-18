@@ -6,6 +6,7 @@
       "slack"
       "tunnelblick"
       "visual-studio-code"
+      "raycast"
     ];
   };
 
