@@ -33,6 +33,7 @@
     # Network utilities
     dig
     gping
+    tailscale
 
     # Cross-project packages
     just
