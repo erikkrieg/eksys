@@ -21,6 +21,11 @@
     '';
   };
 
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "server";
+  };
+
   environment.systemPackages = [
     wireguard-tools
 
