@@ -88,6 +88,10 @@
       # Interested in trying this out, but going to need to spike on it a bit first.
       enable = false;
     };
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      # Set nameserver to 100.100.100.100
+      overrideLocalDns = true;
+    };
   };
 }
