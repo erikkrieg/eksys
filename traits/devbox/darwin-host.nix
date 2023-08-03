@@ -69,6 +69,7 @@
       "discord"
       "balenaetcher"
       "obsidian"
+      "sigmaos"
     ];
     onActivation = {
       cleanup = "zap";
