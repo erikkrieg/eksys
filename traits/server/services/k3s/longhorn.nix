@@ -15,7 +15,8 @@
   # iscsiadm on the host to provide persistent volumes.
   services.openiscsi = {
     enable = true;
-    name = "iqn.2016-04.com.open-iscsi:${config.networking.hostName}";
+    # name = "iqn.2016-04.com.open-iscsi:${config.networking.hostName}";
+    name = "iqn.2016-04.com.open-iscsi:june";
   };
 
   # Requires supported filesystems: EXT4 and XFS. I believe that these are already
