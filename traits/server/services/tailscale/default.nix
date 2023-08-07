@@ -23,7 +23,8 @@
             --login-server=http://127.0.0.1:30080 \
             --advertise-exit-node \
             --advertise-routes=192.168.1.0/24 \
-            --ssh
+            --ssh \
+            --reset
         fi
       }
       up || exit 0
