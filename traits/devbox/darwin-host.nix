@@ -95,4 +95,12 @@
       overrideLocalDns = true;
     };
   };
+
+  networking = lib.mkIf config.services.tailscale.overrideLocalDns {
+    knownNetworkServices = [
+      "Wi-Fi"
+      "Ethernet Adaptor"
+      "Thunderbolt Ethernet"
+    ];
+  };
 }
