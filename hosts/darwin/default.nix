@@ -1,4 +1,4 @@
-{ nixpkgs, darwin, home-manager, envim, ... }:
+{ nixpkgs, unstable, darwin, home-manager, envim, ... }:
 let
   mkHost = { system, user, traits, modules ? [ ] }: (darwin.lib.darwinSystem) {
     pkgs = import nixpkgs { inherit system; };
@@ -10,6 +10,7 @@ let
           useUserPackages = true;
           extraSpecialArgs = {
             envim = envim.packages.${system}.default;
+            unstable_pkgs = import unstable { inherit system; };
           };
           users.${user}.imports = map (trait: ../../traits/${trait}/darwin-user.nix) traits;
         };

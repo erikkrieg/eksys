@@ -3,6 +3,7 @@
   inputs = {
     # Try going back to unstable or taking both pinned and unstable.
     nixpkgs.url = "github:nixos/nixpkgs/23.05";
+    unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Used to partition and format disks on NixOS
     disko.url = "github:nix-community/disko";
@@ -21,18 +22,18 @@
     envim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ nixpkgs, darwin, disko, home-manager, envim, ... }: {
+  outputs = inputs@{ nixpkgs, unstable, darwin, disko, home-manager, envim, ... }: {
     # Imports configurations for all MacOS hosts.
     darwinConfigurations = (
       import ./hosts/darwin {
-        inherit inputs nixpkgs darwin home-manager envim;
+        inherit inputs nixpkgs unstable darwin home-manager envim;
       }
     );
 
     # Imports configurations for all NixOS hosts.
     nixosConfigurations = (
       import ./hosts/nixos {
-        inherit inputs nixpkgs disko home-manager envim;
+        inherit inputs nixpkgs unstable disko home-manager envim;
       }
     );
   };

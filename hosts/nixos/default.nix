@@ -1,4 +1,4 @@
-{ nixpkgs, disko, home-manager, envim, ... }@args:
+{ nixpkgs, unstable, disko, home-manager, envim, ... }@args:
 let
   mkHost = { system, user, traits, modules ? [ ] }: (nixpkgs.lib.nixosSystem) {
     pkgs = import nixpkgs { inherit system; };
@@ -10,6 +10,7 @@ let
           useUserPackages = true;
           extraSpecialArgs = {
             envim = envim.packages.${system}.default;
+            unstable_pkgs = import unstable { inherit system; };
           };
           users.${user}.imports = map (trait: ../../traits/${trait}/nixos-user.nix) traits;
         };
