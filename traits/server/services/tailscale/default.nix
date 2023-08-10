@@ -15,7 +15,7 @@
       function up() {
         status=$(${config.systemd.package}/bin/systemctl show -P StatusText tailscaled.service)
         if [[ $status != Connected* ]]; then
-          export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+          export KUBECONFIG=${config.environment.sessionVariables.KUBECONFIG}
           auth="$(${kubectl}/bin/kubectl exec deploy/headscale -n headscale -- \
             headscale authkey create -u server  --expiration 5m)"
           ${tailscale}/bin/tailscale up \

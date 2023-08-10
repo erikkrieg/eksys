@@ -22,7 +22,7 @@
     8472 # Required only for Flannel VXLAN
   ];
 
-  environment.sessionVariables = {
-    KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
-  };
+  # This is referenced by tailscale config which would need to be updated
+  # if the way kubeconfig path is set changes.
+  environment.sessionVariables.KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
 }
