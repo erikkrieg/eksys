@@ -64,6 +64,7 @@
     caskArgs.no_quarantine = true;
     global.brewfile = true;
     casks = [
+      "android-file-transfer"
       "brave-browser"
       "spotify"
       "discord"
