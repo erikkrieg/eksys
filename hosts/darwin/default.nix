@@ -23,6 +23,7 @@ in
     system = "aarch64-darwin";
     user = "ek";
     traits = [ "devbox" "vpn-peer" ];
+    modules = [ ./eksys ];
   };
 
   eksys_pro = mkHost {
