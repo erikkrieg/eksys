@@ -22,14 +22,14 @@ in
   eksys = mkHost {
     system = "aarch64-darwin";
     user = "ek";
-    traits = [ "devbox" "vpn-peer" ];
+    traits = [ "devbox" "guibox" "vpn-peer" ];
     modules = [ ./eksys ];
   };
 
   eksys_pro = mkHost {
     system = "x86_64-darwin";
     user = "erik.krieg";
-    traits = [ "devbox" ];
+    traits = [ "devbox" "guibox" ];
     modules = [ ./eksys_pro ];
   };
 }
