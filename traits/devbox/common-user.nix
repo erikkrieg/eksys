@@ -14,6 +14,7 @@
     ./programs/git
     ./programs/kubernetes
     ./programs/nvim
+    ./programs/taskwarrior
     ./programs/zellij
     ./programs/zoxide
     ./programs/zsh
