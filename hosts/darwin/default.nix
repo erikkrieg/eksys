@@ -14,6 +14,7 @@ let
           };
           users.${user}.imports = map (trait: ../../traits/${trait}/darwin-user.nix) traits;
         };
+        users.users.${user}.home = "/Users/${user}";
       }
     ] ++ map (trait: ../../traits/${trait}/darwin-host.nix) traits;
   };

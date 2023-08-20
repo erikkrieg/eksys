@@ -57,4 +57,7 @@
   home.file = {
     ".inputrc".source = ./dotfiles/.inputrc;
   };
+
+  # There are some home manager programs that depend on xdg paths
+  xdg.enable = true;
 }
