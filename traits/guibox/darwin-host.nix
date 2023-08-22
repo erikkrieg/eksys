@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: with pkgs; {
   # Configure Finder 
   system.defaults = {
     finder.AppleShowAllExtensions = true;
@@ -28,6 +28,10 @@
   };
 
   environment.systemPath = [ "/opt/homebrew/bin" ];
+
+  # System packages end up in /Applications and can be opened with Spotlight
+  # if `nobrowse` is removed from `/etc/fstab`
+  environment.systemPackages = [ alacritty ];
 
   services = {
     yabai = {
