@@ -33,4 +33,11 @@ in
     traits = [ "devbox" "guibox" ];
     modules = [ ./eksys_pro ];
   };
+
+  ek_pro = mkHost {
+    system = "aarch64-darwin";
+    user = "erik.krieg";
+    traits = [ "devbox" "guibox" ];
+    modules = [ ./ek_pro ];
+  };
 }
