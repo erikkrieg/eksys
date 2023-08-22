@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -53,6 +53,12 @@
     settings = {
       PasswordAuthentication = false;
     };
+  };
+
+  services.k3s = {
+    clusterInit = lib.mkForce false;
+    serverAddr = "https://chips.eksys.dev:6443";
+    tokenFile = /var/lib/rancher/k3s/server/token;
   };
 
   # This value determines the NixOS release from which the default
