@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+echo "Checking for Homebrew..."
+if ! command -v homebrew &> /dev/null; then
+  echo "Homebrew not found, installing Homebrew."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+  echo "Hombrew already installed."
+fi
+
 nix --extra-experimental-features "nix-command flakes" \
   build ".#darwinConfigurations.$(hostname -s).system"
 
