@@ -31,7 +31,7 @@
 
       # Provide a simple option for extending the shell outside of source code.
       if [ -f ~/.config/zsh-extra/init.zsh ]; then
-      . ~/.config/zsh-extra/init.zsh
+        . ~/.config/zsh-extra/init.zsh
       fi
     '';
 
