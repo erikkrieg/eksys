@@ -5,4 +5,6 @@
       "shotcut" # video editing
     ];
   };
+
+  services.tailscale.overrideLocalDns = true;
 }

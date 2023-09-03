@@ -60,7 +60,9 @@
     tailscale = {
       enable = true;
       # Set nameserver to 100.100.100.100
-      overrideLocalDns = true;
+      # Should be done on a per host basis because this breaks DNS if that host
+      # hasn't been added to the tailnet yet.
+      # overrideLocalDns = true;
     };
   };
 
