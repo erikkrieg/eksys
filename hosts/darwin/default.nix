@@ -16,6 +16,16 @@ let
         };
         users.users.${user}.home = "/Users/${user}";
       }
+    ] ++ [
+      {
+        system.activationScripts.preActivation.text = ''
+          shells="/etc/shells"
+          if [ -f "$shells" ] && [ ! -L "$shells" ]; then
+              echo "$shells exists and is not a symbolic link: backing up as $shells.before-nix-darwin"
+              mv "$shells" "$shells.before-nix-darwin" 
+          fi
+        '';
+      }
     ] ++ map (trait: ../../traits/${trait}/darwin-host.nix) traits;
   };
 in
