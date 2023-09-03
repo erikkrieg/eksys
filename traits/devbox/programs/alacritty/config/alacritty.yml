@@ -57,3 +57,15 @@ key_bindings:
   - { key: Key7, mods: Command, chars: *ctl_t7 }
   - { key: Key8, mods: Command, chars: *ctl_t8 }
   - { key: Key9, mods: Command, chars: *ctl_t9 }
+
+# Command click to open links.
+# With Zellij, you need to do shift + command + click.
+hints:
+  enabled:
+    - regex: "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+        [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+      command: open
+      post_processing: true
+      mouse:
+        enabled: true
+        mods: Command
