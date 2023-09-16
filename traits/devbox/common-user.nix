@@ -1,6 +1,6 @@
 # NixOS or Darwin devbox user configuration via home-manager.
 # https://nix-community.github.io/home-manager/options.html
-{ pkgs, unstable, ... }: with pkgs; {
+{ pkgs, unstable_pkgs, ... }: with pkgs; {
   # Backwards compatibility. Don't change.
   home.stateVersion = "22.11";
 
@@ -30,7 +30,7 @@
     ripgrep
     gh
     nix-tree
-    unstable.mods
+    unstable_pkgs.mods
 
     # Network utilities
     dig
