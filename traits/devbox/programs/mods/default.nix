@@ -3,6 +3,7 @@
 { unstable_pkgs, ... }: with unstable_pkgs; {
   home.packages = [
     mods
+    glow # Render markdown "nicely" in terminal
   ];
   home.file.".config/mods" = {
     source = ./config;
