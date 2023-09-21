@@ -9,7 +9,7 @@
     ];
   };
 
-  home.packages = [
+  environment.systemPackages = [
     argocd
   ];
 
