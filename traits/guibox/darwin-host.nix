@@ -12,6 +12,7 @@
     global.brewfile = true;
     casks = [
       "android-file-transfer"
+      "anytype"
       "brave-browser"
       "spotify"
       "discord"
