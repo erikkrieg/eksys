@@ -12,7 +12,8 @@
     global.brewfile = true;
     casks = [
       "android-file-transfer"
-      "anytype"
+      "anytype" # Notion-like app that I'm testing
+      "appflowy" # Notion-like app that I'm testing
       "brave-browser"
       "spotify"
       "discord"
