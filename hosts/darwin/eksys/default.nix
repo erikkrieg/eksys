@@ -6,5 +6,6 @@
     ];
   };
 
-  services.tailscale.overrideLocalDns = true;
+  # Disabling until I'm ready to commit to replacing wg with tailscale
+  # services.tailscale.overrideLocalDns = true;
 }
