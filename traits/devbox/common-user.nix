@@ -37,6 +37,7 @@
     gping
 
     # Cross-project packages
+    devbox
     just
 
     # Language-specific
