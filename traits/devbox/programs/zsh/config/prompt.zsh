@@ -19,5 +19,6 @@ P_DIR='%F{$C[dir]}%1~%f '
 P_GIT='%F{$C[git]}$(prompt_git)%f'
 P_CARET='%F{$C[caret]}❯%f '
 
-PROMPT="${P_VIM_MODE}${P_HOST} ${P_DIR}${P_GIT}${P_CARET}"
+# Use $P_PREFIX to add custom text to start of prompt.
+PROMPT="${P_PREFIX}${P_VIM_MODE}${P_HOST} ${P_DIR}${P_GIT}${P_CARET}"
 
