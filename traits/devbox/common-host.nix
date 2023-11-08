@@ -15,6 +15,10 @@
   };
   environment.shells = [ bash zsh ];
 
+  environment.variables = {
+    NIXPKGS_ALLOW_UNFREE = "1";
+  };
+
   environment.systemPackages = [
     coreutils
     git
@@ -34,4 +38,6 @@
     fontDir.enable = true; # Danger: `true` mean fonts can get removed.
     fonts = [ (nerdfonts.override { fonts = [ "Meslo" ]; }) ];
   };
+
+  nixpkgs.config.allowUnfree = true;
 }
