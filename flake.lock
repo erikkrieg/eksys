@@ -50,16 +50,16 @@
         "unstable": "unstable"
       },
       "locked": {
-        "lastModified": 1699765423,
+        "lastModified": 1700312730,
         "narHash": "sha256-XWOz1uiMZol9TSUg+caY5enb1OBeFuACGY5UsyuzT+k=",
         "owner": "erikkrieg",
         "repo": "envim",
-        "rev": "1fb988c590d184bdbc8fd90a812940f4dbd68e14",
+        "rev": "3621324cd4f1130b1256bec59454724874c441b9",
         "type": "github"
       },
       "original": {
         "owner": "erikkrieg",
-        "ref": "feature/more-nix-y",
+        "ref": "main",
         "repo": "envim",
         "type": "github"
       }
