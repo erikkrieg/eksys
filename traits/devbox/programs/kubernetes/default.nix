@@ -1,9 +1,9 @@
-{ pkgs, ... }: with pkgs; {
+{ pkgs, unstable_pkgs, ... }: with pkgs; {
   home.packages = [
     k9s
     kubectl
     kubernetes-helm
-    kustomize
+    unstable_pkgs.kustomize
   ];
 
   home.sessionVariables = {
