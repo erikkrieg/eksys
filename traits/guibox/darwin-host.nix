@@ -11,6 +11,7 @@
     caskArgs.no_quarantine = true;
     global.brewfile = true;
     casks = [
+      "1password"
       "android-file-transfer"
       "anytype" # Notion-like app that I'm testing
       "appflowy" # Notion-like app that I'm testing
