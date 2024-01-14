@@ -16,11 +16,18 @@ let
      "prompt": "'"$1"'",
      "n": 1,
      "size": "1792x1024"
-     }' | ${pkgs.jq}/bin/jq -r '.data[0].url' >"$temp_file"
+     }' > "$temp_file"
 
-    image_url=$(cat "$temp_file")
+    echo
+    echo "Original prompt: $1"
+    echo "Revised prompt: $(cat $temp_file | ${pkgs.jq}/bin/jq -r '.data[0].revised_prompt')"
+    echo
+
+    prompt_title=$(echo "$1" | sed -e 's/[^a-zA-Z0-9]/-/g' | tr '[:upper:]' '[:lower:]')
+    image_url=$(cat "$temp_file" | ${pkgs.jq}/bin/jq -r '.data[0].url')
+
     open "$image_url"
-    ${pkgs.wget}/bin/wget -P . "$image_url"
+    ${pkgs.wget}/bin/wget -O "$prompt_title-$(date '+%s').png" "$image_url"
   '';
 in
 with pkgs; {
