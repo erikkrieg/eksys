@@ -14,7 +14,6 @@
       "1password"
       "android-file-transfer"
       "anytype" # Notion-like app that I'm testing
-      "appflowy" # Notion-like app that I'm testing
       "brave-browser"
       "spotify"
       "discord"
