@@ -12,7 +12,7 @@ fetch:
   git pull
 
 # Rebuild system
-update: fetch
+rebuild: fetch
   darwin-rebuild switch --flake '.#'
 
 # Update version of nvim then rebuild the system
