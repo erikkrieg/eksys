@@ -15,6 +15,11 @@ fetch:
 rebuild: fetch
   darwin-rebuild switch --flake '.#'
 
+# Update version of flake inputs then rebuild the system
+update INPUT: fetch
+  nix flake lock --update-input {{INPUT}} --commit-lock-file
+  just rebuild
+
 # Update version of nvim then rebuild the system
 update-nvim: fetch
   nix flake lock --update-input envim --commit-lock-file 
