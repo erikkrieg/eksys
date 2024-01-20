@@ -12,16 +12,14 @@ fetch:
   git pull
 
 # Rebuild system
-rebuild: fetch
+rebuild:
   darwin-rebuild switch --flake '.#'
 
 # Update version of flake inputs then rebuild the system
-update INPUT: fetch
+update INPUT: fetch && rebuild
   nix flake lock --update-input {{INPUT}} --commit-lock-file
-  just rebuild
 
 # Update version of nvim then rebuild the system
-update-nvim: fetch
-  nix flake lock --update-input envim --commit-lock-file 
-  darwin-rebuild switch --flake '.#'
+update-nvim: && rebuild
+  just update envim
 
