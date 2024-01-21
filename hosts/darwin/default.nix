@@ -1,7 +1,7 @@
 { nixpkgs, unstable, darwin, home-manager, envim, ... }:
 let
   mkHost = { system, user, traits, modules ? [ ] }: (darwin.lib.darwinSystem) {
-    pkgs = import nixpkgs { inherit system; };
+    inherit system;
     modules = modules ++ [
       home-manager.darwinModules.home-manager
       {

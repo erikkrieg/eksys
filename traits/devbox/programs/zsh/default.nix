@@ -41,7 +41,7 @@
     shellAliases = {
       c = "clear";
       l = "ls -la";
-      nixswitch = "darwin-rebuild switch --flake ~/Projects/nix/eksys/.#";
+      nixswitch = "darwin-rebuild switch --flake ~/Projects/nix/eksys/.#$(hostname -s)";
       nixup = "pushd ~/Projects/nix/eksys; nix flake update; nixswitch; popd";
     };
   };

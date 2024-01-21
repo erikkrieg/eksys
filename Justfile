@@ -15,7 +15,8 @@ fetch:
 
 # Rebuild system
 rebuild:
-  darwin-rebuild switch --flake '.#'
+  #!/usr/bin/env bash
+  darwin-rebuild switch --flake ".#$(hostname -s)"
 
 # Update version of flake inputs then rebuild the system
 update INPUT: && rebuild
