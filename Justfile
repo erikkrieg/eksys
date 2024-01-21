@@ -1,3 +1,5 @@
+alias b := rebuild
+
 # List available commands.
 list:
   @just -l
@@ -16,7 +18,7 @@ rebuild:
   darwin-rebuild switch --flake '.#'
 
 # Update version of flake inputs then rebuild the system
-update INPUT: fetch && rebuild
+update INPUT: && rebuild
   nix flake lock --update-input {{INPUT}} --commit-lock-file
 
 # Update version of nvim then rebuild the system
