@@ -7,7 +7,7 @@
     ];
   };
 
-  nix.package = pkgs.nixVersions.nix_2_14;
+  nix.package = pkgs.nix;
   services.nix-daemon.enable = true;
 
   # Disabling until I'm ready to commit to replacing wg with tailscale
