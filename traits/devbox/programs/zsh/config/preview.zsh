@@ -5,7 +5,7 @@
 # echo "group: $4"
 
 case "$1" in
-  -*) exit 0;;
+  -*) exit 0 ;;
 esac
 
 if [ -e "$1" ]; then
@@ -17,7 +17,7 @@ if [ -e "$1" ]; then
       CATIMG -w 100 -r 2 "$1"
       ;;
     *directory*)
-      EXA --icons -1 --color=always "$1"
+      EZA --icons -1 --color=always "$1"
       ;;
     *)
       echo "unknown file format"

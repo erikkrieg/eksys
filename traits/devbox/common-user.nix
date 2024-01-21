@@ -9,7 +9,7 @@
     ./programs/bat
     ./programs/btop
     ./programs/delta
-    ./programs/exa
+    ./programs/eza
     ./programs/fzf
     ./programs/genimg
     ./programs/git

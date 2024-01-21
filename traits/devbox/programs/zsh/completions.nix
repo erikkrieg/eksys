@@ -27,7 +27,7 @@
       zstyle ':completion:*:jobs' numbers true
       zstyle ':completion:*:jobs' verbose true
       zstyle ':completion:*:git-checkout:*' sort false
-      zstyle ':completion:*:exa' sort false
+      zstyle ':completion:*:eza' sort false
       zstyle ':completion:complete:*:options' sort false
       zstyle ':completion:files' sort false
       compinit
@@ -61,7 +61,7 @@
       FILE=${file}/bin/file
       BAT=${bat}/bin/bat
       CATIMG=${catimg}/bin/catimg
-      EXA=${eza}/bin/exa
+      EZA=${eza}/bin/eza
       BATMAN=${bat-extras.batman}/bin/batman
       GIT=${git}/bin/git
       DELTA=${delta}/bin/git
