@@ -61,7 +61,7 @@
       FILE=${file}/bin/file
       BAT=${bat}/bin/bat
       CATIMG=${catimg}/bin/catimg
-      EXA=${exa}/bin/exa
+      EXA=${eza}/bin/exa
       BATMAN=${bat-extras.batman}/bin/batman
       GIT=${git}/bin/git
       DELTA=${delta}/bin/git

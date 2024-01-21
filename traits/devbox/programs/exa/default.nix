@@ -1,5 +1,6 @@
 { lib, ... }: {
-  programs.exa = {
+  # exa was replaced by eza, a more active fork
+  programs.eza = {
     enable = true;
   };
   programs.zsh.shellAliases = {
