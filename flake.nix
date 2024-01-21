@@ -2,7 +2,7 @@
   description = "Configure system and user spaces.";
   inputs = {
     # Try going back to unstable or taking both pinned and unstable.
-    nixpkgs.url = "github:nixos/nixpkgs/23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/release-23.11";
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Used to partition and format disks on NixOS
@@ -10,7 +10,7 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     # Configure software in home directory.
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Configure system level software and settings.
