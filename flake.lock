@@ -50,11 +50,11 @@
         "unstable": "unstable"
       },
       "locked": {
-        "lastModified": 1705994848,
-        "narHash": "sha256-ZvcmGTcojaju6I7VPrKVV1l6yKa0NjboMkOztzwL0tM=",
+        "lastModified": 1705995061,
+        "narHash": "sha256-8FLvRfJ42B/TL0DPZAKTrONqUmDzGyL8G+yZiQG5eHQ=",
         "owner": "erikkrieg",
         "repo": "envim",
-        "rev": "5aa2d494b2c6bc16f5533174392bf2454077c2d6",
+        "rev": "d5a72ebd06c80256171c5892cd776e00cdc15670",
         "type": "github"
       },
       "original": {
