@@ -2,7 +2,7 @@
 # produce the desired effect on both systems!
 # - https://search.nixos.org/options
 # - https://daiderd.com/nix-darwin/manual/index.html#sec-options
-{ pkgs, ... }: with pkgs; {
+{ pkgs, lib, ... }: with pkgs; {
   nix.extraOptions = ''experimental-features = nix-command flakes'';
 
   # Configure shells
@@ -43,12 +43,12 @@
 
 
   # Show changes after a rebuild.
-  # https://github.com/mcdonc/.nixconfig/blob/master/videos/tipsntricks/script.rst#see-a-summary-of-changes-after-nixos-rebuild
-  system.activationScripts.diff = {
-    supportsDryActivation = true;
+  # https://gist.github.com/luishfonseca/f183952a77e46ccd6ef7c907ca424517?permalink_comment_id=4620275#gistcomment-4620275 
+  system.activationScripts.postUserActivation = {
     text = ''
-      ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff \
-           /run/current-system "$systemConfig"
+      ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
     '';
+  } // lib.optionalAttrs pkgs.stdenv.isLinux {
+    supportsDryActivation = true;
   };
 }
