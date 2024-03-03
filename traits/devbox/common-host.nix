@@ -40,4 +40,15 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+
+  # Show changes after a rebuild.
+  # https://github.com/mcdonc/.nixconfig/blob/master/videos/tipsntricks/script.rst#see-a-summary-of-changes-after-nixos-rebuild
+  system.activationScripts.diff = {
+    supportsDryActivation = true;
+    text = ''
+      ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff \
+           /run/current-system "$systemConfig"
+    '';
+  };
 }
