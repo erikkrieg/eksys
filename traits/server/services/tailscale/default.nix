@@ -5,6 +5,7 @@
   };
 
   systemd.services.tailscale-up = {
+    enable = config.services.k3s.enable && config.services.tailscale.enable;
     after = [ "tailscale.service" "k3s.service" ];
     wants = [ "tailscale.service" "k3s.service" ];
     wantedBy = [ "multi-user.target" ];
