@@ -1,6 +1,6 @@
 { config, pkgs, ... }: with pkgs; {
   services.tailscale = {
-    enable = true;
+    enable = false;
     useRoutingFeatures = "server";
   };
 
