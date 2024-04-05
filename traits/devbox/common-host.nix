@@ -2,7 +2,11 @@
 # produce the desired effect on both systems!
 # - https://search.nixos.org/options
 # - https://daiderd.com/nix-darwin/manual/index.html#sec-options
-{ pkgs, lib, ... }: with pkgs; {
+{ pkgs, lib, ... }: with pkgs;
+let
+  fonts = [ (nerdfonts.override { fonts = [ "Meslo" ]; }) ];
+in
+{
   nix.extraOptions = ''experimental-features = nix-command flakes'';
 
   # Configure shells
@@ -36,7 +40,10 @@
   # Configure fonts
   fonts = {
     fontDir.enable = true; # Danger: `true` mean fonts can get removed.
-    packages = [ (nerdfonts.override { fonts = [ "Meslo" ]; }) ];
+  } // lib.optionalAttrs pkgs.stdenv.isDarwin {
+    fonts = fonts;
+  } // lib.optionalAttrs pkgs.stdenv.isLinux {
+    packages = fonts;
   };
 
   # Show changes after a rebuild.
