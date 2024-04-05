@@ -36,11 +36,8 @@
   # Configure fonts
   fonts = {
     fontDir.enable = true; # Danger: `true` mean fonts can get removed.
-    fonts = [ (nerdfonts.override { fonts = [ "Meslo" ]; }) ];
+    packages = [ (nerdfonts.override { fonts = [ "Meslo" ]; }) ];
   };
-
-  nixpkgs.config.allowUnfree = true;
-
 
   # Show changes after a rebuild.
   # https://gist.github.com/luishfonseca/f183952a77e46ccd6ef7c907ca424517?permalink_comment_id=4620275#gistcomment-4620275 
