@@ -1,7 +1,8 @@
 { nixpkgs, unstable, disko, home-manager, envim, ... }@args:
 let
+  config = { allowUnfree = true; };
   mkHost = { system, user, traits, modules ? [ ] }: (nixpkgs.lib.nixosSystem) {
-    pkgs = import nixpkgs { inherit system; };
+    pkgs = import nixpkgs { inherit system; config = config; };
     modules = modules ++ [
       home-manager.nixosModules.home-manager
       {
