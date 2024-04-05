@@ -1,7 +1,8 @@
 { config, ... }: {
   imports = [ ./longhorn.nix ];
   services.k3s = {
-    enable = true;
+    # enable = true;
+    enable = false;
     role = "server";
     configPath = ./server.yaml;
     clusterInit = true;
