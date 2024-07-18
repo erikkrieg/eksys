@@ -3,6 +3,7 @@
     casks = [
       "google-chrome"
       "raycast"
+      "chromium"
     ];
   };
 
