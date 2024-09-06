@@ -6,6 +6,7 @@
       "tunnelblick"
       "visual-studio-code"
       "raycast"
+      "docker-credential-helper-ecr"
     ];
   };
 
