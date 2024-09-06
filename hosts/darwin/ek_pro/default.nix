@@ -8,6 +8,7 @@
   };
 
   environment.systemPackages = [
+    amazon-ecr-credential-helper
     argocd
   ];
 

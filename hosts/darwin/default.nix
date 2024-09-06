@@ -37,13 +37,6 @@ in
     modules = [ ./eksys ];
   };
 
-  eksys_pro = mkHost {
-    system = "x86_64-darwin";
-    user = "erik.krieg";
-    traits = [ "devbox" "guibox" ];
-    modules = [ ./eksys_pro ];
-  };
-
   ek_pro = mkHost {
     system = "aarch64-darwin";
     user = "erik.krieg";
