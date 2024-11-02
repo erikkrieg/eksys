@@ -4,6 +4,7 @@
       "obs" # video recording and live streaming
       "shotcut" # video editing
       "appflowy" # Notion-like app that I'm testing
+      "raspberry-pi-imager" # for flashing SD cards for Raspberry Pi
     ];
   };
 
