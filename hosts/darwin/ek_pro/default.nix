@@ -2,7 +2,6 @@
   homebrew = {
     casks = [
       "google-chrome"
-      "raycast"
       "chromium"
     ];
   };

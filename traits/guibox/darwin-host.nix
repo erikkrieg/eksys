@@ -14,13 +14,14 @@
       "1password"
       "android-file-transfer"
       "anytype" # Notion-like app that I'm testing
-      "brave-browser"
-      "spotify"
-      "discord"
       "balenaetcher"
+      "brave-browser"
+      "discord"
       "obsidian"
+      "raycast"
       "sigmaos"
       "slack"
+      "spotify"
     ];
     onActivation = {
       cleanup = "zap";
