@@ -41,6 +41,13 @@ in
     modules = [ disko.nixosModules.disko ./chips ];
   };
 
+  icecream = mkHost {
+    system = "x86_64-linux";
+    user = "ek";
+    traits = [ "devbox" "server" ];
+    modules = [ disko.nixosModules.disko ./icecream ];
+  };
+
   # NixOS can be installed on a new host with an output like this. I'm keeping
   # this around for now until I figure out how to fold this into the "final" config.
   new_host = nixpkgs.lib.nixosSystem {
