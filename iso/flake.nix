@@ -1,6 +1,6 @@
 {
   description = "Minimal NixOS installation media";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
   outputs = { self, nixpkgs }: {
     nixosConfigurations = {
       minimal = nixpkgs.lib.nixosSystem {
