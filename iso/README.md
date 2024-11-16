@@ -10,8 +10,10 @@ The minimal LiveCD with the inclusion of SSH authorization keys, which can simpl
 
 ### Build
 
+Run the following command from the project root to build the minimal ISO:
+
 ```
-nix build .#nixosConfigurations.minimal.config.system.build.isoImage
+nix build ./iso#nixosConfigurations.minimal.config.system.build.isoImage
 ```
 
 The resulting image with be in the `./result/iso` folder.
