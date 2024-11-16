@@ -26,3 +26,6 @@ update INPUT: && rebuild
 update-nvim: && rebuild
   just update envim
 
+# Write ISO to USB device. Example: just flash results/iso/nixos... /dev/sdc
+flash ISO DEVICE:
+  sudo dd if={{ISO}} of={{DEVICE}} bs=4M status=progress conv=fsync
