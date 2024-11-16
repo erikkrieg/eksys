@@ -4,4 +4,7 @@
   imports = [ ./common-host.nix ];
 
   users.defaultUserShell = zsh;
+
+  security.sudo.wheelNeedsPassword = false;
+  security.sudo.execWheelOnly = true;
 }
