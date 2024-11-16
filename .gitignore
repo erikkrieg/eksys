@@ -1,7 +1,7 @@
 .DS_Store
 
 # Output from nix build
-/result
+**/result
 
 # Scratch pad for personal todo items
 TODO.md
