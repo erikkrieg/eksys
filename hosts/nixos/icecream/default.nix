@@ -1,7 +1,7 @@
 { config, pkgs, lib, modulesPath, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    (import ../disks.nix { disks = [ "/dev/sda" ]; })
+    (import ../disks.nix { disks = [ "/dev/sdb" ]; })
   ];
 
   boot.loader.systemd-boot.enable = true;
