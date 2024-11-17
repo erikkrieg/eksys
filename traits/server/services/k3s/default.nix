@@ -25,4 +25,16 @@
   # This is referenced by tailscale config which would need to be updated
   # if the way kubeconfig path is set changes.
   environment.sessionVariables.KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
+
+  security.sudo.extraRules = [
+    {
+      users = [ "k3s" ];
+      commands = [
+        {
+          command = "/var/lib/rancher/k3s/server/token";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
 }
