@@ -44,7 +44,7 @@ in
   icecream = mkHost {
     system = "x86_64-linux";
     user = "ek";
-    traits = [ "devbox" ];
+    traits = [ "devbox" "server" ];
     modules = [ disko.nixosModules.disko ./icecream ];
   };
 
