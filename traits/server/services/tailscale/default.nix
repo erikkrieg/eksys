@@ -1,11 +1,22 @@
 { config, pkgs, ... }: with pkgs; {
   services.tailscale = {
-    enable = false;
+    enable = true;
+    authKeyFile = "/run/secrets/tailscale_key"; # This auth key needs to be manually created
     useRoutingFeatures = "server";
+    extraUpFlags = [
+      "--advertise-exit-node"
+      "--advertise-routes=192.168.1.0/24"
+      "--accept-routes=false"
+      "--ssh"
+      "--reset"
+    ];
   };
 
+  # This was previously being used to test communication between k3s nodes over
+  # Tailscale. It is no longer needed, but I'm keeping it around for reference.
   systemd.services.tailscale-up = {
-    enable = config.services.k3s.enable && config.services.tailscale.enable;
+    # enable = config.services.k3s.enable && config.services.tailscale.enable;
+    enable = false;
     after = [ "tailscale.service" "k3s.service" ];
     wants = [ "tailscale.service" "k3s.service" ];
     wantedBy = [ "multi-user.target" ];
