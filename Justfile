@@ -16,7 +16,14 @@ fetch:
 # Rebuild system
 rebuild:
   #!/usr/bin/env bash
-  darwin-rebuild switch --flake ".#$(hostname -s)"
+  if [ "$(uname)" = "Darwin" ]; then
+    darwin-rebuild switch --flake ".#$(hostname -s)"
+  elif [ -f "/etc/NIXOS" ]; then
+    sudo nixos-rebuild switch --flake ".#$(hostname -s)"
+  else
+    echo "Unsupported OS: Only NixOS and Darwin are supported"
+    exit 1
+  fi
 
 # Update version of flake inputs then rebuild the system
 update INPUT: && rebuild
