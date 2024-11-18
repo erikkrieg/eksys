@@ -49,7 +49,5 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxcsEfj6Tnq8qJt3WFLYM4EwBYWwL953mr458vNVqDn1W ek@june"
   ];
 
-  boot.kernelModules = [ ];
-  networking.networkmanager.enable = true;
   boot.supportedFilesystems = [ "btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" ];
 }
