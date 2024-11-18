@@ -31,7 +31,7 @@
     lshw
 
     # Text editors
-    nvim
+    neovim
 
     # File system tools
     dosfstools
