@@ -50,9 +50,6 @@
   ];
 
   boot.kernelModules = [ ];
-  hardware.enableAllFirmware = true;
   networking.networkmanager.enable = true;
-  services.gpm.enable = true; # Console mouse support
-  services.udisks2.enable = true; # Disk management
   boot.supportedFilesystems = [ "btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" ];
 }
