@@ -35,6 +35,9 @@
     unstable_pkgs.nix-du
     graphviz # used in combination with nix-du
 
+    # Server management
+    deploy-rs
+
     # Network utilities
     dig
     gping
