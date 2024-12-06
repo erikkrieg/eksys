@@ -5,7 +5,7 @@
     useRoutingFeatures = "server";
     extraUpFlags = [
       "--advertise-exit-node"
-      "--advertise-routes=192.168.1.0/24"
+      "--advertise-routes=10.42.0.0/16,10.43.0.0/16"
       "--accept-routes=false"
       "--ssh"
       "--reset"
