@@ -6,9 +6,6 @@
   # Backwards compatibility. Don't change.
   system.stateVersion = 4;
 
-  # Configure default login shell (nix-darwin exclusive option).
-  environment.loginShell = zsh;
-
   # There may be a more nixy way to do this with nix-darwin, but using 
   # activationScripts to optionally:
   # 1. Make zsh default shell for root user
