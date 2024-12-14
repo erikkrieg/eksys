@@ -43,7 +43,7 @@
     # Servers that can be deployed with deploy-rs.
     deploy = {
       nodes = {
-        june = rec {
+        /* june = rec {
           hostname = "june";
           profiles.system = {
             path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.${hostname};
@@ -54,7 +54,7 @@
           profiles.system = {
             path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.${hostname};
           };
-        };
+        }; */
         icecream = rec {
           hostname = "icecream";
           profiles.system = {
