@@ -39,10 +39,6 @@ in
 
   # Configure fonts
   fonts = {
-    fontDir.enable = true; # Danger: `true` mean fonts can get removed.
-  } // lib.optionalAttrs pkgs.stdenv.isDarwin {
-    fonts = fonts;
-  } // lib.optionalAttrs pkgs.stdenv.isLinux {
     packages = fonts;
   };
 
