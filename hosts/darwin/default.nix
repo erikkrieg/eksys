@@ -1,8 +1,20 @@
 { nixpkgs, unstable, darwin, home-manager, envim, ... }:
 let
+  darwinFixesOverlay = final: prev: {
+    # Fixed following error: 
+    # "unable to find dynamic system library 'ncursesw' using strategy 'paths_first'. searched paths: none"
+    ncdu = prev.ncdu.overrideAttrs (oldAttrs: {
+      nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [
+        final.pkg-config
+      ];
+    });
+  };
   mkHost = { system, user, traits, modules ? [ ] }: (darwin.lib.darwinSystem) {
     inherit system;
     modules = modules ++ [
+      {
+        nixpkgs.overlays = [ darwinFixesOverlay ];
+      }
       home-manager.darwinModules.home-manager
       {
         home-manager = {
@@ -10,7 +22,10 @@ let
           useUserPackages = true;
           extraSpecialArgs = {
             envim = envim.packages.${system}.default;
-            unstable_pkgs = import unstable { inherit system; };
+            unstable_pkgs = import unstable {
+              inherit system;
+              overlays = [ darwinFixesOverlay ];
+            };
           };
           users.${user}.imports = map (trait: ../../traits/${trait}/darwin-user.nix) traits;
         };
