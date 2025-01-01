@@ -50,16 +50,16 @@
         "unstable": "unstable"
       },
       "locked": {
-        "lastModified": 1735755045,
+        "lastModified": 1735755225,
         "narHash": "sha256-l+SeooLrlswR8YghYkgEkTEtXse+eqHTagvuEC+YhrY=",
         "owner": "erikkrieg",
         "repo": "envim",
-        "rev": "6896c5678075877131a161aa0308f7686ed14dc4",
+        "rev": "1ea673c219917632e8b709b52f11fbf5f3aaf262",
         "type": "github"
       },
       "original": {
         "owner": "erikkrieg",
-        "ref": "update/nixpkgs-24.11",
+        "ref": "main",
         "repo": "envim",
         "type": "github"
       }

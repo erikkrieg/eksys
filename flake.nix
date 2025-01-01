@@ -18,7 +18,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # My nvim flake.
-    envim.url = "github:erikkrieg/envim/update/nixpkgs-24.11";
+    envim.url = "github:erikkrieg/envim/main";
     envim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
