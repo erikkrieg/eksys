@@ -1,16 +1,13 @@
-{ pkgs, ... }: with pkgs; {
+{ ... }: {
   homebrew = {
     casks = [
       "google-chrome"
-      "chromium"
+      "slack"
     ];
   };
 
-  environment.systemPackages = [
-    amazon-ecr-credential-helper
-    argocd
-  ];
+  environment.systemPackages = [ ];
 
-  # Changing the binary for sh conflicts with tools like Jamf CLI.
+  # Changing the binary for sh can conflict with IT tools
   system.activationScripts.setDashAsSh.enable = false;
 }
