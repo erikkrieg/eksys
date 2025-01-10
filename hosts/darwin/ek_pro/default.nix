@@ -1,9 +1,6 @@
 { ... }: {
   homebrew = {
-    casks = [
-      "google-chrome"
-      "slack"
-    ];
+    casks = [ ];
   };
 
   environment.systemPackages = [ ];

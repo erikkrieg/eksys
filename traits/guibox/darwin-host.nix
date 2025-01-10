@@ -20,7 +20,6 @@
       "obsidian"
       "raycast"
       "sigmaos"
-      "slack"
       "spotify"
     ];
     onActivation = {
