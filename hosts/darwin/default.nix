@@ -54,7 +54,7 @@ in
 
   ek_pro = mkHost {
     system = "aarch64-darwin";
-    user = "erik.krieg";
+    user = "ekrieg";
     traits = [ "devbox" "guibox" ];
     modules = [ ./ek_pro ];
   };
