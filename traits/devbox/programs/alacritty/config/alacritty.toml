@@ -2,6 +2,8 @@
 import = [
   "./keyboard.toml",
   "./colors.toml",
+  # Scratchpad to test live changes
+  "~/.config/alacritty/scratchpad.toml"
 ]
 
 [font]
