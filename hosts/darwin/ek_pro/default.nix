@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   homebrew = {
-    casks = [ ];
+    casks = [
+      "tuple"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
