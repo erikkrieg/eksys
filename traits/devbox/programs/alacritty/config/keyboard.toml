@@ -50,47 +50,47 @@ key = "O"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = '\u00141'
+chars = "\u001b[27;5;49~"
 key = "Key1"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\u00142"
+chars = "\u001b[27;5;50~"
 key = "Key2"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\u00143"
+chars = "\u001b[27;5;51~"
 key = "Key3"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\u00144"
+chars = "\u001b[27;5;52~"
 key = "Key4"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\u00145"
+chars = "\u001b[27;5;53~"
 key = "Key5"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\u00146"
+chars = "\u001b[27;5;54~"
 key = "Key6"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\u00147"
+chars = "\u001b[27;5;55~"
 key = "Key7"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\u00148"
+chars = "\u001b[27;5;56~"
 key = "Key8"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\u00149"
+chars = "\u001b[27;5;57~"
 key = "Key9"
 mods = "Command"
 
