@@ -4,6 +4,7 @@
     options = {
       navigate = true;
       light = false;
+      dark = true;
       syntax-theme = "DarkNeon";
       default = {
         side-by-side = true;
@@ -18,4 +19,3 @@
     export DELTA_FEATURES=+default
   '';
 }
-
