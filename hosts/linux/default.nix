@@ -15,7 +15,6 @@ let
         home = {
           username = user;
           homeDirectory = "/home/${user}";
-          stateVersion = "24.11";
         };
       }
     ] ++ map (trait: ../../traits/${trait}/linux-user.nix) traits;
