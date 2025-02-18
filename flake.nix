@@ -36,5 +36,12 @@
         inherit inputs nixpkgs unstable disko home-manager envim;
       }
     );
+
+    # Imports configurations for Linux hosts using home-manager
+    homeConfigurations = (
+      import ./hosts/linux {
+        inherit inputs nixpkgs unstable home-manager envim;
+      }
+    );
   };
 }
