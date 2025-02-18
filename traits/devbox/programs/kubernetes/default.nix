@@ -4,6 +4,7 @@
     kubectl
     kubernetes-helm
     unstable_pkgs.kustomize
+    stern
   ];
 
   home.sessionVariables = {
