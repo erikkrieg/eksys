@@ -13,8 +13,8 @@
     lynis
   ];
 
-  # Nix settings that can be managed per-user
   home.sessionVariables = {
     NIXPKGS_ALLOW_UNFREE = "1";
+    SHELL = "${pkgs.zsh}/bin/zsh";
   };
 }
