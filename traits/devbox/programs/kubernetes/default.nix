@@ -2,9 +2,10 @@
   home.packages = [
     k9s
     kubectl
+    kubectx
     kubernetes-helm
-    unstable_pkgs.kustomize
     stern
+    unstable_pkgs.kustomize
   ];
 
   home.sessionVariables = {
