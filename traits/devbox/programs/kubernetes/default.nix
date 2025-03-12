@@ -13,6 +13,7 @@
   };
 
   programs.zsh.shellAliases = {
-    k = "kubectl";
+    k = "${kubectl}/bin/kubectl";
+    kx = "${kubectx}/bin/kubectx";
   };
 }
