@@ -36,7 +36,7 @@
     initExtra = ''
       source ${zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       FZF_TAB_COMMAND=(
-        ${fzf}
+        ${fzf}/bin/fzf
         --ansi
         --expect='$continuous_trigger'
         --nth=2,3 --delimiter='\x00'
