@@ -20,6 +20,9 @@
     # My nvim flake.
     envim.url = "github:erikkrieg/envim/main";
     envim.inputs.nixpkgs.follows = "nixpkgs";
+
+    claude-code.url = "github:erikkrieg/claude-code-flake/main";
+    claude-code.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs = inputs@{ nixpkgs, unstable, darwin, disko, home-manager, envim, ... }: {

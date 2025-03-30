@@ -1,4 +1,4 @@
-{ nixpkgs, unstable, darwin, home-manager, envim, ... }:
+{ inputs, nixpkgs, unstable, darwin, home-manager, envim, ... }:
 let
   darwinFixesOverlay = final: prev: {
     # Fixed following error: 
@@ -22,6 +22,7 @@ let
           useUserPackages = true;
           extraSpecialArgs = {
             envim = envim.packages.${system}.default;
+            claude-code = inputs.claude-code.packages.${system}.default;
             unstable_pkgs = import unstable {
               inherit system;
               overlays = [ darwinFixesOverlay ];
