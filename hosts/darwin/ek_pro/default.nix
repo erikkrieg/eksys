@@ -14,6 +14,7 @@ in
   environment.systemPackages = with pkgs; [
     fluxcd
     gcloud
+    ipmitool
   ];
 
   # Changing the binary for sh can conflict with IT tools
