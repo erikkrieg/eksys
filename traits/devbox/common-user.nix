@@ -5,6 +5,7 @@
   home.stateVersion = "22.11";
 
   imports = [
+    ./programs/aider-chat
     ./programs/alacritty
     ./programs/bat
     ./programs/btop
