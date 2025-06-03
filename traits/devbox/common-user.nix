@@ -41,6 +41,7 @@
     gping
 
     # Cross-project packages
+    unstable_pkgs.amp-cli
     devbox
     just
 

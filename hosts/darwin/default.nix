@@ -26,6 +26,7 @@ let
             unstable_pkgs = import unstable {
               inherit system;
               overlays = [ darwinFixesOverlay ];
+              config.allowUnfree = true;
             };
           };
           users.${user}.imports = map (trait: ../../traits/${trait}/darwin-user.nix) traits;
