@@ -17,10 +17,11 @@ fetch:
 rebuild:
   #!/usr/bin/env bash
   if [ "$(uname)" = "Darwin" ]; then
-    darwin-rebuild switch --flake ".#$(hostname -s)"
+    sudo darwin-rebuild switch --flake ".#$(hostname -s)"
   elif [ -f "/etc/NIXOS" ]; then
     sudo nixos-rebuild switch --flake ".#$(hostname -s)"
   else
+    # TODO: nix run home-manager/master -- switch --flake '.#dev_vm'
     echo "Unsupported OS: Only NixOS and Darwin are supported"
     exit 1
   fi

@@ -19,4 +19,6 @@ in
 
   # Changing the binary for sh can conflict with IT tools
   system.activationScripts.setDashAsSh.enable = false;
+
+  system.primaryUser = "ekrieg";
 }

@@ -41,8 +41,6 @@
     fi
   '';
 
-  services.nix-daemon.enable = true; # Allow nix-darwin to manages/updates the daemon
-
   # Configure keyboard
   system.keyboard = {
     enableKeyMapping = true;

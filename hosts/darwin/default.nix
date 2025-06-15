@@ -8,12 +8,20 @@ let
         final.pkg-config
       ];
     });
+    tailscale = prev.tailscale.overrideAttrs (oldAttrs: {
+      # These run integration tests that were not reliable.
+      doCheck = false;
+    });
   };
   mkHost = { system, user, traits, modules ? [ ] }: (darwin.lib.darwinSystem) {
     inherit system;
     modules = modules ++ [
       {
+        # GID change from 30000 to 350 was made by the Nix project to improve
+        # compatibility and avoid conflicts on macOS systems.
+        ids.gids.nixbld = 350;
         nixpkgs.overlays = [ darwinFixesOverlay ];
+        nixpkgs.config.allowUnfree = true;
       }
       home-manager.darwinModules.home-manager
       {

@@ -2,7 +2,7 @@
   description = "Configure system and user spaces.";
   inputs = {
     # Try going back to unstable or taking both pinned and unstable.
-    nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Used to partition and format disks on NixOS
@@ -10,11 +10,11 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     # Configure software in home directory.
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Configure system level software and settings.
-    darwin.url = "github:lnl7/nix-darwin/nix-darwin-24.11";
+    darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.05";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # My nvim flake.
