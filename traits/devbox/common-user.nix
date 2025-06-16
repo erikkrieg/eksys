@@ -41,12 +41,15 @@
     gping
 
     # Cross-project packages
-    amp-cli
+
+    # This version isn't working atm.
+    # unstable_pkgs.amp-cli
     devbox
     just
 
     # Language-specific
     pipenv
+    nodejs_24
   ];
 
   home.sessionPath = [
