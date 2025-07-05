@@ -13,13 +13,13 @@ let
       doCheck = false;
     });
   };
-  mkHost = { system, user, traits, modules ? [ ] }: (darwin.lib.darwinSystem) {
+  mkHost = { system, user, traits, modules ? [ ], gids ? 350 }: (darwin.lib.darwinSystem) {
     inherit system;
     modules = modules ++ [
       {
         # GID change from 30000 to 350 was made by the Nix project to improve
         # compatibility and avoid conflicts on macOS systems.
-        ids.gids.nixbld = 350;
+        ids.gids.nixbld = gids;
         nixpkgs.overlays = [ darwinFixesOverlay ];
         nixpkgs.config.allowUnfree = true;
       }
@@ -60,6 +60,7 @@ in
     user = "ek";
     traits = [ "devbox" "guibox" "vpn-peer" ];
     modules = [ ./eksys ];
+    gids = 30000;
   };
 
   ek_pro = mkHost {

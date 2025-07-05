@@ -11,7 +11,7 @@
   };
 
   nix.package = pkgs.nix;
-  services.nix-daemon.enable = true;
+  system.primaryUser = "ek";
 
   # Disabling until I'm ready to commit to replacing wg with tailscale
   # services.tailscale.overrideLocalDns = true;
