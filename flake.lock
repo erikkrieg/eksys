@@ -1,26 +1,5 @@
 {
   "nodes": {
-    "claude-code": {
-      "inputs": {
-        "nixpkgs": [
-          "unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1743307127,
-        "narHash": "sha256-z8LnBGeac5KNUqBHhye+QoLaYJMe1UwHhKTL2U5hyjg=",
-        "owner": "erikkrieg",
-        "repo": "claude-code-flake",
-        "rev": "35982547b450193f92d6e9858993f61e3376354a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "erikkrieg",
-        "ref": "main",
-        "repo": "claude-code-flake",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -142,7 +121,6 @@
     },
     "root": {
       "inputs": {
-        "claude-code": "claude-code",
         "darwin": "darwin",
         "disko": "disko",
         "envim": "envim",

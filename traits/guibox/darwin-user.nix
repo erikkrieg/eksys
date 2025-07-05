@@ -1,7 +1,7 @@
 # Darwin-specific guibox user configuration via home-manager.
 # https://nix-community.github.io/home-manager/options.html
-{ claude-code, ... }: {
+{ unstable_pkgs, ... }: {
   home.packages = [
-    claude-code
+    unstable_pkgs.claude-code
   ];
 }
