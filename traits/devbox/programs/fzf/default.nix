@@ -12,7 +12,7 @@
     ];
   };
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     # Ensure the fzf managed by nix is used.
     function __fzfcmd() {
       [ -n "$TMUX_PANE" ] && { [ "$FZF_TMUX" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&

@@ -33,7 +33,7 @@
       compinit
     '';
 
-    initExtra = ''
+    initContent = ''
       source ${zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       FZF_TAB_COMMAND=(
         ${fzf}/bin/fzf

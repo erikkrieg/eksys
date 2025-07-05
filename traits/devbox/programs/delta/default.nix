@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.git.delta = {
     enable = true;
     options = {
@@ -15,7 +15,7 @@
     };
   };
 
-  programs.zsh.initExtraFirst = ''
+  programs.zsh.initContent = pkgs.lib.mkBefore ''
     export DELTA_FEATURES=+default
   '';
 }
