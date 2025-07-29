@@ -1,4 +1,5 @@
 alias b := rebuild
+alias bt := rebuild-target
 
 # List available commands.
 list:
@@ -15,15 +16,17 @@ fetch:
 
 # Rebuild system
 rebuild:
+  just rebuild-target "$(hostname -s)"
+
+# Rebuild system with specific target name
+rebuild-target TARGET:
   #!/usr/bin/env bash
   if [ "$(uname)" = "Darwin" ]; then
-    sudo darwin-rebuild switch --flake ".#$(hostname -s)"
+    sudo darwin-rebuild switch --flake ".#{{TARGET}}"
   elif [ -f "/etc/NIXOS" ]; then
-    sudo nixos-rebuild switch --flake ".#$(hostname -s)"
+    sudo nixos-rebuild switch --flake ".#{{TARGET}}"
   else
-    # TODO: nix run home-manager/master -- switch --flake '.#dev_vm'
-    echo "Unsupported OS: Only NixOS and Darwin are supported"
-    exit 1
+    nix run home-manager/master -- switch --flake ".#{{TARGET}}"
   fi
 
 # Update version of flake inputs then rebuild the system
