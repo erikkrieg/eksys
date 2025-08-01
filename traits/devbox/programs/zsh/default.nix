@@ -5,7 +5,7 @@
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     history.size = 50000;
 
     # initExtraBeforeCompInit = '''';

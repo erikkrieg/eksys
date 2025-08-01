@@ -1,16 +1,22 @@
-{ pkgs, ... }: with pkgs; {
+{ pkgs, ... }:
+let
+  gcloud = pkgs.google-cloud-sdk.withExtraComponents [
+    pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin
+  ];
+in
+{
   homebrew = {
     casks = [
-      "google-chrome"
-      "chromium"
+      "tuple"
     ];
   };
 
-  environment.systemPackages = [
-    amazon-ecr-credential-helper
-    argocd
+  environment.systemPackages = with pkgs; [
+    fluxcd
+    gcloud
+    ipmitool
   ];
 
-  # Changing the binary for sh conflicts with tools like Jamf CLI.
+  # Changing the binary for sh can conflict with IT tools
   system.activationScripts.setDashAsSh.enable = false;
 }

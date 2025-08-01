@@ -39,10 +39,6 @@ in
 
   # Configure fonts
   fonts = {
-    fontDir.enable = true; # Danger: `true` mean fonts can get removed.
-  } // lib.optionalAttrs pkgs.stdenv.isDarwin {
-    fonts = fonts;
-  } // lib.optionalAttrs pkgs.stdenv.isLinux {
     packages = fonts;
   };
 
@@ -50,7 +46,11 @@ in
   # https://gist.github.com/luishfonseca/f183952a77e46ccd6ef7c907ca424517?permalink_comment_id=4620275#gistcomment-4620275 
   system.activationScripts.postUserActivation = {
     text = ''
-      ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
+      if [ -e /run/current-system ]; then
+        ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
+      else
+        echo "First time setup - skipping nvd diff"
+      fi
     '';
   } // lib.optionalAttrs pkgs.stdenv.isLinux {
     supportsDryActivation = true;
