@@ -50,11 +50,11 @@
         "unstable": "unstable"
       },
       "locked": {
-        "lastModified": 1749576882,
-        "narHash": "sha256-uQZi4SQGlu3m1HxsZy/6nCykM4WOq3CE3dj41pNpDoA=",
+        "lastModified": 1760937042,
+        "narHash": "sha256-TIFuGi4+WE0Oy+8QEdMIYuR6MqF5d3GlPIOofpGTWRQ=",
         "owner": "erikkrieg",
         "repo": "envim",
-        "rev": "6a4743f28b65061cce600b0be5e8002fc83d583d",
+        "rev": "15c2d296de2f2db9a6d6a5b4a5aee9c3383ee8e0",
         "type": "github"
       },
       "original": {
@@ -146,11 +146,11 @@
     },
     "unstable": {
       "locked": {
-        "lastModified": 1735554305,
-        "narHash": "sha256-zExSA1i/b+1NMRhGGLtNfFGXgLtgo+dcuzHzaWA6w3Q=",
+        "lastModified": 1760782043,
+        "narHash": "sha256-+4A1SFln9wOCoUZM0mQfKefP1uRVmjz6bV5SPbl1Q/4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0e82ab234249d8eee3e8c91437802b32c74bb3fd",
+        "rev": "36226520e9f7a35bf341cbe3b6a1ff9047bec6d9",
         "type": "github"
       },
       "original": {
