@@ -8,7 +8,7 @@ let
         final.pkg-config
       ];
     });
-    tailscale = prev.tailscale.overrideAttrs (oldAttrs: {
+    tailscale = (unstable.legacyPackages.${final.system}.tailscale).overrideAttrs (oldAttrs: {
       # These run integration tests that were not reliable.
       doCheck = false;
     });
