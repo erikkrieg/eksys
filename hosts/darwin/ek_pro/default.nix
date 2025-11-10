@@ -5,6 +5,9 @@ let
   ];
 in
 {
+  # Using determinate nix to run the nix daemon instead of nix-darwin
+  nix.enable = false;
+
   homebrew = {
     casks = [
       "tuple"
