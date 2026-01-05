@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+HOSTNAME="$(hostname -s)"
+TARGET="${1:-$HOSTNAME}"
+echo $TARGET
+
 echo "Installing Nix..."
 if ! command -v nix &>/dev/null; then
   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
@@ -16,7 +20,7 @@ else
 fi
 
 nix --extra-experimental-features "nix-command flakes" \
-  build ".#darwinConfigurations.$(hostname -s).system"
+  build ".#darwinConfigurations.${TARGET}.system"
 
 echo "First install tends to abort with error that includes manual remediation steps"
-sudo ./result/sw/bin/darwin-rebuild switch --flake ".#$(hostname -s)"
+sudo ./result/sw/bin/darwin-rebuild switch --flake ".#${TARGET}"

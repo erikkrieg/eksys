@@ -9,9 +9,7 @@ in
   nix.enable = false;
 
   homebrew = {
-    casks = [
-      "tuple"
-    ];
+    casks = [ ];
   };
 
   environment.systemPackages = with pkgs; [
