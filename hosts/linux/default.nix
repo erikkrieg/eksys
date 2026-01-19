@@ -23,7 +23,7 @@ in
 {
   dev_vm = mkHost {
     system = "x86_64-linux";
-    user = "ekrieg";
+    user = "ekrieg_nvidia_com";
     traits = [ "devbox" ];
     modules = [ ];
   };
