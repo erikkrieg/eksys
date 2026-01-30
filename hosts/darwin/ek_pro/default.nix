@@ -16,7 +16,6 @@ in
     fluxcd
     gcloud
     ipmitool
-    mise
   ];
 
   # Changing the binary for sh can conflict with IT tools

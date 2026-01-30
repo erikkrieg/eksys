@@ -46,6 +46,7 @@
     # unstable_pkgs.amp-cli
     devbox
     just
+    unstable_pkgs.mise
 
     # Language-specific
     pipenv
