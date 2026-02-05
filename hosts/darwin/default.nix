@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, unstable, darwin, home-manager, envim, ... }:
+{ inputs, nixpkgs, unstable, darwin, home-manager, envim, llm-agents, ... }:
 let
   darwinFixesOverlay = final: prev: {
     # Fixed following error: 
@@ -30,6 +30,7 @@ let
           useUserPackages = true;
           extraSpecialArgs = {
             envim = envim.packages.${system}.default;
+            llm_agents = llm-agents.packages.${system};
             unstable_pkgs = import unstable {
               inherit system;
               overlays = [ darwinFixesOverlay ];

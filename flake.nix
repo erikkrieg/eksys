@@ -20,27 +20,31 @@
     # My nvim flake.
     envim.url = "github:erikkrieg/envim/main";
     envim.inputs.nixpkgs.follows = "nixpkgs";
+
+    # LLM CLI tools (droid, codex, gemini-cli, etc.)
+    llm-agents.url = "github:numtide/llm-agents.nix";
+    llm-agents.inputs.nixpkgs.follows = "unstable";
   };
 
-  outputs = inputs@{ nixpkgs, unstable, darwin, disko, home-manager, envim, ... }: {
+  outputs = inputs@{ nixpkgs, unstable, darwin, disko, home-manager, envim, llm-agents, ... }: {
     # Imports configurations for all MacOS hosts.
     darwinConfigurations = (
       import ./hosts/darwin {
-        inherit inputs nixpkgs unstable darwin home-manager envim;
+        inherit inputs nixpkgs unstable darwin home-manager envim llm-agents;
       }
     );
 
     # Imports configurations for all NixOS hosts.
     nixosConfigurations = (
       import ./hosts/nixos {
-        inherit inputs nixpkgs unstable disko home-manager envim;
+        inherit inputs nixpkgs unstable disko home-manager envim llm-agents;
       }
     );
 
     # Imports configurations for Linux hosts using home-manager
     homeConfigurations = (
       import ./hosts/linux {
-        inherit inputs nixpkgs unstable home-manager envim;
+        inherit inputs nixpkgs unstable home-manager envim llm-agents;
       }
     );
   };

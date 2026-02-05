@@ -1,4 +1,4 @@
-{ nixpkgs, unstable, home-manager, envim, ... }:
+{ nixpkgs, unstable, home-manager, envim, llm-agents, ... }:
 let
   mkHost = { system, user, traits, modules ? [ ] }: (home-manager.lib.homeManagerConfiguration) {
     pkgs = import nixpkgs {
@@ -6,6 +6,7 @@ let
     };
     extraSpecialArgs = {
       envim = envim.packages.${system}.default;
+      llm_agents = llm-agents.packages.${system};
       unstable_pkgs = import unstable {
         inherit system;
       };
