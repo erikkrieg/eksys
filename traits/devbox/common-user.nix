@@ -39,6 +39,7 @@
     # Network utilities
     dig
     gping
+    unstable_pkgs.teleport
 
     # Cross-project packages
 
