@@ -21,6 +21,7 @@
     ./programs/zellij
     ./programs/zoxide
     ./programs/zsh
+    ./programs/teleport
   ];
 
   # Install user-specific packages
@@ -39,7 +40,6 @@
     # Network utilities
     dig
     gping
-    unstable_pkgs.teleport
 
     # Cross-project packages
 
