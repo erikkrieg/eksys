@@ -33,8 +33,9 @@
     ripgrep
     gh
     nix-tree
-    unstable_pkgs.nix-du
     graphviz # used in combination with nix-du
+    unstable_pkgs.nix-du
+    unstable_pkgs.buildkite-cli
 
     # Network utilities
     dig
