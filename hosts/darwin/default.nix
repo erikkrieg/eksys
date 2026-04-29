@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, unstable, darwin, home-manager, envim, llm-agents, ... }:
+{ inputs, nixpkgs, unstable, darwin, home-manager, envim, llm-agents, lpu-pkgs, ... }:
 let
   darwinFixesOverlay = final: prev: {
     # Fixed following error: 
@@ -67,6 +67,9 @@ in
     system = "aarch64-darwin";
     user = "ekrieg";
     traits = [ "devbox" "guibox" ];
-    modules = [ ./ek_pro ];
+    modules = [
+      ./ek_pro
+      { environment.systemPackages = [ lpu-pkgs.packages.aarch64-darwin.internal ]; }
+    ];
   };
 }

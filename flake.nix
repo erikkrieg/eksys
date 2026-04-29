@@ -24,13 +24,17 @@
     # LLM CLI tools (droid, codex, gemini-cli, etc.)
     llm-agents.url = "github:numtide/llm-agents.nix";
     llm-agents.inputs.nixpkgs.follows = "unstable";
+
+    # Shared developer toolbox for LPU engineers (only used by ek_pro)
+    lpu-pkgs.url = "github:nvidia-lpu/lpu-pkgs";
+
   };
 
-  outputs = inputs@{ nixpkgs, unstable, darwin, disko, home-manager, envim, llm-agents, ... }: {
+  outputs = inputs@{ nixpkgs, unstable, darwin, disko, home-manager, envim, llm-agents, lpu-pkgs, ... }: {
     # Imports configurations for all MacOS hosts.
     darwinConfigurations = (
       import ./hosts/darwin {
-        inherit inputs nixpkgs unstable darwin home-manager envim llm-agents;
+        inherit inputs nixpkgs unstable darwin home-manager envim llm-agents lpu-pkgs;
       }
     );
 

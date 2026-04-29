@@ -22,7 +22,8 @@ rebuild:
 rebuild-target TARGET:
   #!/usr/bin/env bash
   if [ "$(uname)" = "Darwin" ]; then
-    sudo darwin-rebuild switch --flake ".#{{TARGET}}"
+    NIX_CONFIG="access-tokens = github.com=$(gh auth token)" \
+      sudo --preserve-env=NIX_CONFIG darwin-rebuild switch --flake ".#{{TARGET}}"
   elif [ -f "/etc/NIXOS" ]; then
     sudo nixos-rebuild switch --flake ".#{{TARGET}}"
   else
