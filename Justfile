@@ -1,6 +1,10 @@
 alias b := rebuild
 alias bt := rebuild-target
 
+# Pass-through GitHub access token so nix can fetch private repos (e.g. lpu-pkgs).
+# Falls back to empty if `gh` is missing or unauthenticated so non-nix recipes still work.
+export NIX_CONFIG := "access-tokens = github.com=" + `gh auth token 2>/dev/null || echo ""`
+
 # List available commands.
 list:
   @just -l
@@ -22,17 +26,16 @@ rebuild:
 rebuild-target TARGET:
   #!/usr/bin/env bash
   if [ "$(uname)" = "Darwin" ]; then
-    NIX_CONFIG="access-tokens = github.com=$(gh auth token)" \
-      sudo --preserve-env=NIX_CONFIG darwin-rebuild switch --flake ".#{{TARGET}}"
+    sudo --preserve-env=NIX_CONFIG darwin-rebuild switch --flake ".#{{TARGET}}"
   elif [ -f "/etc/NIXOS" ]; then
-    sudo nixos-rebuild switch --flake ".#{{TARGET}}"
+    sudo --preserve-env=NIX_CONFIG nixos-rebuild switch --flake ".#{{TARGET}}"
   else
     nix run home-manager/master -- switch --flake ".#{{TARGET}}"
   fi
 
 # Update version of flake inputs then rebuild the system
 update INPUT: && rebuild
-  nix flake lock --update-input {{INPUT}} --commit-lock-file
+  nix flake update {{INPUT}} --commit-lock-file
 
 # Update version of nvim then rebuild the system
 update-nvim: && rebuild
