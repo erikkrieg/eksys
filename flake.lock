@@ -250,11 +250,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1777425996,
-        "narHash": "sha256-G3YSqLi+dl45wa1Y+EZesKdIQKskJj0OpK8ycRowLTA=",
+        "lastModified": 1779734427,
+        "narHash": "sha256-pA1qV3tkOygJnWzEY2aFls4uTX5IiTvvk3s4v34kzlA=",
         "owner": "nvidia-lpu",
         "repo": "lpu-pkgs",
-        "rev": "44f2892d674fa846fe28a7bd9ef51c94fe9d6d70",
+        "rev": "8604163cdc8b07f5b8edf7cf89bb3bd6457a5688",
         "type": "github"
       },
       "original": {
