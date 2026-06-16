@@ -47,6 +47,10 @@
     remapCapsLockToEscape = true;
   };
 
+  # Allow Touch ID (and Apple Watch) to authenticate sudo.
+  # Manages /etc/pam.d/sudo_local with `auth sufficient pam_tid.so`.
+  security.pam.services.sudo_local.touchIdAuth = true;
+
   environment.systemPackages = [
     wireguard-go
   ];
