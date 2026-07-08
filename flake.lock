@@ -25,6 +25,22 @@
         "type": "github"
       }
     },
+    "brake-controller-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783525815,
+        "narHash": "sha256-uwqV3Zyxci89gvFvwsYZGBLwi82YnCR4gbEri7Zj1yY=",
+        "ref": "refs/heads/main",
+        "rev": "a34bbdb95f323ab7d0301185e77154e53c1e7c85",
+        "revCount": 294,
+        "type": "git",
+        "url": "ssh://git@github.com/nvidia-lpu/brake-controller"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/nvidia-lpu/brake-controller"
+      }
+    },
     "bun2nix": {
       "inputs": {
         "flake-parts": [
@@ -243,17 +259,19 @@
     },
     "lpu-pkgs": {
       "inputs": {
+        "brake-controller-src": "brake-controller-src",
         "dojo-src": "dojo-src",
         "flake-utils": "flake-utils_2",
         "mot-src": "mot-src",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "pdu-manager-src": "pdu-manager-src"
       },
       "locked": {
-        "lastModified": 1779734427,
-        "narHash": "sha256-pA1qV3tkOygJnWzEY2aFls4uTX5IiTvvk3s4v34kzlA=",
+        "lastModified": 1783539973,
+        "narHash": "sha256-GXuXuOHeS1QNipVwEqdDJWjNLtcgY7GJ6nUxJRr/Gcw=",
         "owner": "nvidia-lpu",
         "repo": "lpu-pkgs",
-        "rev": "8604163cdc8b07f5b8edf7cf89bb3bd6457a5688",
+        "rev": "2c8f33d3ed20ed5d869d3f06bf8640ca05c9796d",
         "type": "github"
       },
       "original": {
@@ -308,6 +326,22 @@
         "ref": "release-25.05",
         "repo": "nixpkgs",
         "type": "github"
+      }
+    },
+    "pdu-manager-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780522215,
+        "narHash": "sha256-F+3OYifUoMTCkXjNnAnvzovIwYsepN8gzr0r3gHC9kU=",
+        "ref": "refs/heads/main",
+        "rev": "04e98e5675c71777c04d0935da49f90fb996250c",
+        "revCount": 364,
+        "type": "git",
+        "url": "ssh://git@github.com/nvidia-lpu/pdu-manager"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/nvidia-lpu/pdu-manager"
       }
     },
     "root": {
