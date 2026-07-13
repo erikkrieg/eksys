@@ -20,7 +20,8 @@ let
       mv $out/bin/cli $out/bin/bk
     '';
   });
-in {
+in
+{
   # Backwards compatibility. Don't change.
   home.stateVersion = "22.11";
 
@@ -45,6 +46,8 @@ in {
 
   # Install user-specific packages
   home.packages = [
+    autossh
+
     # Utility packages
     catimg
     delta
