@@ -46,7 +46,8 @@ in
 
   # Install user-specific packages
   home.packages = [
-    autossh
+    # openssh_gssapi so autossh's ssh recognizes GSSAPIAuthentication (from colima's ssh_config)
+    (autossh.override { openssh = openssh_gssapi; })
 
     # Utility packages
     catimg
