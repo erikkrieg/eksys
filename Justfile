@@ -30,7 +30,7 @@ rebuild-target TARGET:
   elif [ -f "/etc/NIXOS" ]; then
     sudo --preserve-env=NIX_CONFIG nixos-rebuild switch --flake ".#{{TARGET}}"
   else
-    nix run home-manager/master -- switch --flake ".#{{TARGET}}"
+    nix run home-manager/master --extra-experimental-features flakes -- switch --flake ".#{{TARGET}}" --extra-experimental-features flakes
   fi
 
 # Update version of flake inputs then rebuild the system
