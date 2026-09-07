@@ -75,6 +75,7 @@ in
 
     # LLM CLI tools
     llm_agents.droid
+    llm_agents.codex
 
     # Language-specific
     pipenv
