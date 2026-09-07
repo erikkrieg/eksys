@@ -31,4 +31,15 @@ _In order to apply the update, use `nixswitch` after._
 
 To update inputs and apply the change run `nixup`.
 
-To update a specific input (using `envim` as an example): `nix flake lock --update-input envim`
+To update a specific input and rebuild (using `envim` as an example): `just update envim`
+
+Codex and Droid come from the `llm-agents` input. To update that input, commit the
+lockfile, and rebuild the current host:
+
+```sh
+just update llm-agents
+codex --version
+```
+
+The pinned revision in `flake.lock` controls these versions; updating `unstable`
+alone does not update Codex or Droid.
