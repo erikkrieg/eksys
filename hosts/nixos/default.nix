@@ -4,6 +4,7 @@ let
   mkHost = { system, user, traits, modules ? [ ] }: (nixpkgs.lib.nixosSystem) {
     pkgs = import nixpkgs { inherit system; config = config; };
     modules = modules ++ [
+      { nix.settings = import ../nix-cache-settings.nix; }
       home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -56,6 +57,7 @@ in
     system = "x86_64-linux";
     specialArgs = args;
     modules = [
+      { nix.settings = import ../nix-cache-settings.nix; }
       ({ modulesPath, ... }: {
         imports = [
           (modulesPath + "/installer/scan/not-detected.nix")

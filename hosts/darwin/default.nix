@@ -16,6 +16,10 @@ let
   mkHost = { system, user, traits, modules ? [ ], gids ? 350 }: (darwin.lib.darwinSystem) {
     inherit system;
     modules = modules ++ [
+      ({ config, lib, ... }: {
+        # Hosts with an externally managed daemon configure its custom file instead.
+        nix.settings = lib.mkIf config.nix.enable (import ../nix-cache-settings.nix);
+      })
       {
         # GID change from 30000 to 350 was made by the Nix project to improve
         # compatibility and avoid conflicts on macOS systems.

@@ -12,6 +12,11 @@ let
       };
     };
     modules = modules ++ [
+      ({ pkgs, ... }: {
+        # These standalone Home Manager hosts use single-user Nix.
+        nix.package = pkgs.nix;
+        nix.settings = import ../nix-cache-settings.nix;
+      })
       {
         home = {
           username = user;

@@ -23,7 +23,7 @@
 
     # LLM CLI tools (droid, codex, gemini-cli, etc.)
     llm-agents.url = "github:numtide/llm-agents.nix";
-    llm-agents.inputs.nixpkgs.follows = "unstable";
+    # Keep upstream's nixpkgs pin so package outputs match Numtide's binary cache.
 
     # Shared developer toolbox for LPU engineers (only used by ek_pro)
     lpu-pkgs.url = "github:nvidia-lpu/lpu-pkgs";
