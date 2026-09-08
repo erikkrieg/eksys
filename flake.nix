@@ -17,6 +17,9 @@
     darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.05";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Configure Determinate's independently installed Nix daemon on Darwin.
+    determinate.url = "github:DeterminateSystems/determinate";
+
     # My nvim flake.
     envim.url = "github:erikkrieg/envim/main";
     envim.inputs.nixpkgs.follows = "nixpkgs";

@@ -4,9 +4,8 @@ Nix configurations for my MacOS and NixOS hosts.
 
 ## Install MacOS
 
-1. Install Nix package manager: https://nixos.org/download.html#nix-install-macos
-2. Clone or download the flake source from GitHub.
-3. Run `./bootstrap.sh` to build and apply the system configuration.
+1. Clone or download the flake source from GitHub.
+2. Run `./bootstrap.sh` to install Determinate Nix if needed, then build and apply the system configuration.
 
 The bootstrap command builds a derivation and then activates it with nix-darwin. The bootstrap command likely won't succeed on the first run, but if it fails, there should be instructions for manual remediation. Once those are performed, you can re-run `./bootstrap.sh` (there might be a few cycles of this).
 
@@ -51,10 +50,9 @@ installation's existing caches and trusted keys. The official Nix cache takes
 priority, and signature verification remains required. `llm-agents` keeps its
 own nixpkgs pin so its package outputs match the builds in that cache.
 
-NixOS and Nix-managed Darwin hosts apply these settings system-wide. `ek_pro`
-uses Determinate Nix's `/etc/nix/nix.custom.conf`; if that file already exists
-outside nix-darwin, preserve its settings in the configuration before migrating
-it. Standalone Home Manager hosts such as `dev_vm` configure single-user Nix
+NixOS hosts apply these settings through `nix.settings`. Darwin hosts use
+Determinate Nix's `/etc/nix/nix.custom.conf`. Standalone Home Manager hosts such
+as `dev_vm` configure single-user Nix
 through `~/.config/nix/nix.conf`. A future Home Manager host using a shared
 daemon would also need the cache URL and key configured by its administrator.
 

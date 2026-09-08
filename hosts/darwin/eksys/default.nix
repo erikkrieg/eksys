@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   homebrew = {
     casks = [
       "chatgpt" # GUI
@@ -11,7 +11,17 @@
     ];
   };
 
-  nix.package = pkgs.nix;
+  determinateNix = {
+    customSettings = {
+      trusted-users = [ "root" ];
+      max-jobs = "auto";
+      cores = 0;
+    };
+    determinateNixd = {
+      builder.state = "disabled";
+      garbageCollector.strategy = "automatic";
+    };
+  };
   system.primaryUser = "ek";
 
   # Disabling until I'm ready to commit to replacing wg with tailscale

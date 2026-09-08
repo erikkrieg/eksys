@@ -9,7 +9,7 @@ let
   ];
 in
 {
-  nix.extraOptions = ''experimental-features = nix-command flakes'';
+  nix.extraOptions = lib.mkIf pkgs.stdenv.isLinux ''experimental-features = nix-command flakes'';
 
   # Configure shells
   programs.zsh = {
@@ -49,7 +49,7 @@ in
   system.activationScripts.postActivation = {
     text = ''
       if [ -e /run/current-system ]; then
-        ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
+        ${pkgs.nvd}/bin/nvd --nix-bin-dir=${if pkgs.stdenv.isDarwin then "/nix/var/nix/profiles/default/bin" else "${pkgs.nix}/bin"} diff /run/current-system "$systemConfig"
       else
         echo "First time setup - skipping nvd diff"
       fi
