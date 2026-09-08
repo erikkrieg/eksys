@@ -2,9 +2,13 @@
 
 set -eo pipefail
 
-HOSTNAME="$(hostname -s)"
-TARGET="${1:-$HOSTNAME}"
-echo "$TARGET"
+if [ "$(uname -s)" != Darwin ]; then
+  echo "bootstrap.sh installs macOS prerequisites; use just rebuild-target for an existing Linux Nix installation." >&2
+  exit 1
+fi
+
+REPO="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+[ "$#" -le 1 ] || { echo "Usage: $0 [TARGET]" >&2; exit 1; }
 
 echo "Installing Nix..."
 if ! command -v nix &>/dev/null; then
@@ -24,8 +28,5 @@ else
   echo "Homebrew already installed."
 fi
 
-nix --extra-experimental-features "nix-command flakes" \
-  build ".#darwinConfigurations.${TARGET}.system"
-
 echo "First install tends to abort with error that includes manual remediation steps"
-sudo ./result/sw/bin/darwin-rebuild switch --flake ".#${TARGET}"
+exec bash "$REPO/scripts/nix.sh" rebuild "${1:-}"

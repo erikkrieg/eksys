@@ -34,6 +34,9 @@
   };
 
   outputs = inputs@{ nixpkgs, unstable, darwin, disko, home-manager, envim, llm-agents, lpu-pkgs, ... }: {
+    # Export the locked standalone home-manager CLI for the single x86_64-linux host.
+    packages.x86_64-linux.home-manager = home-manager.packages.x86_64-linux.home-manager;
+
     # Imports configurations for all MacOS hosts.
     darwinConfigurations = (
       import ./hosts/darwin {
