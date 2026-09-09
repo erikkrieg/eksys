@@ -3,11 +3,11 @@
     "brake-controller-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1783525815,
-        "narHash": "sha256-uwqV3Zyxci89gvFvwsYZGBLwi82YnCR4gbEri7Zj1yY=",
+        "lastModified": 1788984242,
+        "narHash": "sha256-5U+DM4SpAHLaaOmm4FLB8gqqoKX7EhvN6RPnSJQ18aA=",
         "ref": "refs/heads/main",
-        "rev": "a34bbdb95f323ab7d0301185e77154e53c1e7c85",
-        "revCount": 294,
+        "rev": "fe40eb2ec85a83587b8b7980e46653876c3ea00a",
+        "revCount": 450,
         "type": "git",
         "url": "ssh://git@github.com/nvidia-lpu/brake-controller"
       },
@@ -357,11 +357,11 @@
         "pdu-manager-src": "pdu-manager-src"
       },
       "locked": {
-        "lastModified": 1783539973,
-        "narHash": "sha256-GXuXuOHeS1QNipVwEqdDJWjNLtcgY7GJ6nUxJRr/Gcw=",
+        "lastModified": 1788988141,
+        "narHash": "sha256-38K1b4qYlcnoIH13slqyOMzafHgwK0OlqzF6BVGf/t4=",
         "owner": "nvidia-lpu",
         "repo": "lpu-pkgs",
-        "rev": "2c8f33d3ed20ed5d869d3f06bf8640ca05c9796d",
+        "rev": "d5c4e72e629fa556eb108c20c65b84d3a1a907ee",
         "type": "github"
       },
       "original": {
@@ -485,11 +485,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1777270315,
-        "narHash": "sha256-yKB4G6cKsQsWN7M6rZGk6gkJPDNPIzT05y4qzRyCDlI=",
+        "lastModified": 1788372231,
+        "narHash": "sha256-7aqErvrAEz/5OcPA5p3M+tVOqeYc4oJXkNIPXfCqxAw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6368eda62c9775c38ef7f714b2555a741c20c72d",
+        "rev": "9387b3fcc0c23c86661636da63faabad4235a0a6",
         "type": "github"
       },
       "original": {
