@@ -1,0 +1,119 @@
+[keyboard]
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+action = "ReceiveChar"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0007"
+key = "G"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0010"
+key = "P"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\b"
+key = "H"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0013"
+key = "S"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0014"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000E"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000F"
+key = "O"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001b[27;5;49~"
+key = "Key1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001b[27;5;50~"
+key = "Key2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001b[27;5;51~"
+key = "Key3"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001b[27;5;52~"
+key = "Key4"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001b[27;5;53~"
+key = "Key5"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001b[27;5;54~"
+key = "Key6"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001b[27;5;55~"
+key = "Key7"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001b[27;5;56~"
+key = "Key8"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001b[27;5;57~"
+key = "Key9"
+mods = "Command"
+
+[terminal]
+
+# Migration of the config was no longer using aliases
+# TODO: figure out if I still want to use these (and what that like in TOML)
+# [chars]
+# ctl_b = "\u0002"
+# ctl_g = "\u0007"
+# ctl_h = "\b"
+# ctl_n = "\u000E"
+# ctl_o = "\u000F"
+# ctl_p = "\u0010"
+# ctl_r = "\u0012"
+# ctl_s = "\u0013"
+# ctl_t = "\u0014"
+# ctl_t1 = "\u00141"
+# ctl_t2 = "\u00142"
+# ctl_t3 = "\u00143"
+# ctl_t4 = "\u00144"
+# ctl_t5 = "\u00145"
+# ctl_t6 = "\u00146"
+# ctl_t7 = "\u00147"
+# ctl_t8 = "\u00148"
+# ctl_t9 = "\u00149"

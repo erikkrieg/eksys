@@ -1,4 +1,7 @@
 alias b := rebuild
+alias bt := rebuild-target
+
+set positional-arguments
 
 # List available commands.
 list:
@@ -13,25 +16,25 @@ fetch:
   git checkout main
   git pull
 
-# Rebuild system
+# Rebuild system, using the remembered target or the matching hostname
 rebuild:
-  #!/usr/bin/env bash
-  if [ "$(uname)" = "Darwin" ]; then
-    darwin-rebuild switch --flake ".#$(hostname -s)"
-  elif [ -f "/etc/NIXOS" ]; then
-    sudo nixos-rebuild switch --flake ".#$(hostname -s)"
-  else
-    echo "Unsupported OS: Only NixOS and Darwin are supported"
-    exit 1
-  fi
+  bash ./scripts/nix.sh rebuild
 
-# Update version of flake inputs then rebuild the system
+# Rebuild system with specific target name
+rebuild-target TARGET:
+  bash ./scripts/nix.sh rebuild "$1"
+
+# Update one input, commit the lockfile, then rebuild
 update INPUT: && rebuild
-  nix flake lock --update-input {{INPUT}} --commit-lock-file
+  bash ./scripts/nix.sh flake update "$1" --commit-lock-file
 
-# Update version of nvim then rebuild the system
-update-nvim: && rebuild
+# Update nvim and rebuild once
+update-nvim:
   just update envim
+
+# Test target selection and update/rebuild behavior, needs python3
+test:
+  python3 -B -m unittest discover -s tests -p 'test_workflow.py' -v
 
 # Write ISO to USB device. Example: just flash results/iso/nixos... /dev/sdc
 flash ISO DEVICE:

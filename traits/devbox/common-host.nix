@@ -4,10 +4,12 @@
 # - https://daiderd.com/nix-darwin/manual/index.html#sec-options
 { pkgs, lib, ... }: with pkgs;
 let
-  fonts = [ (nerdfonts.override { fonts = [ "Meslo" ]; }) ];
+  fonts = [
+    nerd-fonts.meslo-lg
+  ];
 in
 {
-  nix.extraOptions = ''experimental-features = nix-command flakes'';
+  nix.extraOptions = lib.mkIf pkgs.stdenv.isLinux ''experimental-features = nix-command flakes'';
 
   # Configure shells
   programs.zsh = {
@@ -39,18 +41,18 @@ in
 
   # Configure fonts
   fonts = {
-    fontDir.enable = true; # Danger: `true` mean fonts can get removed.
-  } // lib.optionalAttrs pkgs.stdenv.isDarwin {
-    fonts = fonts;
-  } // lib.optionalAttrs pkgs.stdenv.isLinux {
     packages = fonts;
   };
 
   # Show changes after a rebuild.
   # https://gist.github.com/luishfonseca/f183952a77e46ccd6ef7c907ca424517?permalink_comment_id=4620275#gistcomment-4620275 
-  system.activationScripts.postUserActivation = {
+  system.activationScripts.postActivation = {
     text = ''
-      ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
+      if [ -e /run/current-system ]; then
+        ${pkgs.nvd}/bin/nvd --nix-bin-dir=${if pkgs.stdenv.isDarwin then "/nix/var/nix/profiles/default/bin" else "${pkgs.nix}/bin"} diff /run/current-system "$systemConfig"
+      else
+        echo "First time setup - skipping nvd diff"
+      fi
     '';
   } // lib.optionalAttrs pkgs.stdenv.isLinux {
     supportsDryActivation = true;

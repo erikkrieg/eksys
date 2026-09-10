@@ -8,7 +8,6 @@
   # Homebrew is included to install packages that are missing from nixpkgs
   homebrew = {
     enable = true;
-    caskArgs.no_quarantine = true;
     global.brewfile = true;
     casks = [
       "1password"
@@ -20,13 +19,13 @@
       "obsidian"
       "raycast"
       "sigmaos"
-      "slack"
       "spotify"
     ];
     onActivation = {
-      cleanup = "zap";
+      cleanup = "none";
       upgrade = true;
       autoUpdate = true;
+      extraFlags = [ "--force-cleanup" "--zap" ];
     };
   };
 
