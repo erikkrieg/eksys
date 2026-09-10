@@ -3,11 +3,11 @@
     "brake-controller-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1788984242,
-        "narHash": "sha256-5U+DM4SpAHLaaOmm4FLB8gqqoKX7EhvN6RPnSJQ18aA=",
+        "lastModified": 1789055018,
+        "narHash": "sha256-x7wUpdaqbfaX9awCzBce7Xn6IDmwOsbEscpiRA2PO6E=",
         "ref": "refs/heads/main",
-        "rev": "fe40eb2ec85a83587b8b7980e46653876c3ea00a",
-        "revCount": 450,
+        "rev": "b214feb16e3f02bb58ff2d46ecef003bdefb1bb2",
+        "revCount": 453,
         "type": "git",
         "url": "ssh://git@github.com/nvidia-lpu/brake-controller"
       },
@@ -357,11 +357,11 @@
         "pdu-manager-src": "pdu-manager-src"
       },
       "locked": {
-        "lastModified": 1788988141,
-        "narHash": "sha256-38K1b4qYlcnoIH13slqyOMzafHgwK0OlqzF6BVGf/t4=",
+        "lastModified": 1789056020,
+        "narHash": "sha256-c1Z5/4fvC+BVVW24bEvUWU0WU0VTKNyPSWVEO+ObkVc=",
         "owner": "nvidia-lpu",
         "repo": "lpu-pkgs",
-        "rev": "d5c4e72e629fa556eb108c20c65b84d3a1a907ee",
+        "rev": "3c1b7d14606ee125c981fecde75a8245c0549dcd",
         "type": "github"
       },
       "original": {
