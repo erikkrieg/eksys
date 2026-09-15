@@ -15,6 +15,7 @@
       "anytype" # Notion-like app that I'm testing
       "balenaetcher"
       "brave-browser"
+      "chatgpt"
       "discord"
       "obsidian"
       "raycast"
