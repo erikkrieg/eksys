@@ -282,6 +282,23 @@
         "type": "github"
       }
     },
+    "fleet-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789413088,
+        "narHash": "sha256-HApbouZWNgs7rIkwfBxufeJ//iVIMYOroo7K6FQYZ9g=",
+        "ref": "refs/pull/1075/head",
+        "rev": "31016d71a27f59c56df805f2dad0c03d30df3b31",
+        "revCount": 2308,
+        "type": "git",
+        "url": "ssh://git@github.com/nvidia-lpu/fleet"
+      },
+      "original": {
+        "ref": "refs/pull/1075/head",
+        "type": "git",
+        "url": "ssh://git@github.com/nvidia-lpu/fleet"
+      }
+    },
     "git-hooks-nix": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -352,16 +369,17 @@
         "brake-controller-src": "brake-controller-src",
         "dojo-src": "dojo-src",
         "flake-utils": "flake-utils_2",
+        "fleet-src": "fleet-src",
         "mot-src": "mot-src",
         "nixpkgs": "nixpkgs_4",
         "pdu-manager-src": "pdu-manager-src"
       },
       "locked": {
-        "lastModified": 1789056020,
-        "narHash": "sha256-c1Z5/4fvC+BVVW24bEvUWU0WU0VTKNyPSWVEO+ObkVc=",
+        "lastModified": 1789598936,
+        "narHash": "sha256-BJxYEOa8KCUvymya4aoiOvkKupYbzJqb+T4UoRiZqW0=",
         "owner": "nvidia-lpu",
         "repo": "lpu-pkgs",
-        "rev": "3c1b7d14606ee125c981fecde75a8245c0549dcd",
+        "rev": "68c9918d6e9b8e82db6b5be675bd6b4aa240f754",
         "type": "github"
       },
       "original": {
