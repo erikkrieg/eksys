@@ -11,7 +11,7 @@
   };
 
   programs.zsh = {
-    initExtra = ''
+    initContent = ''
       function _fd_bat_batch() {
         fd "''\${@}" -X bat 
       }

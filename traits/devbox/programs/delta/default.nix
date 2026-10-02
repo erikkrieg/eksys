@@ -1,9 +1,10 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.git.delta = {
     enable = true;
     options = {
       navigate = true;
       light = false;
+      dark = true;
       syntax-theme = "DarkNeon";
       default = {
         side-by-side = true;
@@ -14,8 +15,7 @@
     };
   };
 
-  programs.zsh.initExtraFirst = ''
+  programs.zsh.initContent = pkgs.lib.mkBefore ''
     export DELTA_FEATURES=+default
   '';
 }
-
