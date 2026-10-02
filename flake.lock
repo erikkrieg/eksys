@@ -129,6 +129,23 @@
         "url": "https://install.determinate.systems/determinate-nixd/tag/v3.22.3/x86_64-linux"
       }
     },
+    "devvm-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790949924,
+        "narHash": "sha256-4uFrSlxS+tPAiZtZfQ3S9bkpZXYPo4/UKz2HuQPQFRw=",
+        "ref": "refs/tags/v0.51.0",
+        "rev": "4eb9b51a2d845cb67f5a299b8ffc155ccdc9e894",
+        "revCount": 681,
+        "type": "git",
+        "url": "ssh://git@github.com/nvidia-lpu/lpu-dev-vm"
+      },
+      "original": {
+        "ref": "refs/tags/v0.51.0",
+        "type": "git",
+        "url": "ssh://git@github.com/nvidia-lpu/lpu-dev-vm"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -367,6 +384,7 @@
     "lpu-pkgs": {
       "inputs": {
         "brake-controller-src": "brake-controller-src",
+        "devvm-src": "devvm-src",
         "dojo-src": "dojo-src",
         "flake-utils": "flake-utils_2",
         "fleet-src": "fleet-src",
@@ -375,11 +393,11 @@
         "pdu-manager-src": "pdu-manager-src"
       },
       "locked": {
-        "lastModified": 1789598936,
-        "narHash": "sha256-BJxYEOa8KCUvymya4aoiOvkKupYbzJqb+T4UoRiZqW0=",
+        "lastModified": 1790958732,
+        "narHash": "sha256-Ipo8vf7QwA3TX8nhdwjGOWoiFXLQSyFjThAw8sGnSjU=",
         "owner": "nvidia-lpu",
         "repo": "lpu-pkgs",
-        "rev": "68c9918d6e9b8e82db6b5be675bd6b4aa240f754",
+        "rev": "70a3fee0ac38ce0053d294650bf565bb3a91c6d5",
         "type": "github"
       },
       "original": {
