@@ -34,6 +34,15 @@ instructions instead of guessing.
 - `just update INPUT`: update one input, commit the lockfile, then rebuild.
 - `just update-nvim`: run `just update envim`, rebuilding once.
 
+macOS updates reset `/etc/zshrc` and `/etc/zprofile`, and Determinate's repair
+hook then re-adds its Nix block at boot. nix-darwin replaces versions it
+recognizes from its list of known file hashes, which `just update darwin`
+refreshes. For any other version, activation moves the managed shell files
+(`bashrc`, `shells`, `zprofile`, `zshenv`, `zshrc`) to
+`/etc/NAME.before-nix-darwin` instead of stopping, and keeps an older backup
+with different content under a timestamp suffix. Other unrecognized files in
+`/etc` still stop activation for review.
+
 Codex and Droid come from the `llm-agents` input. To update that input, commit
 the lockfile, and rebuild the current host:
 

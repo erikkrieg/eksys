@@ -48,11 +48,23 @@ let
       }
     ] ++ [
       {
+        # macOS updates reset these files and Determinate's repair hook re-adds
+        # its Nix block. nix-darwin aborts on versions missing from its known
+        # hashes, and preActivation runs before that check, so move them first.
         system.activationScripts.preActivation.text = ''
-          shells="/etc/shells"
-          if [ -f "$shells" ] && [ ! -L "$shells" ]; then
-              echo "$shells exists and is not a symbolic link: backing up as $shells.before-nix-darwin"
-              mv "$shells" "$shells.before-nix-darwin" 
+          # darwin-rebuild check runs this script too, and must not change /etc.
+          if [[ "''${checkActivation:-0}" -ne 1 ]]; then
+            for name in bashrc shells zprofile zshenv zshrc; do
+              file=/etc/$name
+              backup=$file.before-nix-darwin
+              if [[ -e $systemConfig/etc/$name && -f $file && ! -L $file ]]; then
+                echo "moving $file to $backup, likely replaced by a macOS update" >&2
+                if [[ -e $backup ]] && ! cmp -s "$file" "$backup"; then
+                  mv "$backup" "$backup.$(date +%Y%m%d%H%M%S)"
+                fi
+                mv "$file" "$backup"
+              fi
+            done
           fi
         '';
       }
