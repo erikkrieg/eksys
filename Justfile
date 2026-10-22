@@ -32,6 +32,12 @@ update INPUT: && rebuild
 update-nvim:
   just update envim
 
+# Update Homebrew and upgrade its apps; rebuilds only install and remove them
+[macos]
+upgrade-apps:
+  brew update
+  brew upgrade
+
 # Test target selection and update/rebuild behavior, needs python3
 test:
   python3 -B -m unittest discover -s tests -p 'test_workflow.py' -v

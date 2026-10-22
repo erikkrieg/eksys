@@ -33,6 +33,15 @@ instructions instead of guessing.
 
 - `just update INPUT`: update one input, commit the lockfile, then rebuild.
 - `just update-nvim`: run `just update envim`, rebuilding once.
+- `just upgrade-apps` (macOS): update Homebrew and upgrade the apps it manages.
+
+On macOS, rebuilds install and remove Homebrew casks to match the
+configuration, but they do not update Homebrew or upgrade casks. brew bundle
+would upgrade each outdated cask in a separate `brew upgrade` process, and each
+one asks for the sudo password again. `just upgrade-apps` upgrades them in one
+run, so it usually asks once. Homebrew quits running apps while it upgrades
+them and reopens them afterwards. Rebuilds use Homebrew's cached cask data, so
+if a newly added cask is not found, run `just upgrade-apps` and rebuild again.
 
 macOS updates reset `/etc/zshrc` and `/etc/zprofile`, and Determinate's repair
 hook then re-adds its Nix block at boot. nix-darwin replaces versions it

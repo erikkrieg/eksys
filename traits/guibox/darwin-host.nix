@@ -24,8 +24,11 @@
     ];
     onActivation = {
       cleanup = "none";
-      upgrade = true;
-      autoUpdate = true;
+      # brew bundle upgrades each cask in its own brew process, and each one
+      # resets the sudo timestamp, so upgrading here would ask for the password
+      # once per outdated cask. `just upgrade-apps` upgrades them in one run.
+      upgrade = false;
+      autoUpdate = false;
       extraFlags = [ "--force-cleanup" "--zap" ];
     };
   };
