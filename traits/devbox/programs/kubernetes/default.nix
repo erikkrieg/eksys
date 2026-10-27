@@ -1,8 +1,10 @@
 { pkgs, unstable_pkgs, ... }: with pkgs; {
   home.packages = [
-    k9s
     kubectl
+    kubectx
     kubernetes-helm
+    stern
+    unstable_pkgs.k9s
     unstable_pkgs.kustomize
   ];
 
@@ -11,6 +13,7 @@
   };
 
   programs.zsh.shellAliases = {
-    k = "kubectl";
+    k = "${kubectl}/bin/kubectl";
+    kx = "${kubectx}/bin/kubectx";
   };
 }

@@ -1,9 +1,10 @@
-{ nixpkgs, unstable, disko, home-manager, envim, ... }@args:
+{ nixpkgs, unstable, disko, home-manager, envim, llm-agents, ... }@args:
 let
   config = { allowUnfree = true; };
   mkHost = { system, user, traits, modules ? [ ] }: (nixpkgs.lib.nixosSystem) {
     pkgs = import nixpkgs { inherit system; config = config; };
     modules = modules ++ [
+      { nix.settings = import ../nix-cache-settings.nix; }
       home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -11,6 +12,7 @@ let
           useUserPackages = true;
           extraSpecialArgs = {
             envim = envim.packages.${system}.default;
+            llm_agents = llm-agents.packages.${system};
             unstable_pkgs = import unstable { inherit system; };
           };
           users.${user}.imports = map (trait: ../../traits/${trait}/nixos-user.nix) traits;
@@ -55,6 +57,7 @@ in
     system = "x86_64-linux";
     specialArgs = args;
     modules = [
+      { nix.settings = import ../nix-cache-settings.nix; }
       ({ modulesPath, ... }: {
         imports = [
           (modulesPath + "/installer/scan/not-detected.nix")

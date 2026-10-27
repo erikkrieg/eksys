@@ -57,7 +57,7 @@
     clusterInit = lib.mkForce false;
     # serverAddr = "https://chips.eksys.dev:6443";
     serverAddr = "https://192.168.1.17:6443";
-    tokenFile = /var/lib/rancher/k3s/server/token;
+    tokenFile = "/var/lib/rancher/k3s/server/token";
   };
 
   # This value determines the NixOS release from which the default

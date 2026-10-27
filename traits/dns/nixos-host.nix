@@ -11,9 +11,9 @@ in
   services.adguardhome = {
     enable = true;
     mutableSettings = false;
+    host = "0.0.0.0";
+    port = dns_ui_port;
     settings = {
-      bind_port = dns_ui_port;
-      bind_host = "0.0.0.0";
       theme = "dark";
       dns = {
         port = dns_port;

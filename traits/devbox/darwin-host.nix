@@ -6,16 +6,8 @@
   # Backwards compatibility. Don't change.
   system.stateVersion = 4;
 
-  # Configure default login shell (nix-darwin exclusive option).
-  environment.loginShell = zsh;
-
-  # There may be a more nixy way to do this with nix-darwin, but using 
-  # activationScripts to optionally:
-  # 1. Make zsh default shell for root user
-  # 2. Use dash binary as sh instead of bash
   system.activationScripts.postActivation.text = with config.system.activationScripts; ''
     ${ if setZshAsDefaultRootShell.enable then setZshAsDefaultRootShell.text else "" }
-    ${ if setDashAsSh.enable then setDashAsSh.text else "" }
   '';
 
   # Use zsh managed by nix as the default root shell instead of bash binary
@@ -32,25 +24,15 @@
     fi
   '';
 
-  # Set sh to execute dash because it is faster than bash
-  # Important: dash is limited to the posix specification, so has fewer 
-  # features than bash, which is a superset of posix.
-  system.activationScripts.setDashAsSh.text = ''
-    echo "set dash as sh..."
-    DASH="/bin/dash"
-    if [ "$(readlink /var/select/sh)" != "$DASH" ]; then
-      echo "  - linking sh to dash because it is a faster shell"
-      ln -sf "$DASH" /var/select/sh
-    fi
-  '';
-
-  services.nix-daemon.enable = true; # Allow nix-darwin to manages/updates the daemon
-
   # Configure keyboard
   system.keyboard = {
     enableKeyMapping = true;
     remapCapsLockToEscape = true;
   };
+
+  # Allow Touch ID (and Apple Watch) to authenticate sudo.
+  # Manages /etc/pam.d/sudo_local with `auth sufficient pam_tid.so`.
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   environment.systemPackages = [
     wireguard-go

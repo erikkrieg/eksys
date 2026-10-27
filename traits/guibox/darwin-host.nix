@@ -8,7 +8,6 @@
   # Homebrew is included to install packages that are missing from nixpkgs
   homebrew = {
     enable = true;
-    caskArgs.no_quarantine = true;
     global.brewfile = true;
     casks = [
       "1password"
@@ -16,17 +15,21 @@
       "anytype" # Notion-like app that I'm testing
       "balenaetcher"
       "brave-browser"
+      "chatgpt"
       "discord"
       "obsidian"
       "raycast"
       "sigmaos"
-      "slack"
       "spotify"
     ];
     onActivation = {
-      cleanup = "zap";
-      upgrade = true;
-      autoUpdate = true;
+      cleanup = "none";
+      # brew bundle upgrades each cask in its own brew process, and each one
+      # resets the sudo timestamp, so upgrading here would ask for the password
+      # once per outdated cask. `just upgrade-apps` upgrades them in one run.
+      upgrade = false;
+      autoUpdate = false;
+      extraFlags = [ "--force-cleanup" "--zap" ];
     };
   };
 
