@@ -16,6 +16,7 @@
       "balenaetcher"
       "brave-browser"
       "chatgpt"
+      "claude"
       "discord"
       "obsidian"
       "raycast"
