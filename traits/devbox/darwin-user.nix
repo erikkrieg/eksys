@@ -7,6 +7,7 @@
 
   home.packages = [
     unstable_pkgs.colima
-    pkgs.docker
+    # 25.11 still defaults docker to docker_28, which is marked insecure.
+    pkgs.docker_29
   ];
 }

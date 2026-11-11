@@ -1,9 +1,11 @@
 { pkgs, ... }: with pkgs; {
   programs.git = {
     enable = true;
-    userEmail = "10244162+erikkrieg@users.noreply.github.com";
-    userName = "Erik Krieg";
-    extraConfig = {
+    settings = {
+      user = {
+        email = "10244162+erikkrieg@users.noreply.github.com";
+        name = "Erik Krieg";
+      };
       init = {
         defaultBranch = "main";
       };

@@ -32,20 +32,20 @@
 
   services.xserver = {
     enable = true;
-    layout = "us"; # Keyboard
-    xkbVariant = "";
-
-    # Enable the GNOME Desktop Environment.
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-    displayManager.gdm.autoSuspend = false; # Trying not to break SSH connections
+    xkb.layout = "us"; # Keyboard
+    xkb.variant = "";
   };
+
+  # Enable the GNOME Desktop Environment.
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.autoSuspend = false; # Trying not to break SSH connections
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

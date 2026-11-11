@@ -8,7 +8,7 @@
     git
     neofetch
     wireguard-tools
-    du-dust
+    dust
     ncdu
     lynis
   ];

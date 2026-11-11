@@ -32,7 +32,7 @@ in
     wireguard-tools
 
     # Alternatives to du
-    du-dust
+    dust
     ncdu
 
     # System security tooling
