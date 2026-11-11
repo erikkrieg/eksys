@@ -393,11 +393,11 @@
         "pdu-manager-src": "pdu-manager-src"
       },
       "locked": {
-        "lastModified": 1790958732,
-        "narHash": "sha256-Ipo8vf7QwA3TX8nhdwjGOWoiFXLQSyFjThAw8sGnSjU=",
+        "lastModified": 1792543911,
+        "narHash": "sha256-NuuDj2jGvF9FqpjwmHKGDHJKTXsQO0AkBrTRL8dvzro=",
         "owner": "nvidia-lpu",
         "repo": "lpu-pkgs",
-        "rev": "70a3fee0ac38ce0053d294650bf565bb3a91c6d5",
+        "rev": "b5cbc3977cee165fd147e6c5e9c44e0fc611957a",
         "type": "github"
       },
       "original": {
