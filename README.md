@@ -31,6 +31,8 @@ configuration that machine rebuilds. A remembered name that is no longer
 configured is reported and skipped rather than used, and `just b` stops with
 instructions instead of guessing.
 
+- `just fetch`: check out the default branch on GitHub, which moves to each new
+  release branch, and pull it.
 - `just update INPUT`: update one input, commit the lockfile, then rebuild.
 - `just update-nvim`: run `just update envim`, rebuilding once.
 - `just upgrade-apps` (macOS): update Homebrew and upgrade the apps it manages.
@@ -70,10 +72,11 @@ CLI on standalone Linux. Updating all inputs also includes private `lpu-pkgs`.
 
 Run `just test` with Python 3 installed. Real Nix locks and builds disposable
 flakes in a temporary directory, while machine identity, GitHub authentication,
-and activation are faked. The tests cover target selection and remembering, and
-rebuilding exactly once after a successful update. They do not update this
-checkout, touch remembered targets, or activate a host. Python is not needed for
-normal use.
+and activation are faked. The tests cover target selection and remembering,
+rebuilding exactly once after a successful update, and `just fetch` following
+the default branch, with a local Git repository standing in for GitHub. They do
+not update this checkout, touch remembered targets, or activate a host. Python
+is not needed for normal use.
 
 ## Binary caches
 

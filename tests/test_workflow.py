@@ -18,6 +18,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 NIX = shutil.which("nix")
 JUST = shutil.which("just")
+GIT = shutil.which("git")
 
 HOSTS = """
 {
@@ -214,6 +215,58 @@ class RebuildTests(Workspace):
                 self.assertEqual(settings["max-jobs"]["value"], 3)
                 self.assertEqual(settings["access-tokens"]["value"],
                                  {"gitlab.example": "other-token", "github.com": expected})
+
+
+class FetchTests(Workspace):
+    """A local bare repository stands in for GitHub."""
+
+    def setUp(self):
+        super().setUp()
+        self.env["PATH"] = os.pathsep.join((str(Path(GIT).parent), self.env["PATH"]))
+        self.remote = self.repo / "remote.git"
+        self.publisher = self.repo / "publisher"
+        self.checkout = self.repo / "checkout"
+        self.git(self.repo, "init", "-q", "--bare", str(self.remote))
+        self.git(self.repo, "clone", "-q", str(self.remote), str(self.publisher))
+        self.publish("main")
+        self.publish("26.05")
+        self.set_default("26.05")
+        self.git(self.repo, "clone", "-q", str(self.remote), str(self.checkout))
+
+    def git(self, cwd, *args):
+        # Unlike the commands under test, fixtures keep the caller's environment,
+        # so their commits use the Git identity already configured there.
+        result = subprocess.run((GIT, *args), cwd=cwd, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        return result.stdout.strip()
+
+    def publish(self, branch):
+        """Push a new commit to the remote branch and return its hash."""
+        self.git(self.publisher, "commit", "-q", "--allow-empty", "--no-gpg-sign", "-m", branch)
+        self.git(self.publisher, "push", "-q", "origin", f"HEAD:refs/heads/{branch}")
+        return self.git(self.publisher, "rev-parse", "HEAD")
+
+    def set_default(self, branch):
+        self.git(self.remote, "symbolic-ref", "HEAD", f"refs/heads/{branch}")
+
+    def fetch(self):
+        result = self.run_command(JUST, "--justfile", str(self.repo / "Justfile"),
+                                  "--working-directory", str(self.checkout), "fetch")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        return (self.git(self.checkout, "branch", "--show-current"),
+                self.git(self.checkout, "rev-parse", "HEAD"))
+
+    def test_fetch_moves_from_an_old_branch_to_the_default_branch(self):
+        self.git(self.checkout, "checkout", "-q", "main")
+        tip = self.publish("26.05")
+        self.assertEqual(self.fetch(), ("26.05", tip))
+
+    def test_fetch_follows_the_default_branch_to_a_new_release(self):
+        tip = self.publish("26.11")
+        self.set_default("26.11")
+        self.assertEqual(self.fetch(), ("26.11", tip))
+        tip = self.publish("26.11")
+        self.assertEqual(self.fetch(), ("26.11", tip), "later fetches keep pulling the release")
 
 
 if __name__ == "__main__":

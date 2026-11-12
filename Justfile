@@ -11,9 +11,11 @@ list:
 auth-git:
   gh auth login -p ssh -w
 
-# Pull latest changes from remote main branch
-fetch: 
-  git checkout main
+# Check out the remote's default branch (the current release) and pull it
+fetch:
+  git fetch origin
+  git remote set-head origin --auto
+  git checkout "$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's|^origin/||')"
   git pull
 
 # Rebuild system, using the remembered target or the matching hostname
