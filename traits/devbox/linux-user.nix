@@ -6,7 +6,7 @@
   home.packages = [
     coreutils
     git
-    neofetch
+    fastfetch
     wireguard-tools
     dust
     ncdu

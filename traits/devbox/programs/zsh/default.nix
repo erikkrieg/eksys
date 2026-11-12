@@ -1,10 +1,12 @@
-{ pkgs, ... }: with pkgs; {
+{ config, pkgs, ... }: with pkgs; {
   imports = [
     ./completions.nix
   ];
 
   programs.zsh = {
     enable = true;
+    # Pin the pre-26.05 default so ~/.zshrc and friends stay in the home directory.
+    dotDir = config.home.homeDirectory;
     autosuggestion.enable = true;
     history.size = 50000;
     initContent = lib.mkMerge [

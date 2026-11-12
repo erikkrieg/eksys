@@ -28,7 +28,7 @@ in
   environment.systemPackages = [
     coreutils
     git
-    neofetch
+    fastfetch
     wireguard-tools
 
     # Alternatives to du

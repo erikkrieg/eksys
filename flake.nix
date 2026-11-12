@@ -2,7 +2,7 @@
   description = "Configure system and user spaces.";
   inputs = {
     # Try going back to unstable or taking both pinned and unstable.
-    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
     unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Used to partition and format disks on NixOS
@@ -10,18 +10,18 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     # Configure software in home directory.
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Configure system level software and settings.
-    darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.11";
+    darwin.url = "github:lnl7/nix-darwin/nix-darwin-26.05";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Configure Determinate's independently installed Nix daemon on Darwin.
     determinate.url = "github:DeterminateSystems/determinate";
 
     # My nvim flake.
-    envim.url = "github:erikkrieg/envim/main";
+    envim.url = "github:erikkrieg/envim/26.05";
     envim.inputs.nixpkgs.follows = "nixpkgs";
 
     # LLM CLI tools (droid, codex, gemini-cli, etc.)
