@@ -18,10 +18,6 @@
         "802-3-ethernet.wake-on-lan" = "magic";
         "ethernet.wake-on-lan" = "magic";
       };
-      extraConfig = ''
-        [connection]
-        ethernet.wake-on-lan = magic
-      '';
     };
     interfaces.eno1.wakeOnLan.enable = true;
   };
@@ -49,7 +45,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
