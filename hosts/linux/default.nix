@@ -31,6 +31,8 @@ in
     system = "x86_64-linux";
     user = "ekrieg_nvidia_com";
     traits = [ "devbox" ];
-    modules = [ ];
+    modules = [
+      ({ config, ... }: { eksys.checkout = "${config.home.homeDirectory}/dev/eksys"; })
+    ];
   };
 }

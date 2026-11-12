@@ -1,4 +1,12 @@
-{ pkgs, envim, ... }: with pkgs; {
+{ config, pkgs, envim, ... }: with pkgs;
+let
+  # Where harper-ls looks for its user dictionary.
+  harperDictionary =
+    if stdenv.isDarwin
+    then "Library/Application Support/harper-ls/dictionary.txt"
+    else ".config/harper-ls/dictionary.txt";
+in
+{
   home.packages = [
     envim
 
@@ -41,4 +49,9 @@
     [MD036]
     fix = false
   '';
+
+  # Linked to the checkout rather than the Nix store so that harper-ls can
+  # write to it: words added from nvim land in the repo, ready to commit.
+  home.file.${harperDictionary}.source = config.lib.file.mkOutOfStoreSymlink
+    "${config.eksys.checkout}/traits/devbox/programs/nvim/harper-dictionary.txt";
 }

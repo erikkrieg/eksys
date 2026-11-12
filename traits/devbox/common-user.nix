@@ -26,6 +26,7 @@ in
   home.stateVersion = "22.11";
 
   imports = [
+    ./checkout.nix
     ./programs/alacritty
     ./programs/bat
     ./programs/btop

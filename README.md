@@ -95,3 +95,17 @@ daemon would also need the cache URL and key configured by its administrator.
 
 To apply cache configuration changes without updating package versions:
 run `just rebuild-target HOST` on that host (for example, `just rebuild-target eksys`).
+
+## Harper dictionary
+
+envim checks spelling with Harper. Harper's user dictionary links to
+[`traits/devbox/programs/nvim/harper-dictionary.txt`](traits/devbox/programs/nvim/harper-dictionary.txt)
+in this checkout, so words you add to it from nvim land in the repo. Commit
+them, and other hosts get them with `git pull`. Harper rereads the file the next
+time it checks a buffer.
+
+The link expects the checkout at `~/dev/erikkrieg/eksys`. A host that keeps it
+elsewhere sets `eksys.checkout`, as `dev_vm` does in
+[`hosts/linux/default.nix`](hosts/linux/default.nix). Home Manager won't replace
+a dictionary that Harper already created, so on such a host move those words
+into the shared file and delete the original before rebuilding.
