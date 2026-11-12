@@ -29,7 +29,7 @@
           # because it works bettwe with zsh-vi-mode plugin.
           # See: https://github.com/erikkrieg/eksys/issues/8
           source ~/.config/zsh/prompt.zsh
-          source ${zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
+          source ${zsh-fast-syntax-highlighting}/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
           # Provide a simple option for extending the shell outside of source code.
           if [ -f ~/.config/zsh-extra/init.zsh ]; then
             . ~/.config/zsh-extra/init.zsh
