@@ -25,4 +25,11 @@
       };
     };
   };
+
+  # rumdl (envim's Markdown LSP) only reads this when a project has no config
+  # of its own. A line length of 0 turns MD013 off.
+  home.file.".config/rumdl/rumdl.toml".text = ''
+    [MD013]
+    line-length = 0
+  '';
 }
