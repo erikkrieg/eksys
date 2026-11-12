@@ -6,6 +6,9 @@
     # Unfortunately I don't konw how to install these on the PATH within the envim flake.
     shellcheck # used by bash-language-server
     unzip # needed to install cmp-tabnine
+
+    # envim only puts rumdl on nvim's PATH; this one is for the shell.
+    rumdl
   ];
 
   home.sessionVariables = {
