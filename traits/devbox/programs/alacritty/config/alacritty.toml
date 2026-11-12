@@ -22,7 +22,14 @@ enabled = true
 mods = "Command"
 
 [terminal.shell]
-program = "zsh"
+# Apps opened from the Dock get launchd's PATH, so a bare "zsh" is macOS's
+# /bin/zsh. It can't load Nix terminfo entries such as alacritty when it
+# starts, which breaks line editing and colors outside zellij.
+program = "/run/current-system/sw/bin/zsh"
+
+[env]
+# zellij and other tools start $SHELL; keep them on the same zsh.
+SHELL = "/run/current-system/sw/bin/zsh"
 
 [window]
 option_as_alt = "Both"
