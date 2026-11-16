@@ -100,18 +100,23 @@ if [ "${1:-}" = rebuild ]; then
   if [ "$namespace" = homeConfigurations ]; then
     nix "${nix_flags[@]}" run .#home-manager -- \
       switch --flake ".#$target" "${nix_flags[@]}"
+  elif [ "$namespace" = darwinConfigurations ]; then
+    # Also works during bootstrap, before darwin-rebuild is installed.
+    system=$(nix "${nix_flags[@]}" build --no-link --print-out-paths \
+      ".#darwinConfigurations.$target.system")
+    # Root only records this build as the new generation and activates it,
+    # the steps darwin-rebuild switch takes after its build, with the same
+    # HOME and NIX_REMOTE. switch itself would evaluate the flake again as
+    # root, which cannot fetch inputs that need the user's SSH keys.
+    sudo -H bash -c '
+      export NIX_REMOTE=daemon PATH=/nix/var/nix/profiles/default/bin:$PATH
+      nix-env -p /nix/var/nix/profiles/system --set "$1" &&
+        exec "$1/sw/bin/darwin-rebuild" activate
+    ' _ "$system"
   else
-    if [ "$namespace" = darwinConfigurations ]; then
-      # Also works during bootstrap, before darwin-rebuild is installed.
-      system=$(nix "${nix_flags[@]}" build --no-link --print-out-paths \
-        ".#darwinConfigurations.$target.system")
-      rebuild=("$system/sw/bin/darwin-rebuild")
-    else
-      rebuild=(nixos-rebuild)
-    fi
     sudo --preserve-env=NIX_CONFIG bash -c \
       "$(declare -f raise_fds); raise_fds; exec \"\$@\"" _ \
-      "${rebuild[@]}" switch --flake ".#$target"
+      nixos-rebuild switch --flake ".#$target"
   fi
   # Recorded only after a successful rebuild, so a bad name is not remembered.
   if [ -n "$explicit" ]; then

@@ -7,7 +7,8 @@ Nix configurations for macOS, NixOS, and standalone Linux Home Manager hosts.
 1. Clone or download the flake source from GitHub.
 2. For `ek_pro`, authenticate GitHub CLI with access to the private `lpu-pkgs`
    input (`gh auth login --hostname github.com`). An existing Nix access-token
-   configuration also works.
+   configuration also works. `lpu-pkgs` fetches its own private inputs over SSH
+   with your SSH keys, so they need access to those repositories.
 3. Run `./bootstrap.sh ek_pro` (or another target) to install Determinate Nix and
    Homebrew if needed, then build and apply the system configuration. If the
    target is omitted, the short hostname is used.
@@ -21,6 +22,13 @@ The normal workflow, from this checkout, is `git pull` followed by `just b`.
 Failing that, it picks the configuration named after the short hostname, which
 is how the NixOS hosts are named. Either way it reports which target it selected
 and where that came from, so an unexpected target is visible before the build.
+
+On macOS, the rebuild builds the system as you and uses sudo only to record that
+build as the new system generation and activate it, which is what
+`darwin-rebuild switch` does after its own build. Root never evaluates the
+flake, so inputs fetched with your SSH keys or GitHub token work without giving
+root access to them. NixOS hosts run `sudo nixos-rebuild switch`, which still
+evaluates as root.
 
 `just bt ek_pro` (`rebuild-target`) selects a target explicitly and, once the
 rebuild succeeds, remembers it in
@@ -72,11 +80,13 @@ CLI on standalone Linux. Updating all inputs also includes private `lpu-pkgs`.
 
 Run `just test` with Python 3 installed. Real Nix locks and builds disposable
 flakes in a temporary directory, while machine identity, GitHub authentication,
-and activation are faked. The tests cover target selection and remembering,
-rebuilding exactly once after a successful update, and `just fetch` following
-the default branch, with a local Git repository standing in for GitHub. They do
-not update this checkout, touch remembered targets, or activate a host. Python
-is not needed for normal use.
+and root are faked. The stand-in root cannot fetch flake inputs, as with private
+ones, and the system profile change and activation are recorded instead of
+made. The tests cover target selection and remembering, root activating only
+the system you built, rebuilding exactly once after a successful update, and
+`just fetch` following the default branch, with a local Git repository
+standing in for GitHub. They do not update this checkout, touch remembered
+targets, or activate a host. Python is not needed for normal use.
 
 ## Binary caches
 

@@ -1,9 +1,12 @@
 """Behavior tests for the rebuild workflow.
 
 Real Nix evaluates, locks, and builds disposable flakes in a temporary
-directory. Only machine identity, GitHub authentication, and the privileged
-activation step are faked, so the tests observe results rather than the
-commands used to produce them.
+directory. Only machine identity, GitHub authentication, and root are faked.
+The stand-in for sudo runs the privileged step as this user, but like root it
+cannot fetch the user's private flake inputs, and it records changes to the
+system profile instead of making them. The stand-in system's darwin-rebuild
+records which system it activates, so the tests observe results rather than
+the commands used to produce them.
 """
 
 import json
@@ -30,8 +33,9 @@ HOSTS = """
 }
 """
 
-# A buildable stand-in for a host system. It builds offline from a local file,
-# so a rebuild reaches activation without any real host configuration.
+# A buildable stand-in for a host system. It builds offline by unpacking an
+# archive from an input, so a rebuild reaches activation without any real host
+# configuration.
 SYSTEM = """
 {
   inputs.dependency.url = "path:%s";
@@ -42,10 +46,11 @@ SYSTEM = """
         inherit name;
         system = "builtin";
         builder = "builtin:fetchurl";
-        url = "file://${builtins.toFile "content" dependency.content}";
+        url = "file://${dependency.archive}";
+        unpack = true;
         outputHashAlgo = "sha256";
-        outputHashMode = "flat";
-        outputHash = builtins.hashString "sha256" dependency.content;
+        outputHashMode = "recursive";
+        outputHash = builtins.hashFile "sha256" dependency.archive;
       };
     in {
       darwinConfigurations = {
@@ -54,6 +59,19 @@ SYSTEM = """
       };
     };
 }
+"""
+
+# The stand-in system's darwin-rebuild, which records the system it activates.
+# Like the real one, switch first builds FLAKE#NAME again and sets the system
+# profile, while activate uses the system it belongs to.
+DARWIN_REBUILD = r"""#!/bin/bash
+system=${0%/sw/bin/darwin-rebuild}
+if [ "$1" = switch ]; then
+  system=$(nix build --no-link --print-out-paths \
+    "${3%#*}#darwinConfigurations.${3#*#}.system") || exit
+  nix-env -p /nix/var/nix/profiles/system --set "$system" || exit
+fi
+echo "$system" >> "$FAKE_ACTIVATIONS"
 """
 
 
@@ -66,20 +84,34 @@ class Workspace(unittest.TestCase):
         for name in ("Justfile", "scripts/nix.sh"):
             shutil.copy2(ROOT / name, self.repo / name)
         self.activations = self.repo / "activations"
+        self.profiles = self.repo / "profiles"
         self.state = self.repo / "state"
         fakes = self.repo / "fakes.sh"
         fakes.write_text(f"""
 hostname() {{ echo "${{FAKE_HOST:-unmatched-hostname}}"; }}
 uname() {{ echo Darwin; }}
 gh() {{ echo synthetic-token; }}
-sudo() {{ echo activated >> "{self.activations}"; }}
-nix() {{ "{NIX}" --offline "$@"; }}
+nix() {{
+  if [ -n "${{FAKE_ROOT:-}}" ]; then
+    echo "error: root cannot fetch the user's private flake inputs" >&2
+    return 1
+  fi
+  "{NIX}" --offline "$@"
+}}
+sudo() {{
+  while [ "${{1#-}}" != "$1" ]; do shift; done
+  FAKE_ROOT=1 "$@"
+}}
+nix-env() {{
+  [ "$1" = -p ] && [ "$3" = --set ] && echo "$2 $4" >> "{self.profiles}"
+}}
 """)
         self.env = {
             "PATH": os.pathsep.join((str(Path(JUST).parent), "/usr/bin", "/bin")),
             "HOME": str(self.repo),
             "BASH_ENV": str(fakes),
             "XDG_STATE_HOME": str(self.state),
+            "FAKE_ACTIVATIONS": str(self.activations),
             "NIX_CONF_DIR": str(self.repo / "no-system-settings"),
             "NIX_USER_CONF_FILES": "/dev/null",
         }
@@ -92,8 +124,18 @@ nix() {{ "{NIX}" --offline "$@"; }}
         return subprocess.run(args, cwd=self.repo, env=dict(self.env, **env),
                               capture_output=True, text=True)
 
+    def activated(self):
+        """The systems activated so far, in order."""
+        return self.activations.read_text().split() if self.activations.exists() else []
+
     def activation_count(self):
-        return len(self.activations.read_text().split()) if self.activations.exists() else 0
+        return len(self.activated())
+
+    def profile_changes(self):
+        """The (profile, system) pairs root has set, in order."""
+        if not self.profiles.exists():
+            return []
+        return [tuple(line.split()) for line in self.profiles.read_text().splitlines()]
 
 
 class TargetSelectionTests(Workspace):
@@ -145,12 +187,21 @@ class RebuildTests(Workspace):
     def setUp(self):
         super().setUp()
         self.env["FAKE_HOST"] = "ek_pro"
+        tree = self.repo / "system"
+        (tree / "sw" / "bin").mkdir(parents=True)
+        rebuild = tree / "sw" / "bin" / "darwin-rebuild"
+        rebuild.write_text(DARWIN_REBUILD)
+        rebuild.chmod(0o755)
+        packed = subprocess.run((NIX, "--extra-experimental-features", "nix-command",
+                                 "nar", "pack", str(tree)), env=self.env, capture_output=True)
+        self.assertEqual(packed.returncode, 0, packed.stderr)
         self.dependencies = {}
         for name in ("dependency", "extra"):
             path = self.repo / name
             path.mkdir()
+            (path / "system.nar").write_bytes(packed.stdout)
             (path / "flake.nix").write_text(
-                '{ outputs = { self }: { content = "%s"; }; }\n' % name)
+                "{ outputs = { self }: { archive = ./system.nar; }; }\n")
             self.dependencies[name] = path
         self.lock = self.repo / "flake.lock"
         (self.repo / "flake.nix").write_text(
@@ -158,13 +209,28 @@ class RebuildTests(Workspace):
         result = self.run_command("/bin/bash", "scripts/nix.sh", "flake", "lock")
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def system(self, name):
+        """The system that the flake defines for a target."""
+        result = self.run_command("/bin/bash", "scripts/nix.sh", "eval", "--raw",
+                                  f".#darwinConfigurations.{name}.system.outPath")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        return result.stdout
+
     def test_rebuild_activates_the_selected_and_requested_targets(self):
         result = self.run_command(JUST, "b")
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(self.activation_count(), 1)
         result = self.run_command(JUST, "bt", "spare")
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(self.activation_count(), 2)
+        self.assertEqual(self.activated(), [self.system("ek_pro"), self.system("spare")])
+
+    def test_root_records_and_activates_the_system_this_user_built(self):
+        # Root cannot fetch the user's private inputs, so it must not evaluate
+        # the flake again; only this user's build can reach them.
+        result = self.run_command(JUST, "b")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        system = self.system("ek_pro")
+        self.assertEqual(self.profile_changes(), [("/nix/var/nix/profiles/system", system)])
+        self.assertEqual(self.activated(), [system])
 
     def test_an_explicit_target_is_remembered_for_later_rebuilds(self):
         # The hostname matches ek_pro here, so the remembered value must win.
@@ -176,12 +242,14 @@ class RebuildTests(Workspace):
         self.assertEqual(result.stdout.strip(), "spare", result.stderr)
         result = self.run_command(JUST, "b")
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(self.activation_count(), 2)
+        self.assertEqual(self.activated(), [self.system("spare")] * 2)
 
-    def test_a_target_is_not_remembered_when_the_rebuild_fails(self):
+    def test_a_failed_rebuild_is_not_remembered_recorded_or_activated(self):
         result = self.run_command(JUST, "bt", "no_such_host")
         self.assertNotEqual(result.returncode, 0)
         self.assertIsNone(self.remembered())
+        self.assertEqual(self.profile_changes(), [])
+        self.assertEqual(self.activated(), [])
 
     def test_a_failed_update_leaves_the_lockfile_and_system_alone(self):
         locked = self.lock.read_bytes()
