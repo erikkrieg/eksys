@@ -5,6 +5,12 @@
     ./common-user.nix
   ];
 
+  # Reset the inherited helper and use Apple's to preserve Keychain trust across Nix updates.
+  programs.git.settings.credential.helper = [
+    ""
+    "/Library/Developer/CommandLineTools/usr/libexec/git-core/git-credential-osxkeychain"
+  ];
+
   home.packages = [
     unstable_pkgs.colima
     # 25.11 still defaults docker to docker_28, which is marked insecure.
